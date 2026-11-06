@@ -15,6 +15,7 @@ This guide distinguishes the submitted method from supplementary variants.
 | Does the model integration preserve dense behavior? | `tests/test_hf_reference.py`; [validation](validation.md) | Tiny Qwen3 dense-equivalence and greedy-generation controls passed; pretrained-scale checks pending |
 | Where are the trained encoders? | [`pretrained/`](../pretrained/README.md) | All 288/64 dictionaries, source-DONE/hash checked, exact tensor/scales export; not new downstream validation |
 | Does the standalone native binding compute the selected attention correctly? | [`native8b_validation.json`](native8b_validation.json), `examples/check_native8b.py` | Six synthetic PPU cases through64K; exact IDs/features and36 AV checks. Not a model-quality or latency reproduction |
+| Where are task/length results and actual baseline reads? | [Verified result tables](results/README.md) |27B RULER65cells and LongProc16subsets; own-trajectory mean-budget and adapter limits explicit |
 
 The CPU tests verify math and state semantics. They do not establish downstream
 quality, GPU latency, mainstream GPU support, or production-serving performance.

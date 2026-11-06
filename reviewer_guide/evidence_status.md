@@ -11,8 +11,9 @@ Pending release items:
 - [ ] Pretrained-scale/hybrid integration and full evaluation launchers.
 - [ ] Original checkpoint and training-context provenance, train/test audit.
 - [x] Standalone PPU8B library compilation.
-- [ ] Standalone native-binding GPU regression tests.
-- [ ] Quality/read/latency tables from completed, independently checked runs.
+- [x] Standalone native-binding GPU correctness checks, six synthetic cases through64K.
+- [x] Verified27B RULER task-length and LongProc subset quality/read tables in [results](results/README.md).
+- [ ] New configuration quality/read/latency curves with all standard-attention groups sparse.
 - [ ] Matched-retention/tail LongProc control and strong non-SAE organizers.
 - [ ] Peak index/workspace memory measurements.
 

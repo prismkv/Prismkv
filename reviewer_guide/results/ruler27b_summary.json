@@ -1,0 +1,71 @@
+{
+  "model": "Qwen3.8-27B",
+  "metric_sha256": "6740467c17b8dc06b6b30f4f97e54ce8de81db0dd879f1538d0b6b5727f4bd5f",
+  "score_scale": "0..100; exact frozen official metric on each 50-example cell, then equal65-cell macro",
+  "cases": 3250,
+  "tasks": 13,
+  "lengths": [
+    8192,
+    16384,
+    32768,
+    65536,
+    131072
+  ],
+  "cases_per_cell": 50,
+  "baseline_result_hashes_verified": 13000,
+  "paired_reference_hashes_verified": 3250,
+  "summary": [
+    {
+      "method": "full",
+      "cells": 65,
+      "n": 3250,
+      "official_65cell_macro": 96.74969230769231,
+      "mean_per_case_rounded_macro": 96.74974461538461,
+      "reference_sparse_read_macro": 1.0
+    },
+    {
+      "method": "prism",
+      "cells": 65,
+      "n": 3250,
+      "official_65cell_macro": 96.67323076923077,
+      "mean_per_case_rounded_macro": 96.67333846153846,
+      "reference_sparse_read_macro": 0.07223566566730905
+    },
+    {
+      "method": "h2o",
+      "cells": 65,
+      "n": 3250,
+      "official_65cell_macro": 37.13276923076923,
+      "mean_per_case_rounded_macro": 37.13282153846154,
+      "reference_sparse_read_macro": 0.07102936215295581
+    },
+    {
+      "method": "quest",
+      "cells": 65,
+      "n": 3250,
+      "official_65cell_macro": 91.34815384615385,
+      "mean_per_case_rounded_macro": 91.34820923076923,
+      "reference_sparse_read_macro": 0.07179868145413389
+    },
+    {
+      "method": "snapkv",
+      "cells": 65,
+      "n": 3250,
+      "official_65cell_macro": 82.55430769230769,
+      "mean_per_case_rounded_macro": 82.5544,
+      "reference_sparse_read_macro": 0.07223451383459514
+    },
+    {
+      "method": "pyramidkv",
+      "cells": 65,
+      "n": 3250,
+      "official_65cell_macro": 57.13492307692308,
+      "mean_per_case_rounded_macro": 57.13489846153846,
+      "reference_sparse_read_macro": 0.07223451383459514
+    }
+  ],
+  "rounding_note": "both official batch-of50 metrics and mean rounded per-case scores are retained; no silent rounding substitution",
+  "read_scope": "own trajectories; no-sparse reference excluded only from aligned read means, never from scores",
+  "protocol_note": "Frozen historical VT/CWE prompts use answer-only instruction and512-token cap. Official scoring functions do not imply untouched official-default prompts/decoding.",
+  "status": "Post-submission re-audit of existing results, not a new benchmark run or latency measurement."
+}
