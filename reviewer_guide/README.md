@@ -17,6 +17,7 @@ This guide distinguishes the submitted method from supplementary variants.
 | Does the standalone native binding compute the selected attention correctly? | [`native8b_validation.json`](native8b_validation.json), `examples/check_native8b.py` | Six synthetic PPU cases through64K; exact IDs/features and36 AV checks. Not a model-quality or latency reproduction |
 | Where are task/length results and actual baseline reads? | [Verified result tables](results/README.md) |27B RULER65cells and LongProc16subsets; own-trajectory mean-budget and adapter limits explicit |
 | What inputs trained the27B index? | [Input inventory](training_contexts_27b.json), [training limits](training.md) |308input fingerprints across28/112/168pools;43inherited/21fresh split explicit; not full ancestry or near-duplicate certification |
+| How does simpler key organization compare? | [Supplementary organizer pilot](results/organizer_pilot/README.md) |58case common-operator diagnostic, exact matched counts, mixed task outcomes; training histories differ and no full-benchmark/latency claim |
 
 The CPU tests verify math and state semantics. They do not establish downstream
 quality, GPU latency, mainstream GPU support, or production-serving performance.

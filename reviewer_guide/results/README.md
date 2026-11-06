@@ -1,6 +1,6 @@
 # Verified quality/read tables
 
-These tables re-audit existing submitted-model records. They are not new
+The RULER and LongProc tables below re-audit existing submitted-model records. They are not new
 benchmark runs, new SAE configurations, official-method latency reproductions
 or evidence of a causal SAE advantage. The label27B follows the submission;
 the model's standard/linear-layer mix is described in the model manifest.
@@ -42,3 +42,13 @@ normalizes perQ first. Sharing the final indexed-AV kernel does not make those
 two selectors identical. See [budget protocol](../budget_protocol.md) and
 [systems](../systems.md). New controlled comparisons and native model-scale
 latency validation remain separate work.
+
+## Supplementary organizer pilot
+
+[Organizer pilot](organizer_pilot/README.md) reports a separate fresh58-case
+common-attention comparison, including complete per-task CSV and aggregate JSON.
+Its results are mixed: simpler organization scores higher on the small
+LongBench cohort; SAE scores higher on the RULER cohort. The common indexed Full
+and separate Flash Full, exact-count diagnostic, different training histories,
+output caps and limited scope are explicit. This is not a complete benchmark,
+causal SAE superiority claim, or a latency reproduction.
