@@ -1,0 +1,636 @@
+{
+  "passed": true,
+  "device": "PPU-ZW810",
+  "torch": "2.4.0",
+  "library_sha256": "72afdf4d6b416f3c948eb954d0862b76f725345dcb689a39de40a20ec5a458f7",
+  "binding_sha256": "e276ab213d08357327e8c05d5cc0e1da15619c02df8d8a5b0d4b6b521c2f3994",
+  "cases": [
+    {
+      "H": 32,
+      "tail": 1,
+      "kind": "ties",
+      "exact_IDs": true,
+      "exact_features": true,
+      "groups": [
+        {
+          "group": 0,
+          "unique": 16,
+          "memberships": 32
+        },
+        {
+          "group": 1,
+          "unique": 16,
+          "memberships": 32
+        },
+        {
+          "group": 2,
+          "unique": 16,
+          "memberships": 32
+        },
+        {
+          "group": 3,
+          "unique": 16,
+          "memberships": 32
+        },
+        {
+          "group": 4,
+          "unique": 16,
+          "memberships": 32
+        },
+        {
+          "group": 5,
+          "unique": 16,
+          "memberships": 32
+        },
+        {
+          "group": 6,
+          "unique": 16,
+          "memberships": 32
+        },
+        {
+          "group": 7,
+          "unique": 16,
+          "memberships": 32
+        }
+      ],
+      "AV_errors": [
+        {
+          "splits": 32,
+          "schedule": 0,
+          "relative_L2": 0.0016784988110885024,
+          "max_absolute": 0.0039011240005493164
+        },
+        {
+          "splits": 32,
+          "schedule": 2,
+          "relative_L2": 0.0016784988110885024,
+          "max_absolute": 0.0039011240005493164
+        },
+        {
+          "splits": 64,
+          "schedule": 0,
+          "relative_L2": 0.0016784988110885024,
+          "max_absolute": 0.0039011240005493164
+        },
+        {
+          "splits": 64,
+          "schedule": 2,
+          "relative_L2": 0.0016784988110885024,
+          "max_absolute": 0.0039011240005493164
+        },
+        {
+          "splits": 128,
+          "schedule": 0,
+          "relative_L2": 0.0016784988110885024,
+          "max_absolute": 0.0039011240005493164
+        },
+        {
+          "splits": 128,
+          "schedule": 2,
+          "relative_L2": 0.0016784988110885024,
+          "max_absolute": 0.0039011240005493164
+        }
+      ],
+      "owned_buffer_bytes": {
+        "n": 96000,
+        "ln": 96000,
+        "matrix": 24576000,
+        "a": 32768,
+        "prod": 384000,
+        "features": 1024,
+        "valid": 512,
+        "raw": 32,
+        "ids": 1024,
+        "count": 32,
+        "bits": 96000,
+        "mask": 32,
+        "tiles": 32,
+        "state": 2129920,
+        "out": 8192
+      }
+    },
+    {
+      "H": 65,
+      "tail": 7,
+      "kind": "few",
+      "exact_IDs": true,
+      "exact_features": true,
+      "groups": [
+        {
+          "group": 0,
+          "unique": 65,
+          "memberships": 65
+        },
+        {
+          "group": 1,
+          "unique": 65,
+          "memberships": 65
+        },
+        {
+          "group": 2,
+          "unique": 65,
+          "memberships": 65
+        },
+        {
+          "group": 3,
+          "unique": 65,
+          "memberships": 65
+        },
+        {
+          "group": 4,
+          "unique": 65,
+          "memberships": 65
+        },
+        {
+          "group": 5,
+          "unique": 65,
+          "memberships": 65
+        },
+        {
+          "group": 6,
+          "unique": 65,
+          "memberships": 65
+        },
+        {
+          "group": 7,
+          "unique": 65,
+          "memberships": 65
+        }
+      ],
+      "AV_errors": [
+        {
+          "splits": 32,
+          "schedule": 0,
+          "relative_L2": 0.0016617962392047048,
+          "max_absolute": 0.0019338130950927734
+        },
+        {
+          "splits": 32,
+          "schedule": 2,
+          "relative_L2": 0.0016617962392047048,
+          "max_absolute": 0.0019338130950927734
+        },
+        {
+          "splits": 64,
+          "schedule": 0,
+          "relative_L2": 0.0016617962392047048,
+          "max_absolute": 0.0019338130950927734
+        },
+        {
+          "splits": 64,
+          "schedule": 2,
+          "relative_L2": 0.0016617962392047048,
+          "max_absolute": 0.0019338130950927734
+        },
+        {
+          "splits": 128,
+          "schedule": 0,
+          "relative_L2": 0.0016617962392047048,
+          "max_absolute": 0.0019338130950927734
+        },
+        {
+          "splits": 128,
+          "schedule": 2,
+          "relative_L2": 0.0016617962392047048,
+          "max_absolute": 0.0019338130950927734
+        }
+      ],
+      "owned_buffer_bytes": {
+        "n": 96000,
+        "ln": 96000,
+        "matrix": 24576000,
+        "a": 32768,
+        "prod": 384000,
+        "features": 1024,
+        "valid": 512,
+        "raw": 32,
+        "ids": 2080,
+        "count": 32,
+        "bits": 288000,
+        "mask": 96,
+        "tiles": 32,
+        "state": 2129920,
+        "out": 8192
+      }
+    },
+    {
+      "H": 257,
+      "tail": 31,
+      "kind": "random",
+      "exact_IDs": true,
+      "exact_features": true,
+      "groups": [
+        {
+          "group": 0,
+          "unique": 20,
+          "memberships": 771
+        },
+        {
+          "group": 1,
+          "unique": 24,
+          "memberships": 771
+        },
+        {
+          "group": 2,
+          "unique": 22,
+          "memberships": 771
+        },
+        {
+          "group": 3,
+          "unique": 21,
+          "memberships": 771
+        },
+        {
+          "group": 4,
+          "unique": 20,
+          "memberships": 771
+        },
+        {
+          "group": 5,
+          "unique": 19,
+          "memberships": 771
+        },
+        {
+          "group": 6,
+          "unique": 18,
+          "memberships": 771
+        },
+        {
+          "group": 7,
+          "unique": 17,
+          "memberships": 771
+        }
+      ],
+      "AV_errors": [
+        {
+          "splits": 32,
+          "schedule": 0,
+          "relative_L2": 0.0016535865142941475,
+          "max_absolute": 0.0019512772560119629
+        },
+        {
+          "splits": 32,
+          "schedule": 2,
+          "relative_L2": 0.0016535865142941475,
+          "max_absolute": 0.0019512772560119629
+        },
+        {
+          "splits": 64,
+          "schedule": 0,
+          "relative_L2": 0.0016535865142941475,
+          "max_absolute": 0.0019512772560119629
+        },
+        {
+          "splits": 64,
+          "schedule": 2,
+          "relative_L2": 0.0016535865142941475,
+          "max_absolute": 0.0019512772560119629
+        },
+        {
+          "splits": 128,
+          "schedule": 0,
+          "relative_L2": 0.0016535865142941475,
+          "max_absolute": 0.0019512772560119629
+        },
+        {
+          "splits": 128,
+          "schedule": 2,
+          "relative_L2": 0.0016535865142941475,
+          "max_absolute": 0.0019512772560119629
+        }
+      ],
+      "owned_buffer_bytes": {
+        "n": 96000,
+        "ln": 96000,
+        "matrix": 24576000,
+        "a": 32768,
+        "prod": 384000,
+        "features": 1024,
+        "valid": 512,
+        "raw": 32,
+        "ids": 8224,
+        "count": 32,
+        "bits": 864000,
+        "mask": 288,
+        "tiles": 32,
+        "state": 2129920,
+        "out": 8192
+      }
+    },
+    {
+      "H": 257,
+      "tail": 129,
+      "kind": "empty",
+      "exact_IDs": true,
+      "exact_features": true,
+      "groups": [
+        {
+          "group": 0,
+          "unique": 0,
+          "memberships": 0
+        },
+        {
+          "group": 1,
+          "unique": 0,
+          "memberships": 0
+        },
+        {
+          "group": 2,
+          "unique": 0,
+          "memberships": 0
+        },
+        {
+          "group": 3,
+          "unique": 0,
+          "memberships": 0
+        },
+        {
+          "group": 4,
+          "unique": 0,
+          "memberships": 0
+        },
+        {
+          "group": 5,
+          "unique": 0,
+          "memberships": 0
+        },
+        {
+          "group": 6,
+          "unique": 0,
+          "memberships": 0
+        },
+        {
+          "group": 7,
+          "unique": 0,
+          "memberships": 0
+        }
+      ],
+      "AV_errors": [
+        {
+          "splits": 32,
+          "schedule": 0,
+          "relative_L2": 0.0016659882385283709,
+          "max_absolute": 0.0019428730010986328
+        },
+        {
+          "splits": 32,
+          "schedule": 2,
+          "relative_L2": 0.0016659882385283709,
+          "max_absolute": 0.0019428730010986328
+        },
+        {
+          "splits": 64,
+          "schedule": 0,
+          "relative_L2": 0.0016659882385283709,
+          "max_absolute": 0.0019428730010986328
+        },
+        {
+          "splits": 64,
+          "schedule": 2,
+          "relative_L2": 0.0016659882385283709,
+          "max_absolute": 0.0019428730010986328
+        },
+        {
+          "splits": 128,
+          "schedule": 0,
+          "relative_L2": 0.0016659882385283709,
+          "max_absolute": 0.0019428730010986328
+        },
+        {
+          "splits": 128,
+          "schedule": 2,
+          "relative_L2": 0.0016659882385283709,
+          "max_absolute": 0.0019428730010986328
+        }
+      ],
+      "owned_buffer_bytes": {
+        "n": 96000,
+        "ln": 96000,
+        "matrix": 24576000,
+        "a": 32768,
+        "prod": 384000,
+        "features": 1024,
+        "valid": 512,
+        "raw": 32,
+        "ids": 8224,
+        "count": 32,
+        "bits": 864000,
+        "mask": 288,
+        "tiles": 32,
+        "state": 2129920,
+        "out": 8192
+      }
+    },
+    {
+      "H": 1025,
+      "tail": 3,
+      "kind": "random",
+      "exact_IDs": true,
+      "exact_features": true,
+      "groups": [
+        {
+          "group": 0,
+          "unique": 37,
+          "memberships": 3075
+        },
+        {
+          "group": 1,
+          "unique": 37,
+          "memberships": 3075
+        },
+        {
+          "group": 2,
+          "unique": 38,
+          "memberships": 3075
+        },
+        {
+          "group": 3,
+          "unique": 35,
+          "memberships": 3075
+        },
+        {
+          "group": 4,
+          "unique": 38,
+          "memberships": 3075
+        },
+        {
+          "group": 5,
+          "unique": 37,
+          "memberships": 3075
+        },
+        {
+          "group": 6,
+          "unique": 39,
+          "memberships": 3075
+        },
+        {
+          "group": 7,
+          "unique": 42,
+          "memberships": 3075
+        }
+      ],
+      "AV_errors": [
+        {
+          "splits": 32,
+          "schedule": 0,
+          "relative_L2": 0.0016444615321233869,
+          "max_absolute": 0.0019515752792358398
+        },
+        {
+          "splits": 32,
+          "schedule": 2,
+          "relative_L2": 0.0016444615321233869,
+          "max_absolute": 0.0019515752792358398
+        },
+        {
+          "splits": 64,
+          "schedule": 0,
+          "relative_L2": 0.0016444615321233869,
+          "max_absolute": 0.0019515752792358398
+        },
+        {
+          "splits": 64,
+          "schedule": 2,
+          "relative_L2": 0.0016444615321233869,
+          "max_absolute": 0.0019515752792358398
+        },
+        {
+          "splits": 128,
+          "schedule": 0,
+          "relative_L2": 0.0016444615321233869,
+          "max_absolute": 0.0019515752792358398
+        },
+        {
+          "splits": 128,
+          "schedule": 2,
+          "relative_L2": 0.0016444615321233869,
+          "max_absolute": 0.0019515752792358398
+        }
+      ],
+      "owned_buffer_bytes": {
+        "n": 96000,
+        "ln": 96000,
+        "matrix": 24576000,
+        "a": 32768,
+        "prod": 384000,
+        "features": 1024,
+        "valid": 512,
+        "raw": 32,
+        "ids": 32800,
+        "count": 32,
+        "bits": 3168000,
+        "mask": 1056,
+        "tiles": 32,
+        "state": 2129920,
+        "out": 8192
+      }
+    },
+    {
+      "H": 65536,
+      "tail": 17,
+      "kind": "random",
+      "exact_IDs": true,
+      "exact_features": true,
+      "groups": [
+        {
+          "group": 0,
+          "unique": 1028,
+          "memberships": 196608
+        },
+        {
+          "group": 1,
+          "unique": 1055,
+          "memberships": 196608
+        },
+        {
+          "group": 2,
+          "unique": 943,
+          "memberships": 196608
+        },
+        {
+          "group": 3,
+          "unique": 1033,
+          "memberships": 196608
+        },
+        {
+          "group": 4,
+          "unique": 1009,
+          "memberships": 196608
+        },
+        {
+          "group": 5,
+          "unique": 1011,
+          "memberships": 196608
+        },
+        {
+          "group": 6,
+          "unique": 1033,
+          "memberships": 196608
+        },
+        {
+          "group": 7,
+          "unique": 1054,
+          "memberships": 196608
+        }
+      ],
+      "AV_errors": [
+        {
+          "splits": 32,
+          "schedule": 0,
+          "relative_L2": 0.0016829336527734995,
+          "max_absolute": 0.00046885013580322266
+        },
+        {
+          "splits": 32,
+          "schedule": 2,
+          "relative_L2": 0.0016829336527734995,
+          "max_absolute": 0.00046885013580322266
+        },
+        {
+          "splits": 64,
+          "schedule": 0,
+          "relative_L2": 0.0016829336527734995,
+          "max_absolute": 0.00046885013580322266
+        },
+        {
+          "splits": 64,
+          "schedule": 2,
+          "relative_L2": 0.0016829336527734995,
+          "max_absolute": 0.00046885013580322266
+        },
+        {
+          "splits": 128,
+          "schedule": 0,
+          "relative_L2": 0.0016829336527734995,
+          "max_absolute": 0.00046885013580322266
+        },
+        {
+          "splits": 128,
+          "schedule": 2,
+          "relative_L2": 0.0016829336527734995,
+          "max_absolute": 0.00046885013580322266
+        }
+      ],
+      "owned_buffer_bytes": {
+        "n": 96000,
+        "ln": 96000,
+        "matrix": 24576000,
+        "a": 32768,
+        "prod": 384000,
+        "features": 1024,
+        "valid": 512,
+        "raw": 32,
+        "ids": 2097152,
+        "count": 32,
+        "bits": 196608000,
+        "mask": 65536,
+        "tiles": 512,
+        "state": 2129920,
+        "out": 8192
+      }
+    }
+  ],
+  "pytorch_peak_allocated_bytes": 582458880,
+  "pytorch_peak_reserved_bytes": 876609536,
+  "scope": "Synthetic standalone route/union/AV correctness. One 8-KV-group layer up to64K history; no full-model memory, SAE index builder, pretrained quality or latency claim."
+}

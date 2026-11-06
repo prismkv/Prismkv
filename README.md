@@ -29,8 +29,10 @@ Q/K matching supervision is necessary for downstream quality.
 - `src/prismkv/weights.py`: hashed, per-group, inference-only encoder format.
 
 The current suite has 16 passing CPU tests, including four tiny-backbone tests.
-The PPU8B kernel library compiles, but standalone GPU correctness and latency
-validation remain pending. This does not yet reproduce the paper's latency.
+The PPU8B kernel library compiles and its standalone GPU correctness witness
+passes six synthetic cases through64K history: exact selected features/IDs and
+36 AV checks, maximum relativeL2 error0.001683. This does not reproduce the
+paper's latency, SAE index-construction performance or pretrained-model quality.
 Pretrained encoders for all 288 8B and 64 hybrid-27B dictionaries are included
 under `pretrained/`, with exact tensor/scales and source-hash packaging checks.
 The 8B training-context fingerprint manifest is included; full checkpoint
@@ -67,6 +69,17 @@ without sliding-window/soft-capped attention. This path is not optimized serving
 PyTorch >=2.4 and Python >=3.10 are required. The portable reference uses Python
 loops and is intended for inspection, not latency measurement. It gathers KV to
 check the answer; the native attention kernel directly reads indexed original KV.
+
+For a PPU-SDK build and standalone synthetic check:
+
+```bash
+python -m pip install -e '.[native]'
+python examples/check_native8b.py --build-dir output/build_native8b
+```
+
+The build directory must not already exist. Alternatively pass `--library` to a
+previous build. Results and boundaries are in
+[`native8b_validation.json`](reviewer_guide/native8b_validation.json).
 
 ## Protocol distinctions
 
