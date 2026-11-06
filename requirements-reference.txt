@@ -1,0 +1,6 @@
+# Tested portable/reference stack; install the appropriate Torch build separately.
+transformers==4.57.1
+numpy==1.26.4
+huggingface-hub==0.36.0
+tokenizers==0.22.1
+# CPU mathematical checks used torch2.4.0. PPU kernels require the vendor SDK/build.

@@ -1,0 +1,17 @@
+{
+  "model_label": "Qwen3.8-27B (submission label; exact checkpoint manifest pending)",
+  "standard_attention_layers_zero_based": [3,7,11,15,19,23,27,31,35,39,43,47,51,55,59,63],
+  "linear_attention_layers_unchanged": 48,
+  "kv_groups_per_standard_layer": 4,
+  "query_heads_per_group": 6,
+  "head_dim": 256,
+  "features": 3000,
+  "key_mean_activation_budget": 8,
+  "training_query_topk": 16,
+  "router": "moments",
+  "selected_buckets_per_group": 16,
+  "unique_token_cap": null,
+  "generated_tail": "fully accessible",
+  "update_interval": 4096,
+  "status": "configuration documentation; public27B runtime validation pending"
+}

@@ -1,0 +1,16 @@
+{
+  "model_label": "Qwen3-8B",
+  "attention_layers": 36,
+  "kv_groups_per_layer": 8,
+  "query_heads_per_group": 4,
+  "head_dim": 128,
+  "features": 3000,
+  "key_mean_activation_budget": 8,
+  "training_query_topk": 16,
+  "router": "moments",
+  "selected_buckets_per_group": 16,
+  "unique_token_cap": null,
+  "generated_tail": "fully accessible",
+  "update_interval": 4096,
+  "long_length_note": "Archived64K/128K8B runs use YaRN4; not native128K"
+}
