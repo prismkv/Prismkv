@@ -36,8 +36,21 @@ identities, lengths, generation caps and exact input fingerprints. The training
 and 3750 LongBench input files were checked against their saved manifest hashes;
 no identical wrapped token sequence was found across these sets. This is an
 exact-duplicate check, not a semantic/near-duplicate audit or a universal
-train-test separation guarantee. The 27B continuation lineage still needs its
-own full manifest audit.
+train-test separation guarantee.
+
+The [27B input inventory](training_contexts_27b.json) now provides308distinct
+full-input fingerprints from28-,112- and168-context synthetic pools. The later
+280-context pool has112/112/56length targets at16K/32K/64K and9,153,497actual
+input tokens. Both source row and completion/manifest hashes were checked.
+There is no exact wrapped-token-sequence collision with the3750original27B
+LongBench or3250RULER inputs. Within these local manifests, train and held-out
+instance/template hashes are also disjoint.
+This excludes the earlier4/12-context initialization ancestors, near duplicates,
+other benchmark splits and a complete capture/cost audit. It is an inventory
+of these three pools, not proof of complete historical data independence.
+Training-use manifests for43inherited dictionaries request280contexts;21fresh
+configs use28contexts/4000updates. Frozen initialization and continuation
+histories still differ across these groups.
 
 The original 8B capture records recover 142.069 seconds of prefill and 519.021
 seconds of decode over 10312 generated tokens. These exclude model loading,
