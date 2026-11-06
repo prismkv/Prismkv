@@ -30,3 +30,16 @@ per dictionary, with a generic middle-20%-80% auxiliary positive sampler gated
 by teacher mass >=2%. The inherited 27B dictionaries have a longer, different
 continuation history. See the pretrained bundle notes. Calling both auxiliary
 samplers simply "evidence matching" would hide a material recipe difference.
+
+[The 8B training-context manifest](training_contexts_8b.json) records all 28
+identities, lengths, generation caps and exact input fingerprints. The training
+and 3750 LongBench input files were checked against their saved manifest hashes;
+no identical wrapped token sequence was found across these sets. This is an
+exact-duplicate check, not a semantic/near-duplicate audit or a universal
+train-test separation guarantee. The 27B continuation lineage still needs its
+own full manifest audit.
+
+The original 8B capture records recover 142.069 seconds of prefill and 519.021
+seconds of decode over 10312 generated tokens. These exclude model loading,
+initial K serialization and other unrecorded overhead, so their sum is not the
+complete collection cost. SAE optimizer time must also be reported separately.

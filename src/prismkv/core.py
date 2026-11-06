@@ -36,7 +36,9 @@ class SharedSAE(nn.Module):
         self.W_enc = nn.Parameter(torch.empty(features, head_dim))
         nn.init.kaiming_uniform_(self.W_enc, a=math.sqrt(5))
         self.b_enc = nn.Parameter(torch.zeros(features))
-        self.W_dec = nn.Parameter(F.normalize(self.W_enc.detach().T, dim=0).clone())
+        # Preserve the historical 8B parameter initialization. Unit decoder
+        # directions are formed in the loss, not by changing parameter norms.
+        self.W_dec = nn.Parameter(self.W_enc.detach().T.clone())
         self.b_dec = nn.Parameter(torch.zeros(head_dim))
         self.register_buffer("seen", torch.tensor(0))
         self.register_buffer("last", torch.zeros(features, dtype=torch.long))

@@ -33,8 +33,9 @@ The PPU8B kernel library compiles, but standalone GPU correctness and latency
 validation remain pending. This does not yet reproduce the paper's latency.
 Pretrained encoders for all 288 8B and 64 hybrid-27B dictionaries are included
 under `pretrained/`, with exact tensor/scales and source-hash packaging checks.
-Training-data manifests, model-scale regression and full benchmark launchers
-are still being prepared. Test results do not establish
+The 8B training-context fingerprint manifest is included; full checkpoint
+lineage, model-scale regression and benchmark launchers are still being
+prepared. Test results do not establish
 new downstream accuracy or speed improvements.
 
 ## Run the portable reference
