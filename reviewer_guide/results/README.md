@@ -64,3 +64,9 @@ causal SAE superiority claim, or a latency reproduction.
   adaptation. Original-style group union reads are larger. Fourteen adapted
   cases are infeasible, left unscored; paired comparisons use identical cases.
   Torch/backend/context-split differences and lack of runtime claims are explicit.
+# Additional actual-read audit
+
+[Qwen3-8B historical-token reads](actual_reads_8b/README.md) provides task/length
+counters with explicit zero-event denominators. It also discloses a newly found
+50-case shared prefill-first-token mismatch in the old RULER baseline cohort;
+counter verification is not certification of a strictly paired quality result.

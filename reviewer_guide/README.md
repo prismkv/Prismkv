@@ -20,6 +20,7 @@ This guide distinguishes the submitted method from supplementary variants.
 | How does simpler key organization compare? | [Supplementary organizer pilot](results/organizer_pilot/README.md) |58case common-operator diagnostic, exact matched counts, mixed task outcomes; training histories differ and no full-benchmark/latency claim |
 | Are count, mean and variance each necessary? | [Seven score-term controls](results/score_terms_pilot/README.md) |Same58cases and fixed SAE buckets, matched counts; mean-only is competitive here, so no necessity claim |
 | How does a closely related retrieval selector compare? | [Squeezed reference-port pilot](results/squeezed_pilot/README.md) |29cases; source-style per-Q budget differs, shared-budget adaptation has14infeasible cases; paired denominators and port limits explicit |
+| What are actual reads on the 8B benchmarks? | [8B counter audit](results/actual_reads_8b/README.md) |31,250 baseline records and 7,000 reference identities checked; 50 shared RULER prefill-first-token mismatches remain an explicit quality-comparison limitation |
 
 The CPU tests verify math and state semantics. They do not establish downstream
 quality, GPU latency, mainstream GPU support, or production-serving performance.
