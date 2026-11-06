@@ -11,6 +11,9 @@ number of rows consumed; attention reads only valid counts plus the dense tail.
 `route_parallel.cu` performs per-Q normalization, group aggregation and Top16.
 `union.cu` ORs selected feature bitmaps, computes population counts/prefix
 positions, and compacts unique sorted token IDs. Everything remains on device.
+This metadata work is not constant in context length: bitmap words scale with
+history length and compaction emits the selected IDs. Fixed-size moment scoring
+avoids scanning every raw K, not all index-metadata processing.
 
 `av_tuned.cu` partitions selected IDs and tail across blocks, shares each KV
 load among the 4 Q heads and uses vectorized loads over the head dimension.
