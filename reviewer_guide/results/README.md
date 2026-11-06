@@ -52,3 +52,15 @@ LongBench cohort; SAE scores higher on the RULER cohort. The common indexed Full
 and separate Flash Full, exact-count diagnostic, different training histories,
 output caps and limited scope are explicit. This is not a complete benchmark,
 causal SAE superiority claim, or a latency reproduction.
+
+## Fixed-bucket scoring terms and a related selector
+
+- [Seven score-term combinations](score_terms_pilot/README.md): same58-case
+  pilot, fixed SAE memberships and matched unique counts. Includes every
+  count/mean/variance subset, rather than only favorable combinations. It does
+  not establish that all three terms are indispensable.
+- [Squeezed Attention reference port](squeezed_pilot/README.md):29cases with
+  source-style per-Q threshold and an explicitly separate GQA shared-budget
+  adaptation. Original-style group union reads are larger. Fourteen adapted
+  cases are infeasible, left unscored; paired comparisons use identical cases.
+  Torch/backend/context-split differences and lack of runtime claims are explicit.
