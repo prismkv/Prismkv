@@ -13,6 +13,9 @@ Current results:
   not training-data or full-checkpoint provenance certification.
 -The four extracted PPU8B sources compile into a shared library. GPU execution
   and reported paper latency have not yet been reproduced through this binding.
+-Historical 8B/27B encoders were exported and reloaded as tensor-only bundles:
+  288/64 dictionaries, exact tensors and scales, each source checked against
+  its DONE hash. This does not establish new pretrained-adapter equivalence.
 
 The initial environment had Torch2.4 and a much newer Transformers development
 build that required a missing Torch API. A project-local pinned4.57.1 dependency

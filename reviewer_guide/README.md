@@ -13,6 +13,7 @@ This guide distinguishes the submitted method from supplementary variants.
 | Where are hyperparameter results? | [evidence status](evidence_status.md) | New experiments in progress; no incomplete grid presented as final |
 | How can I run this? | root README, `examples/replay.py`, `tests/` | Portable core runnable; full-backbone packaging pending |
 | Does the model integration preserve dense behavior? | `tests/test_hf_reference.py`; [validation](validation.md) | Tiny Qwen3 dense-equivalence and greedy-generation controls passed; pretrained-scale checks pending |
+| Where are the trained encoders? | [`pretrained/`](../pretrained/README.md) | All 288/64 dictionaries, source-DONE/hash checked, exact tensor/scales export; not new downstream validation |
 
 The CPU tests verify math and state semantics. They do not establish downstream
 quality, GPU latency, mainstream GPU support, or production-serving performance.

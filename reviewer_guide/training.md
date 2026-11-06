@@ -24,3 +24,9 @@ and intermediate evidence definitions are part of each historical recipe. This
 portable component implementation does not erase those differences. A complete
 checkpoint-level provenance manifest is still pending; do not assume all groups
 were initialized or trained on an identical schedule.
+
+The packaged 8B checkpoints use 28 synthetic training contexts and 4000 steps
+per dictionary, with a generic middle-20%-80% auxiliary positive sampler gated
+by teacher mass >=2%. The inherited 27B dictionaries have a longer, different
+continuation history. See the pretrained bundle notes. Calling both auxiliary
+samplers simply "evidence matching" would hide a material recipe difference.

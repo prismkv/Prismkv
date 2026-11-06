@@ -7,6 +7,7 @@ experiments are supplementary and must be labeled by exact configuration.
 Pending release items:
 
 - [x] Tiny-backbone reference integration and pinned optional dependencies.
+- [x] Tensor-only packaging of historical 288/64 model-matched SAE encoders.
 - [ ] Pretrained-scale/hybrid integration and full evaluation launchers.
 - [ ] Original checkpoint and training-context provenance, train/test audit.
 - [x] Standalone PPU8B library compilation.

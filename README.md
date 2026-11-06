@@ -31,8 +31,10 @@ Q/K matching supervision is necessary for downstream quality.
 The current suite has 16 passing CPU tests, including four tiny-backbone tests.
 The PPU8B kernel library compiles, but standalone GPU correctness and latency
 validation remain pending. This does not yet reproduce the paper's latency.
-Pretrained encoder packaging, training-data manifest, model-scale regression and
-full benchmark launchers are still being prepared. Test results do not establish
+Pretrained encoders for all 288 8B and 64 hybrid-27B dictionaries are included
+under `pretrained/`, with exact tensor/scales and source-hash packaging checks.
+Training-data manifests, model-scale regression and full benchmark launchers
+are still being prepared. Test results do not establish
 new downstream accuracy or speed improvements.
 
 ## Run the portable reference
@@ -49,12 +51,13 @@ For the optional Hugging Face reference:
 python -m pip install -e '.[hf]'
 python -m unittest discover -s tests -v
 python examples/generate_hf.py --model /path/to/Qwen3-8B \
-  --encoders /path/to/model-matched-encoder-bundle --local-files-only
+  --encoders pretrained/Qwen3-8B --local-files-only
 ```
 
 The bundle must contain every standard-attention layer/KV group with saved Q/K
-scales; a different model's bundle is not interchangeable. Pretrained bundles
-are not included yet. The generation example targets the ordinary Qwen3 causal
+scales; a different model's bundle is not interchangeable. See
+[the bundle notes](pretrained/README.md) for checkpoint histories and validation
+limits. The generation example targets the ordinary Qwen3 causal
 LM loader. The hybrid27B loader/runtime and its native timing path need separate
 integration and validation; matching an attention class name does not establish
 that full-model compatibility. Requests are batch-one, unpadded, causal and

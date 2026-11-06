@@ -16,6 +16,7 @@ def main():
     p.add_argument('--max-new-tokens',type=int,default=128)
     p.add_argument('--all-read',action='store_true',help='dense-equivalence control')
     p.add_argument('--local-files-only',action='store_true')
+    p.add_argument('--enable-thinking',action='store_true',help='default follows non-thinking evaluation protocol')
     a=p.parse_args()
     dtype=torch.float32 if a.device=='cpu' else torch.bfloat16
     tok=AutoTokenizer.from_pretrained(a.model,local_files_only=a.local_files_only)
@@ -26,7 +27,7 @@ def main():
     print(json.dumps(dict(encoder_model_label=label,note='caller must verify exact checkpoint/tokenizer identity')))
     session=HFReference(model,encoders,mode='all_read' if a.all_read else 'sparse')
     ids=tok.apply_chat_template([dict(role='user',content=a.prompt)],tokenize=True,
-        add_generation_prompt=True,return_tensors='pt').to(a.device)
+        add_generation_prompt=True,return_tensors='pt',enable_thinking=a.enable_thinking).to(a.device)
     try:
         with torch.inference_mode():
             result=session.generate(input_ids=ids,max_new_tokens=a.max_new_tokens,do_sample=False)
