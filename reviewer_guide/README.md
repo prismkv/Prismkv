@@ -37,3 +37,7 @@ pretrained 27B 8K RULER execution with all 64 encoders.
 ## Bucket-budget quality and module latency
 
 [Paired Top4/8/16 pilot](results/bucket_budget/README.md) reports official scores, actual reads, complete-module Graph latency and separate eager model timing on the same 26 RULER development inputs. Short-context slowdowns and unchanged Top16-compute overhead are retained.
+
+## Expanded budget follow-up
+
+[195 nonpilot RULER cases](results/bucket_budget_followup/README.md) extend the same budget test to five samples per task at8K/16K/32K. Top8 loses4.453points toTop16; the small-pilot trend does not support a new default. Actual reads and complete-module Graph/eager-model timings are separate.
