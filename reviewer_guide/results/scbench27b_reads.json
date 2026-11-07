@@ -1,0 +1,1595 @@
+{
+  "passed": true,
+  "model": "Qwen3.8-27B",
+  "verified_records": 12908,
+  "verified_cases_per_method": 1844,
+  "verified_turns_per_method": 10286,
+  "modes": {
+    "multi_request": 922,
+    "multi_turn_self": 922
+  },
+  "manifest_sha256": "99cc00ee6947f9a36db98472db1005a4fa17cbdf8710bba582ccc25dc0bdfe56",
+  "metrics_csv_sha256": "77fa6d4e4855b3a7e8fdef2db0c2de3b0d2d20b377b476db926ce6f8671d8bdf",
+  "runner_sha256": "f1e38f7b33078ad51992d80f370534e1b9ed7162ec442e0adc03f24c770de12f",
+  "methods": {
+    "full": {
+      "cases": 1844,
+      "turns": 10286,
+      "cap_turns": 1943,
+      "old_fraction": 1.0,
+      "maximum_absolute_case_mean_budget_delta": null
+    },
+    "ours": {
+      "cases": 1844,
+      "turns": 10286,
+      "cap_turns": 1839,
+      "old_fraction": 0.07934298380175475,
+      "maximum_absolute_case_mean_budget_delta": null
+    },
+    "h2o": {
+      "cases": 1844,
+      "turns": 10286,
+      "cap_turns": 2721,
+      "old_fraction": 0.07651625313329258,
+      "maximum_absolute_case_mean_budget_delta": 1960.0537799584254
+    },
+    "quest": {
+      "cases": 1844,
+      "turns": 10286,
+      "cap_turns": 1908,
+      "old_fraction": 0.07924770505175115,
+      "maximum_absolute_case_mean_budget_delta": 20.135869565217035
+    },
+    "snapkv": {
+      "cases": 1844,
+      "turns": 10286,
+      "cap_turns": 2589,
+      "old_fraction": 0.07934305631605645,
+      "maximum_absolute_case_mean_budget_delta": 0.0
+    },
+    "pyramidkv": {
+      "cases": 1844,
+      "turns": 10286,
+      "cap_turns": 2665,
+      "old_fraction": 0.07934305631605645,
+      "maximum_absolute_case_mean_budget_delta": 0.0
+    },
+    "kvzip": {
+      "cases": 1844,
+      "turns": 10286,
+      "cap_turns": 2899,
+      "old_fraction": 0.07934305631605645,
+      "maximum_absolute_case_mean_budget_delta": 0.0
+    }
+  },
+  "cells": [
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_request",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "full",
+      "mode": "multi_turn_self",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 1.0,
+      "target_fraction": null
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09898965114426561,
+      "target_fraction": 0.0994243919888766
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06733452365491746,
+      "target_fraction": 0.06772150136867663
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.0935726833698856,
+      "target_fraction": 0.09788187865963557
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.061046590646165175,
+      "target_fraction": 0.06121576947536415
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07129975255880837,
+      "target_fraction": 0.07211015967814167
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10288639904037458,
+      "target_fraction": 0.1032280970045283
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.09574809128819102,
+      "target_fraction": 0.0959119641067168
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.08589482268576058,
+      "target_fraction": 0.089211805207891
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.0834417923970767,
+      "target_fraction": 0.08603183842127418
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08436283528978905,
+      "target_fraction": 0.08482854103217269
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.07879696563812778,
+      "target_fraction": 0.07917744118333388
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_request",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.05425878179555856,
+      "target_fraction": 0.05457456003564303
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09752611937221427,
+      "target_fraction": 0.09901210208364074
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.0635093765150815,
+      "target_fraction": 0.06516728640840361
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.07514892684356074,
+      "target_fraction": 0.0930262228753548
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.0594483451820728,
+      "target_fraction": 0.06040238347252832
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07250285124605209,
+      "target_fraction": 0.07420792264236975
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10169268126613254,
+      "target_fraction": 0.10357353996195225
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.096083206041309,
+      "target_fraction": 0.09679999351169237
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.07733107079892101,
+      "target_fraction": 0.08927309074947994
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.07376399058793101,
+      "target_fraction": 0.0859033337555502
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08482149847792894,
+      "target_fraction": 0.08702485202227155
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.07910742302729436,
+      "target_fraction": 0.08151206865937428
+    },
+    {
+      "method": "h2o",
+      "mode": "multi_turn_self",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.05220921520315387,
+      "target_fraction": 0.053843082576104546
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.0994243919888766,
+      "target_fraction": 0.0994243919888766
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06772150136867663,
+      "target_fraction": 0.06772150136867663
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.09788187865963557,
+      "target_fraction": 0.09788187865963557
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06121576947536415,
+      "target_fraction": 0.06121576947536415
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07211015967814167,
+      "target_fraction": 0.07211015967814167
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.1032280970045283,
+      "target_fraction": 0.1032280970045283
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.0959119641067168,
+      "target_fraction": 0.0959119641067168
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.089211805207891,
+      "target_fraction": 0.089211805207891
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.08603183842127418,
+      "target_fraction": 0.08603183842127418
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08482854103217269,
+      "target_fraction": 0.08482854103217269
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.07917744118333388,
+      "target_fraction": 0.07917744118333388
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_request",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.05457456003564303,
+      "target_fraction": 0.05457456003564303
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09901210208364074,
+      "target_fraction": 0.09901210208364074
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06516728640840361,
+      "target_fraction": 0.06516728640840361
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.0930262228753548,
+      "target_fraction": 0.0930262228753548
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06040238347252832,
+      "target_fraction": 0.06040238347252832
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07420792264236975,
+      "target_fraction": 0.07420792264236975
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10357353996195225,
+      "target_fraction": 0.10357353996195225
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.09679999351169237,
+      "target_fraction": 0.09679999351169237
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.08927309074947994,
+      "target_fraction": 0.08927309074947994
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.0859033337555502,
+      "target_fraction": 0.0859033337555502
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08702485202227155,
+      "target_fraction": 0.08702485202227155
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.08151206865937428,
+      "target_fraction": 0.08151206865937428
+    },
+    {
+      "method": "kvzip",
+      "mode": "multi_turn_self",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.053843082576104546,
+      "target_fraction": 0.053843082576104546
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09942394781333269,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06772141145864478,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.09788208504451479,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06121547495601528,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07211002782697995,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10322832339717596,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.09591197841431477,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.08921110685486834,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.08603173537746926,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08482822405852347,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.07917744231122434,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_request",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.0545742533557103,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09901144800168757,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06516711266519497,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.09302712523627453,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.060402517788025877,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07420801705414438,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10357446816503246,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.09680006273800613,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.08927281064662637,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.08590313169448281,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08702529115257375,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.08151188960064047,
+      "target_fraction": null
+    },
+    {
+      "method": "ours",
+      "mode": "multi_turn_self",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.0538432439536602,
+      "target_fraction": null
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.0994243919888766,
+      "target_fraction": 0.0994243919888766
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06772150136867663,
+      "target_fraction": 0.06772150136867663
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.09788187865963557,
+      "target_fraction": 0.09788187865963557
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06121576947536415,
+      "target_fraction": 0.06121576947536415
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07211015967814167,
+      "target_fraction": 0.07211015967814167
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.1032280970045283,
+      "target_fraction": 0.1032280970045283
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.0959119641067168,
+      "target_fraction": 0.0959119641067168
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.089211805207891,
+      "target_fraction": 0.089211805207891
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.08603183842127418,
+      "target_fraction": 0.08603183842127418
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08482854103217269,
+      "target_fraction": 0.08482854103217269
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.07917744118333388,
+      "target_fraction": 0.07917744118333388
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_request",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.05457456003564303,
+      "target_fraction": 0.05457456003564303
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09901210208364074,
+      "target_fraction": 0.09901210208364074
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06516728640840361,
+      "target_fraction": 0.06516728640840361
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.0930262228753548,
+      "target_fraction": 0.0930262228753548
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06040238347252832,
+      "target_fraction": 0.06040238347252832
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07420792264236975,
+      "target_fraction": 0.07420792264236975
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10357353996195225,
+      "target_fraction": 0.10357353996195225
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.09679999351169237,
+      "target_fraction": 0.09679999351169237
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.08927309074947994,
+      "target_fraction": 0.08927309074947994
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.0859033337555502,
+      "target_fraction": 0.0859033337555502
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08702485202227155,
+      "target_fraction": 0.08702485202227155
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.08151206865937428,
+      "target_fraction": 0.08151206865937428
+    },
+    {
+      "method": "pyramidkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.053843082576104546,
+      "target_fraction": 0.053843082576104546
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09935894187505499,
+      "target_fraction": 0.0994243919888766
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06765608162313005,
+      "target_fraction": 0.06772150136867663
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.0975317834956741,
+      "target_fraction": 0.09788187865963557
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06113729776183434,
+      "target_fraction": 0.06121576947536415
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07202915787910856,
+      "target_fraction": 0.07211015967814167
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10314274524689787,
+      "target_fraction": 0.1032280970045283
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.09585299798041863,
+      "target_fraction": 0.0959119641067168
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.08910665688860296,
+      "target_fraction": 0.089211805207891
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.08593616849222067,
+      "target_fraction": 0.08603183842127418
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08473606133845649,
+      "target_fraction": 0.08482854103217269
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.07910078127901271,
+      "target_fraction": 0.07917744118333388
+    },
+    {
+      "method": "quest",
+      "mode": "multi_request",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.05451411061871432,
+      "target_fraction": 0.05457456003564303
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09894484935158095,
+      "target_fraction": 0.09901210208364074
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06510579717606463,
+      "target_fraction": 0.06516728640840361
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.09265492097276092,
+      "target_fraction": 0.0930262228753548
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06033279293658403,
+      "target_fraction": 0.06040238347252832
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07412149250713318,
+      "target_fraction": 0.07420792264236975
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10349071420369094,
+      "target_fraction": 0.10357353996195225
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.09672700712354257,
+      "target_fraction": 0.09679999351169237
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.08916649983960706,
+      "target_fraction": 0.08927309074947994
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.0858099104118329,
+      "target_fraction": 0.0859033337555502
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08694939848782236,
+      "target_fraction": 0.08702485202227155
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.08143763762742624,
+      "target_fraction": 0.08151206865937428
+    },
+    {
+      "method": "quest",
+      "mode": "multi_turn_self",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.05376642843384,
+      "target_fraction": 0.053843082576104546
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.0994243919888766,
+      "target_fraction": 0.0994243919888766
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06772150136867663,
+      "target_fraction": 0.06772150136867663
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.09788187865963557,
+      "target_fraction": 0.09788187865963557
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06121576947536415,
+      "target_fraction": 0.06121576947536415
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07211015967814167,
+      "target_fraction": 0.07211015967814167
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.1032280970045283,
+      "target_fraction": 0.1032280970045283
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.0959119641067168,
+      "target_fraction": 0.0959119641067168
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.089211805207891,
+      "target_fraction": 0.089211805207891
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.08603183842127418,
+      "target_fraction": 0.08603183842127418
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08482854103217269,
+      "target_fraction": 0.08482854103217269
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.07917744118333388,
+      "target_fraction": 0.07917744118333388
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_request",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.05457456003564303,
+      "target_fraction": 0.05457456003564303
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_choice_eng",
+      "cases": 58,
+      "turns": 229,
+      "old_fraction": 0.09901210208364074,
+      "target_fraction": 0.09901210208364074
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_kv",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.06516728640840361,
+      "target_fraction": 0.06516728640840361
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_many_shot",
+      "cases": 54,
+      "turns": 270,
+      "old_fraction": 0.0930262228753548,
+      "target_fraction": 0.0930262228753548
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_mf",
+      "cases": 100,
+      "turns": 600,
+      "old_fraction": 0.06040238347252832,
+      "target_fraction": 0.06040238347252832
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_prefix_suffix",
+      "cases": 100,
+      "turns": 500,
+      "old_fraction": 0.07420792264236975,
+      "target_fraction": 0.07420792264236975
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_chn",
+      "cases": 35,
+      "turns": 189,
+      "old_fraction": 0.10357353996195225,
+      "target_fraction": 0.10357353996195225
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_qa_eng",
+      "cases": 69,
+      "turns": 351,
+      "old_fraction": 0.09679999351169237,
+      "target_fraction": 0.09679999351169237
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa",
+      "cases": 88,
+      "turns": 440,
+      "old_fraction": 0.08927309074947994,
+      "target_fraction": 0.08927309074947994
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_repoqa_and_kv",
+      "cases": 88,
+      "turns": 704,
+      "old_fraction": 0.0859033337555502,
+      "target_fraction": 0.0859033337555502
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary",
+      "cases": 70,
+      "turns": 350,
+      "old_fraction": 0.08702485202227155,
+      "target_fraction": 0.08702485202227155
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_summary_with_needles",
+      "cases": 70,
+      "turns": 560,
+      "old_fraction": 0.08151206865937428,
+      "target_fraction": 0.08151206865937428
+    },
+    {
+      "method": "snapkv",
+      "mode": "multi_turn_self",
+      "task": "scbench_vt",
+      "cases": 90,
+      "turns": 450,
+      "old_fraction": 0.053843082576104546,
+      "target_fraction": 0.053843082576104546
+    }
+  ],
+  "limitations": [
+    "Result counters are logical old-history reads averaged over recorded group events.",
+    "The input IDs and initial history are paired. Each method generates its own multi-turn history.",
+    "Scalar per-case target budgets do not impose per-step or per-group equality.",
+    "Full 100% is the dense policy value. The read audit does not rescore predictions or measure hardware traffic."
+  ],
+  "archived_quality_scores": {
+    "full": 59.79586251127345,
+    "ours": 59.082158597132036,
+    "h2o": 31.148907789953103,
+    "quest": 54.26476181682901,
+    "snapkv": 32.89414378832973,
+    "pyramidkv": 27.218092933802307,
+    "kvzip": 27.238157034632035
+  },
+  "archived_mode_scores_sha256": "5ede414712ef6396b76b282d3fc39037b45c65525cde75b232a01d07fd0e6575"
+}

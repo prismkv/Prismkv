@@ -8,11 +8,11 @@ Always separate:
 4. All non-sparsified layers/groups, if any.
 
 The paper's bucket-count policy gives a variable unique fraction. The inspected
-27B LongProc runner calibrated a fixed per-example budget from the method's
-average read count; this is not exact equality at every decode step, layer or
-KV group. Other benchmark runners require their own audit. Source-level rechecks
-and per-method realized read tables are being
-prepared. Their missing entries must remain missing, not be filled with caps.
+LongBench, RULER, LongProc and SCBench protocols use scalar per-case targets
+derived from PrismKV's mean old-token reads. Actual reads can vary by step,
+layer and KV group. The tables report the recorded counters and their
+denominators, including the treatment of zero-event cases and dense warmup.
+[Audited quality and read tables](results/README.md)
 
 For a controlled new comparison, define a reference prefix and old-history H,
 freeze the target unique count at each step/group, and apply the same ceiling

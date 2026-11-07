@@ -71,6 +71,12 @@ counters with explicit zero-event denominators. It also discloses a newly found
 50-case shared prefill-first-token mismatch in the old RULER baseline cohort;
 counter verification is not certification of a strictly paired quality result.
 
+[SCBench and remaining KVzip read tables](remaining_reads.md) provide the 27B
+SCBench mode and task counters plus the 8B and 27B KVzip LongBench and 27B RULER
+read rates. The audits cover 23,658 archived result receipts. The tables retain
+zero-event cases in the quality denominator and describe the actual sparse-read
+denominators separately.
+
 ## Native phase latency and allocator memory
 
 [Same-kernel32K/64K diagnostic](native_stage_profile/README.md) reports five
