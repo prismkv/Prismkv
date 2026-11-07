@@ -1,0 +1,65 @@
+{
+  "model": "Qwen3.8-27B",
+  "device": "PPU-ZW810",
+  "dictionaries": 64,
+  "inherited_dictionaries": 43,
+  "fresh_dictionaries": 21,
+  "audited_optimization_stages": 226,
+  "capture_jobs": {
+    "later": 308,
+    "earlier": 16
+  },
+  "recorded_phase_seconds": {
+    "prefill": 12452.31683342997,
+    "decode": 11169.997419788502,
+    "mining": 1639.5891195503063,
+    "optimization": 5989.773425123189,
+    "final_optimization": 2305.1302819070406
+  },
+  "historical_training_stages": {
+    "B": {
+      "groups": 40,
+      "optimization_seconds": 744.4262836454436,
+      "mining_seconds": null
+    },
+    "D": {
+      "groups": 36,
+      "optimization_seconds": 518.0090469629504,
+      "mining_seconds": 50.40483776293695
+    },
+    "W": {
+      "groups": 36,
+      "optimization_seconds": 512.6973914033733,
+      "mining_seconds": 71.92947617080063
+    },
+    "E": {
+      "groups": 7,
+      "optimization_seconds": 183.04125612974167,
+      "mining_seconds": 22.140829456970096
+    },
+    "N": {
+      "groups": 43,
+      "optimization_seconds": 1726.469165074639,
+      "mining_seconds": 337.7459659189917
+    },
+    "X": {
+      "groups": 43,
+      "optimization_seconds": 1746.9404253424145,
+      "mining_seconds": 1106.403466670774
+    },
+    "fresh": {
+      "groups": 21,
+      "optimization_seconds": 558.1898565646261,
+      "mining_seconds": 50.96454356983304
+    }
+  },
+  "separate_early_qk_source_pairs": 24,
+  "separate_early_qk_files": 12,
+  "archive_audit_sha256": "a944a9abfb283a825c9260fd415bb5aeadd5d165895186586718d4f9799cf879",
+  "limits": [
+    "Summed per-job timed phases, not elapsed wall time across parallel jobs.",
+    "Reported prefill and decode phases use the original capture timers. Totals exclude model loading, work outside those timers, serialization, separately captured Q/K sources for six early B groups, and unlogged preparation.",
+    "Mining excludes B preparation and can omit setup/scaling outside each timer.",
+    "Cross-checked archived checkpoint and trace receipt hashes and file presence. Large trace/weight payloads were not rehashed here."
+  ]
+}

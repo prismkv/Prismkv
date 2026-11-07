@@ -45,8 +45,8 @@ input tokens. Both source row and completion/manifest hashes were checked.
 There is no exact wrapped-token-sequence collision with the3750original27B
 LongBench or3250RULER inputs. Within these local manifests, train and held-out
 instance/template hashes are also disjoint.
-This excludes the earlier4/12-context initialization ancestors, near duplicates,
-other benchmark splits and a complete capture/cost audit. It is an inventory
+This excludes the earlier initialization inputs, near duplicates and other
+benchmark splits. It is an inventory
 of these three pools, not proof of complete historical data independence.
 Training-use manifests for43inherited dictionaries request280contexts;21fresh
 configs use28contexts/4000updates. Frozen initialization and continuation
@@ -56,3 +56,29 @@ The original 8B capture records recover 142.069 seconds of prefill and 519.021
 seconds of decode over 10312 generated tokens. These exclude model loading,
 initial K serialization and other unrecorded overhead, so their sum is not the
 complete collection cost. SAE optimizer time must also be reported separately.
+
+## 27B recorded offline phases
+
+The [phase audit](training_cost_27b.json) follows the released 64-dictionary
+pack through 43 inherited and 21 freshly initialized dictionaries. It checks
+226 optimization-stage records and the receipts for 324 capture jobs. It
+counts shared captures once across all dictionaries that use them.
+
+| Recorded phase | Summed device-hours |
+|---|---:|
+| Backbone capture prefill | 3.459 |
+| Backbone capture decode | 3.103 |
+| Training sample mining | 0.455 |
+| SAE optimization across the checkpoint lineage | 1.664 |
+| Accounted subtotal | 8.681 |
+
+Final optimization for the 64 dictionaries took 0.640 of the 1.664 hours.
+Thirty-six inherited dictionaries followed B, D, W, N and X. Four followed B,
+E, N and X. Three began with E before N and X. The 21 fresh dictionaries use
+the separate 4,000-step recipe.
+
+Each total sums the saved per-job phase durations. The capture subtotal omits
+loading, serialization, work outside the timers and the separate early Q/K
+captures for six dictionaries. The mining subtotal omits untimed preparation
+and scaling. The audit checks metadata hashes and matching checkpoint/trace
+receipts, with large trace and weight payloads accounted for by receipt only.
