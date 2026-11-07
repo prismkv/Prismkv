@@ -33,3 +33,7 @@ quality, GPU latency, mainstream GPU support, or production-serving performance.
 witness and its framework fingerprints. The [locked hybrid dependency recipe](hybrid_install.md)
 records a fresh install, the Torch 2.4 schema patch, CPU contracts and a
 pretrained 27B 8K RULER execution with all 64 encoders.
+
+## Bucket-budget quality and module latency
+
+[Paired Top4/8/16 pilot](results/bucket_budget/README.md) reports official scores, actual reads, complete-module Graph latency and separate eager model timing on the same 26 RULER development inputs. Short-context slowdowns and unchanged Top16-compute overhead are retained.

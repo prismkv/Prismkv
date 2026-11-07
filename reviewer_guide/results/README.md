@@ -111,3 +111,7 @@ read-mean matching. The archive includes 13,998 verified paired records.
 [Paired 26-case RULER pilot](quest_gqa_control/README.md) uses the same timed
 Quest selector in quality and eager timing, with a shared indexed AV kernel.
 Both per-Q normalization and raw-mean aggregation are reported.
+
+## Bucket-budget quality and module latency
+
+[Paired Top4/8/16 pilot](bucket_budget/README.md) reports official scores, actual reads, complete-module Graph latency and separate eager model timing on the same 26 RULER development inputs. Short-context slowdowns and unchanged Top16-compute overhead are retained.
