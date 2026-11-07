@@ -20,6 +20,21 @@ class Encoder:
     query_scale: float
 
 
+def load_reference_model(model_path, *, dtype=torch.float32, local_files_only=True):
+    """Load the documented SDPA reference even if a checkpoint saved FA2.
+
+    Some checkpoints serialize a private attention-backend flag. Under the
+    pinned Transformers version it can survive a from_pretrained keyword.
+    Change only the in-memory config; never rewrite the checkpoint or weights.
+    This helper is a reference loader, not the native performance backend.
+    """
+    from transformers import AutoConfig, AutoModelForCausalLM
+    config = AutoConfig.from_pretrained(model_path, local_files_only=local_files_only)
+    config._attn_implementation = "sdpa"
+    return AutoModelForCausalLM.from_pretrained(model_path, config=config,
+        torch_dtype=dtype, attn_implementation="sdpa", local_files_only=local_files_only)
+
+
 def _dispatch(module, q, k, v, attention_mask, **kwargs):
     session = getattr(module, "_prismkv_session", None)
     if session is None:

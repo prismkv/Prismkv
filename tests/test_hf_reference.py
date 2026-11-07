@@ -1,6 +1,9 @@
 """Optional real-backbone integration tests with tiny random CPU Qwen3 weights."""
 import copy
 import importlib.util
+import json
+from pathlib import Path
+import tempfile
 import unittest
 import torch
 if importlib.util.find_spec('transformers') is not None:
@@ -8,7 +11,7 @@ if importlib.util.find_spec('transformers') is not None:
 else:
     Qwen3Config = Qwen3ForCausalLM = None
 from prismkv.core import SharedSAE
-from prismkv.hf_reference import Encoder, HFReference
+from prismkv.hf_reference import Encoder, HFReference, load_reference_model
 
 
 @unittest.skipIf(Qwen3Config is None, "install optional transformers dependency")
@@ -87,6 +90,23 @@ class BackboneContracts(unittest.TestCase):
         self.assertEqual(session.prefix_lengths,{0:1,1:1})
         self.assertEqual(len(session.records),3*2*2)
         session.close()
+
+    @torch.no_grad()
+    def test_checkpoint_backend_does_not_force_flash_attention(self):
+        # A real disk round trip reproduces the private backend field found in
+        # pretrained configs, without depending on FA2 or network access.
+        with tempfile.TemporaryDirectory() as folder:
+            self.model.save_pretrained(folder)
+            path = Path(folder)/'config.json'
+            config = json.loads(path.read_text())
+            config['_attn_implementation'] = 'flash_attention_2'
+            path.write_text(json.dumps(config))
+            original_bytes = path.read_bytes()
+            loaded = load_reference_model(folder, dtype=torch.float32)
+            self.assertEqual(loaded.config._attn_implementation, 'sdpa')
+            self.assertEqual(path.read_bytes(), original_bytes)
+            torch.testing.assert_close(self.model(self.ids).logits,
+                                       loaded(self.ids).logits, atol=2e-6, rtol=1e-5)
 
 
 if __name__=='__main__':

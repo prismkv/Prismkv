@@ -79,3 +79,11 @@ a deduplicated native-tensor inventory. It verifies576group output checks and
 the original compile manifests. Isolated phases are not additive percentages
 of the full chain; allocator peaks are not physical device peaks. No new-card,
 serving or full-model-generation claim is made.
+
+## Fixed-index LongProc rerouting control
+
+[Complete16-case pilot](longproc_rerouting_pilot/README.md) compares current-query
+reranking against frozen first-step ranking with the same SAE index, indexed
+attention and full generated tail. Dynamic/frozen scores56.250/7.132; Full62.374.
+The8K HTML case loses quality. This is an offline teacher-count diagnostic, not
+KVzip, a causal decomposition of the historical benchmark gap, or latency.

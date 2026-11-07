@@ -28,16 +28,20 @@ Q/K matching supervision is necessary for downstream quality.
   prefill, actual generation, strict caps and incremental updates.
 - `src/prismkv/weights.py`: hashed, per-group, inference-only encoder format.
 
-The current suite has 16 passing CPU tests, including four tiny-backbone tests.
+The current suite has 17 passing CPU tests, including four tiny-backbone tests
+and a saved-backend configuration regression.
 The PPU8B kernel library compiles and its standalone GPU correctness witness
 passes six synthetic cases through64K history: exact selected features/IDs and
 36 AV checks, maximum relativeL2 error0.001683. This does not reproduce the
 paper's latency, SAE index-construction performance or pretrained-model quality.
 Pretrained encoders for all 288 8B and 64 hybrid-27B dictionaries are included
 under `pretrained/`, with exact tensor/scales and source-hash packaging checks.
-The 8B training-context fingerprint manifest is included; full checkpoint
-lineage, model-scale regression and benchmark launchers are still being
-prepared. Test results do not establish
+The 8B training-context fingerprint manifest is included. The public pretrained
+Qwen3-8B CLI was exercised in both all-read and sparse modes with all288
+encoders: both answered42 on one short arithmetic prompt. See the
+[execution witness](reviewer_guide/pretrained_cli_validation.json). This is a
+loader/execution check, not pretrained-scale quality validation. Full checkpoint
+lineage and benchmark launchers remain incomplete. Test results do not establish
 new downstream accuracy or speed improvements.
 
 ## Run the portable reference

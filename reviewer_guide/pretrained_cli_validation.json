@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "model": "Qwen3-8B",
+  "prompt": "What is 6 times 7? Answer with just the number.",
+  "max_new_tokens": 8,
+  "all_dictionary_count": 288,
+  "CPU_tests": 17,
+  "environment": {
+    "transformers": "4.57.1",
+    "Torch": "2.4.0",
+    "numpy": "1.26.4"
+  },
+  "rows": [
+    {
+      "mode": "all_read",
+      "answer": "42",
+      "metrics": {
+        "group_steps": 576,
+        "selected_old_tokens": 14976,
+        "old_history_tokens": 14976,
+        "dense_tail_tokens": 864,
+        "note": "reference implementation; no latency claim"
+      },
+      "stdout_SHA": "819a72f473881b8d23bde8e8a2a88329ae3199a1c9e548b22ede87343c2244ad",
+      "stderr_SHA": "96f21aa64a4909458873c6dc997bc1d2c1999aa95dcb391364bc35babe8ca2b4"
+    },
+    {
+      "mode": "sparse",
+      "answer": "42",
+      "metrics": {
+        "group_steps": 576,
+        "selected_old_tokens": 2824,
+        "old_history_tokens": 14976,
+        "dense_tail_tokens": 864,
+        "note": "reference implementation; no latency claim"
+      },
+      "stdout_SHA": "304ea6862908eaf0a9cda5fe409d38d11b80db077040cd7b0a661e29573dfd04",
+      "stderr_SHA": "b1e5dd7c0cc86b7f8ae9bacfd0681ab8f40196734a0a73f19536ab477b8ee3fd"
+    }
+  ],
+  "source_files_SHA": {
+    "examples/check_native8b.py": "dfae53f10a864ed222a0493206723e65fa92536708f8aac9dc5b7d2cb52814b7",
+    "examples/generate_hf.py": "1aed0848c3deba15c381ad53e284f4ca8c74d3e929b8fe2b9eafbbc4fb101c2e",
+    "examples/replay.py": "e90973d358b5e2526f4f99f22d2287f5c548fcff27a3bd4ec9c4769e9787029f",
+    "src/prismkv/__init__.py": "edf422b258ff36093c7772bdfdb52adbabb5449a1db37e4a6aa94a0f00ad54da",
+    "src/prismkv/core.py": "bd2dd8896fcc1db422b7ca93e0fe4e11e5175584b7e8bdc68bbff7f2c3b4e678",
+    "src/prismkv/hf_reference.py": "a2ee42480f5c6d6256a60dd91ada6b384be57eb905052729dd3eef49595706e4",
+    "src/prismkv/native8b.py": "e276ab213d08357327e8c05d5cc0e1da15619c02df8d8a5b0d4b6b521c2f3994",
+    "src/prismkv/training.py": "11af4367a41cd9b60b4878fa6dee44672c6b1f42387242befb9f28a7d2d06399",
+    "src/prismkv/weights.py": "61ae3228b4df1085c9119bde9dbdb36711c23976aac19b8041d7c666348d32a8",
+    "tests/test_core.py": "1af9ca9d8fd6056f1fda734aee811fe370a62f7db4d331ae39c45f59af2be0f3",
+    "tests/test_hf_reference.py": "a98b9fa7cbd35207471990b6ab450b67cca6595398b8e978c248cc406d217c92",
+    "tests/test_weights.py": "9a3330138cd24106985881d2422c4787bf1a9fd466516ebd101b29dacdbb665d"
+  },
+  "scope": "One short pretrained Qwen3-8B CLI execution witness, not benchmark accuracy, latency, or hybrid27B integration. Loader explicitly sets SDPA only in memory; old failed versions retained.",
+  "result_SHA": "40bf7e64ab3a842766762645ee9f26599ae947b4380868f3139c03db1a52559c"
+}

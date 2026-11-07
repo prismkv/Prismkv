@@ -2,8 +2,8 @@
 import argparse
 import json
 import torch
-from transformers import AutoModelForCausalLM,AutoTokenizer
-from prismkv.hf_reference import HFReference
+from transformers import AutoTokenizer
+from prismkv.hf_reference import HFReference,load_reference_model
 from prismkv.weights import load_encoders
 
 
@@ -20,8 +20,8 @@ def main():
     a=p.parse_args()
     dtype=torch.float32 if a.device=='cpu' else torch.bfloat16
     tok=AutoTokenizer.from_pretrained(a.model,local_files_only=a.local_files_only)
-    model=AutoModelForCausalLM.from_pretrained(a.model,torch_dtype=dtype,
-        attn_implementation='sdpa',local_files_only=a.local_files_only).to(a.device).eval().requires_grad_(False)
+    model=load_reference_model(a.model,dtype=dtype,
+        local_files_only=a.local_files_only).to(a.device).eval().requires_grad_(False)
     encoders,manifest=load_encoders(a.encoders)
     label=manifest['metadata'].get('model_label')
     print(json.dumps(dict(encoder_model_label=label,note='caller must verify exact checkpoint/tokenizer identity')))

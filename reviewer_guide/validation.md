@@ -2,7 +2,10 @@
 
 Current results:
 
--16 CPU tests passed without skips, using Torch2.4.0 and Transformers4.57.1.
+-17 CPU tests passed without skips, using Torch2.4.0 and Transformers4.57.1.
+-The new regression round-trips a tiny saved checkpoint containing a FlashAttention2
+  backend flag. The reference loader explicitly chooses SDPA in memory without
+  rewriting checkpoint files; loading succeeds without FlashAttention2 installed.
 -Four of these execute a tiny randomly initialized two-layer Qwen3 backbone:
   all-read equivalence, backend restoration, actual greedy generation from a
   one-token prefix, offset chunked prefill, full-group sparse selection under a
@@ -27,7 +30,14 @@ The initial environment had Torch2.4 and a much newer Transformers development
 build that required a missing Torch API. A project-local pinned4.57.1 dependency
 stack was used instead; existing experiment environments were not modified.
 
-Still pending: pretrained-scale generation, hybrid27B integration, original
+The public pretrained Qwen3-8B CLI also completed one short arithmetic prompt
+with all288 released dictionaries, in both all-read and sparse modes; both
+returned42. Each had576group steps and864dense-tail accesses. Sparse selected
+2824of14976old-token opportunities; all-read selected14976. These are aggregate
+group-step counts on a very short prompt, not a long-context read-rate or quality
+benchmark. [Hash-checked execution witness](pretrained_cli_validation.json).
+
+Still pending: broad pretrained-scale quality validation, hybrid27B integration, original
 training/benchmark manifests, model-scale native comparisons, full-model peak memory
 and full downstream benchmark launchers. No test is substituted for those.
 
