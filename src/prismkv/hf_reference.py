@@ -36,8 +36,21 @@ def load_reference_model(model_path, *, dtype=torch.float32, local_files_only=Tr
     if config_overrides:
         if config.model_type != "qwen3" or set(config_overrides)-{"rope_scaling","max_position_embeddings"}:
             raise ValueError("only explicit Qwen3 RoPE/context overrides are supported")
-        for key,value in config_overrides.items():
-            setattr(config,key,value)
+        if "max_position_embeddings" in config_overrides:
+            config.max_position_embeddings = config_overrides["max_position_embeddings"]
+        if "rope_scaling" in config_overrides:
+            scaling = config_overrides["rope_scaling"]
+            if hasattr(config, "rope_parameters"):
+                # Transformers 5 folds the checkpoint's base frequency into
+                # the same dictionary as the scaling policy.
+                base = config.rope_parameters or {}
+                theta = base.get("rope_theta") or getattr(config, "rope_theta", None) or config.default_theta
+                parameters = {"rope_theta": theta, **(scaling or {})}
+                parameters.setdefault("rope_type", parameters.pop("type", "default"))
+                config.rope_parameters = parameters
+                config.standardize_rope_params()
+            else:
+                config.rope_scaling = scaling
     config._attn_implementation = backend
     return AutoModelForCausalLM.from_pretrained(model_path, config=config,
         torch_dtype=dtype, attn_implementation=backend, local_files_only=local_files_only)

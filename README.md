@@ -46,8 +46,8 @@ loader/execution check, not pretrained-scale quality validation. The newer
 LongBench/RULER preparation and scoring commands. All 14,000 archived input
 formats were checked, and the complete public pipeline ran one preselected 8K
 RULER example per model. These are format/execution checks, not full quality
-reruns. Full checkpoint lineage, clean hybrid installation and native benchmark
-integration remain incomplete. No new speed improvement is established.
+reruns. Full checkpoint lineage and native benchmark integration remain
+incomplete. The hybrid dependency recipe has separate CPU validation.
 
 ## Run the portable reference
 
@@ -71,9 +71,9 @@ scales; a different model's bundle is not interchangeable. See
 [the bundle notes](pretrained/README.md) for checkpoint histories and validation
 limits. The ordinary 8B generation example uses its pinned reference runtime. A separate
 [hybrid 27B reference witness](reviewer_guide/hybrid_reference.md) now runs both
-all-read and sparse modes with all 64encoders; its eager backend, separate
-framework-source hashes and unverified clean-install recipe are explicit. This
-is one short execution check, not full benchmark or native timing integration. Requests are batch-one, unpadded, causal and
+all-read and sparse modes with all 64 encoders in the staged runtime. A separate
+[locked hybrid dependency recipe](reviewer_guide/hybrid_install.md) documents the
+fresh install and its validation scope. Requests are batch-one, unpadded, causal and
 without sliding-window/soft-capped attention. This path is not optimized serving.
 
 PyTorch >=2.4 and Python >=3.10 are required. The portable reference uses Python

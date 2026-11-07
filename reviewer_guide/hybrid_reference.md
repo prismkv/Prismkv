@@ -32,11 +32,11 @@ native path.
 The ordinary 8B optional dependency `.[hf]` pins Transformers4.57.1. That version
 does not contain this hybrid model. The observed hybrid witness instead uses
 an existing Torch2.4.0/Transformers5.16.0.dev0/numpy1.26.4 runtime on PPU-ZW810;
-six framework-source hashes are included above. The existing staged framework
-has no verified clean-install recipe or upstream commit mapping yet. Do not
-interpret its version string as a complete environment lock, or install the 8B
-extra and assume hybrid support. No global dependency installation is required
-or performed by this repository.
+six framework-source hashes are included above. The staged development tree's
+upstream commit mapping remains incomplete. A separate [locked install
+recipe](hybrid_install.md) uses the official Transformers 5.8.0 wheel and one
+explicit schema patch on PPU Torch 2.4.0. The 8B extra keeps its independent
+Transformers 4.57.1 pin.
 
 With a compatible model-supporting runtime already available, the tested CLI
 shape is:
@@ -66,6 +66,6 @@ but teacher NLLs differed. Input-format parity was checked for all 7,000 archive
 The short CLI witnesses are not complete LongBench/RULER scores, new accuracy claims,
 a native-kernel latency result, a serving implementation or proof that the
 historical optimized backend and this reference are token-identical. Full
-native benchmark integration, a clean hybrid dependency lock and
-broader pretrained-scale comparisons remain incomplete. The historical paper
+native benchmark integration and broader pretrained-scale comparisons remain
+incomplete. The historical paper
 results must not be replaced by these execution checks.

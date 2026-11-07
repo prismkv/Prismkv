@@ -1,0 +1,87 @@
+{
+  "passed": true,
+  "offline_resolution_and_install": true,
+  "wheels_resolved": 29,
+  "wheels_verified_against_PyPI": 30,
+  "excluded_non_Linux_wheel": "colorama",
+  "ordinary_tests_per_version": 24,
+  "ordinary_skips": 0,
+  "original_wheel_import_error": "Torch 2.4 cannot infer the grouped-mm schema from postponed torch.Tensor annotations.",
+  "hardware_scope": "Vendor PPU Torch 2.4.0 build, Linux x86-64, CPython 3.10.",
+  "validation_scope": "Dependency installation and CPU contracts. This record does not assert completion of the separate pretrained PPU witness.",
+  "version_probe": {
+    "torch": "2.4.0",
+    "transformers": "5.8.0",
+    "numpy": "1.26.4",
+    "python": "3.10.13",
+    "hybrid_class": "Qwen3_5ForCausalLM",
+    "package_import_paths_verified": true
+  },
+  "source_moe_sha": "a320a4638fdac837672241be185dd18783cefab1bb47a3aeeaf00f244652261a",
+  "patched_moe_sha": "a65a68355d73787b8c5504be87dd09737aea22085e49649fad72885f759bb80a",
+  "lock_sha": "79212cac389ce686338c991f1bbde20c84879492db40735bae6699bc12e75f0c",
+  "public_python_sources": {
+    "tests/test_hf_reference.py": "5fa383a7ade266de0309c5ddf4f1644ea0cda5a20c797f4a358e74d7d29e4d0c",
+    "tests/test_core.py": "1af9ca9d8fd6056f1fda734aee811fe370a62f7db4d331ae39c45f59af2be0f3",
+    "tests/test_evaluation.py": "27f3591db2a35add4f4084cedc8b5aef2ebe195900c2f1af86adf8fa3d85ac88",
+    "tests/test_weights.py": "9a3330138cd24106985881d2422c4787bf1a9fd466516ebd101b29dacdbb665d",
+    "examples/check_native8b.py": "dfae53f10a864ed222a0493206723e65fa92536708f8aac9dc5b7d2cb52814b7",
+    "examples/replay.py": "e90973d358b5e2526f4f99f22d2287f5c548fcff27a3bd4ec9c4769e9787029f",
+    "examples/generate_hf.py": "8ea7c3a8a063b21ac59d066c1f4aedce25f86c6e3ab9baeffca7f5d964e33b73",
+    "examples/evaluate_hf.py": "ab1563a31e5c614fff971c43822d321a910194edc0229b23fd51a8e5b34f2f02",
+    "examples/score_benchmark.py": "d7a1f798f55ce6cde34dd0fc6782b10924e87eeb42fa1f159549a57ee4503c55",
+    "examples/attach_full_reference.py": "b0cc8e40805e24eebfad0fc01080d4dd4e5e1cf4836da3e70f6df827545f29bb",
+    "examples/prepare_benchmark.py": "7ac082e388682c24d491bbdf9f2c9143def8e8f84567378948bfbaf03c9fe533",
+    "src/prismkv/training.py": "11af4367a41cd9b60b4878fa6dee44672c6b1f42387242befb9f28a7d2d06399",
+    "src/prismkv/hf_reference.py": "3d173701720dc384455a6bba2cf121c3b7e88b0faeee906e97b9e124966a2f48",
+    "src/prismkv/__init__.py": "edf422b258ff36093c7772bdfdb52adbabb5449a1db37e4a6aa94a0f00ad54da",
+    "src/prismkv/core.py": "bd2dd8896fcc1db422b7ca93e0fe4e11e5175584b7e8bdc68bbff7f2c3b4e678",
+    "src/prismkv/benchmarks.py": "c7396be1bda71e5b02f0b804b412a3bd3c058e17d16ca430842a500cedf7b3c3",
+    "src/prismkv/weights.py": "61ae3228b4df1085c9119bde9dbdb36711c23976aac19b8041d7c666348d32a8",
+    "src/prismkv/evaluation.py": "cf2943c0b167b49ff9ef6d2661259c0e1d542cea5cb1424fcfe88203aa42bf8d",
+    "src/prismkv/native8b.py": "e276ab213d08357327e8c05d5cc0e1da15619c02df8d8a5b0d4b6b521c2f3994"
+  },
+  "stages": {
+    "ordinary_457": {
+      "passed": true,
+      "returncode": 0,
+      "stderr_sha": "38366531f05b76098bc42a9cb7db393036b5a8ba3d56a98fd0061f1e7df6f376",
+      "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ordinary_580": {
+      "passed": true,
+      "returncode": 0,
+      "stderr_sha": "15498cc1f6c45189cda3eda9a34b78f6658fb48bddef36373eafc5bd5a257427",
+      "stdout_sha": "b2ec06326ff74db6cc82bd5a8324c9c8588256ffef5d27ee243a648449a9f9a2"
+    },
+    "hybrid_tiny_580": {
+      "passed": true,
+      "returncode": 0,
+      "stderr_sha": "2af315915a862c43b61a46f5d7eea2ef994e0230bc2318215ea5dacaa47915f1",
+      "stdout_sha": "b0407af60699d29eb34d7b819eec8c1499a9a2d5e72f960d05d15a18ee6c4c9b"
+    }
+  },
+  "tiny_contract_sha": "7cdcdf06cb9444e65bc6d39342b9b1c249fe0dceced440eb32e3d31fcd2a29fe",
+  "hybrid_tiny": {
+    "model_weights_loaded": false,
+    "CPU_only": true,
+    "reference_backend": "eager",
+    "Torch": "2.4.0",
+    "transformers": "5.8.0",
+    "passed": true,
+    "dense_decode_max_abs": [
+      4.470348358154297e-08,
+      5.960464477539063e-08,
+      8.940696716308594e-08,
+      5.960464477539063e-08
+    ],
+    "generate_exact": true,
+    "all_standard_groups_sparse": true,
+    "incremental_update_checked": true,
+    "CUDA_initialized": false,
+    "layers": 4,
+    "linear_layers": 3,
+    "standard_layers": 1,
+    "groups": 2
+  }
+}

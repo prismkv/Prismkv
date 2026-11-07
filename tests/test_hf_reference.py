@@ -132,14 +132,26 @@ class BackboneContracts(unittest.TestCase):
     def test_explicit_rope_override_leaves_saved_config_unchanged(self):
         with tempfile.TemporaryDirectory() as folder:
             self.model.save_pretrained(folder)
-            path=Path(folder)/'config.json';before=path.read_bytes()
+            path=Path(folder)/'config.json'
+            saved=json.loads(path.read_text())
+            saved.pop('rope_parameters',None)
+            saved['rope_theta']=1_000_000.0
+            saved['rope_scaling']=dict(rope_type='yarn',factor=1.5,original_max_position_embeddings=512)
+            path.write_text(json.dumps(saved))
+            before=path.read_bytes()
             override=dict(max_position_embeddings=1024,
                 rope_scaling=dict(rope_type='yarn',factor=2.,original_max_position_embeddings=512))
             loaded=load_reference_model(folder,config_overrides=override)
             self.assertEqual(loaded.config.max_position_embeddings,1024)
             self.assertEqual(loaded.config.rope_scaling['factor'],2.)
+            plain=load_reference_model(folder,config_overrides={'rope_scaling':None})
+            theta=(plain.config.rope_parameters['rope_theta']
+                   if hasattr(plain.config,'rope_parameters') else plain.config.rope_theta)
+            self.assertEqual(theta,1_000_000.0)
+            self.assertEqual((plain.config.rope_scaling or {}).get('rope_type','default'),'default')
+            self.assertNotIn('factor',plain.config.rope_scaling or {})
             self.assertEqual(path.read_bytes(),before)
-            del loaded
+            del loaded,plain
             gc.collect()
 
 

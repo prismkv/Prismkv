@@ -12,7 +12,7 @@ This guide distinguishes the submitted method from supplementary variants.
 | Are budgets exactly identical? | [budget protocol](budget_protocol.md) | Archived calibration is not a per-step/per-group equality guarantee |
 | Where are hyperparameter results? | [evidence status](evidence_status.md) | New experiments in progress; no incomplete grid presented as final |
 | How can I run quality evaluation? | [Evaluation guide](evaluation.md), `examples/evaluate_hf.py`, `prepare_benchmark.py`, `score_benchmark.py` | 24 CPU tests; 14,000 input-format checks; one actual 8K public-pipeline witness per model. Not a full quality rerun |
-| Does the model integration preserve dense behavior? | `tests/test_hf_reference.py`; [validation](validation.md) | Tiny-backbone/causality controls and short8B/hybrid27B CLI witnesses passed; broad quality and hybrid clean-install lock pending |
+| Does the model integration preserve dense behavior? | `tests/test_hf_reference.py`; [validation](validation.md) | Tiny-backbone causality controls and short 8B/hybrid 27B CLI witnesses passed. See the separate hybrid dependency checks below. |
 | Where are the trained encoders? | [`pretrained/`](../pretrained/README.md) | All 288/64 dictionaries, source-DONE/hash checked, exact tensor/scales export; not new downstream validation |
 | Does the standalone native binding compute the selected attention correctly? | [`native8b_validation.json`](native8b_validation.json), `examples/check_native8b.py` | Six synthetic PPU cases through64K; exact IDs/features and36 AV checks. Not a model-quality or latency reproduction |
 | Where are task/length results and actual baseline reads? | [Verified result tables](results/README.md) |27B RULER65cells and LongProc16subsets; own-trajectory mean-budget and adapter limits explicit |
@@ -29,4 +29,6 @@ quality, GPU latency, mainstream GPU support, or production-serving performance.
 
 [LongProc rerouting control](results/longproc_rerouting_pilot/README.md): complete16-case fixed-index pilot, same generated-tail policy, dynamic/frozen comparison with explicit Full/HTML loss and offline-budget limits.
 
-[Hybrid27B reference and limits](hybrid_reference.md): all64encoders, actual CLI, eager prefill, separate development-framework fingerprint; no full benchmark/native-latency or clean-install claim.
+[Hybrid 27B reference](hybrid_reference.md) records the original execution
+witness and its framework fingerprints. The [locked hybrid dependency recipe](hybrid_install.md)
+records a fresh install, the Torch 2.4 schema patch and CPU contracts.

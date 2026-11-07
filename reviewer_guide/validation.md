@@ -41,8 +41,8 @@ benchmark. [Hash-checked execution witness](pretrained_cli_validation_v4.json).
 
 A separate [hybrid 27B witness](hybrid_reference.md) now passes one real
 pretrained prompt with all 64encoders in all-read/sparse modes, plus tiny hybrid
-CPU contracts. Its separate development-framework runtime is fingerprinted but
-has no verified clean-install recipe.
+CPU contracts. Its development-framework runtime is fingerprinted. A separate
+[locked dependency check](hybrid_install.md) tests the wheel-based setup.
 
 The [evaluation pipeline](evaluation.md) additionally passed 14,000 archived
 input-format checks and 29 official-metric fixtures. A preselected 8K RULER
@@ -53,7 +53,7 @@ benchmark or pretrained-wide probability-equivalence result.
 
 Still pending: broad pretrained-scale quality validation, hybrid native integration,
 complete training ancestry, model-scale native comparisons, full-model physical
-peak memory, clean hybrid installation and SCBench reuse orchestration.
+peak memory and SCBench reuse orchestration.
 No narrow test is substituted for those.
 
 The synthetic witness records582,458,880peak PyTorch-allocated bytes and

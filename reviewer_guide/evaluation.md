@@ -3,9 +3,10 @@
 This is the **portable quality/reference path**, not the measured native kernel
 or a serving benchmark. It supports the standard Qwen3-8B backbone and the
 hybrid 27B backbone's standard-attention layers; recurrent linear-attention
-layers are left to the backbone. The latter currently requires the separately
-fingerprinted development runtime described in [hybrid_reference.md](hybrid_reference.md).
-Installing the ordinary `.[hf]` extra does not provide that hybrid runtime.
+layers are left to the backbone. The archived 27B run used the
+[fingerprinted development runtime](hybrid_reference.md). A separate
+[hybrid dependency recipe](hybrid_install.md) documents the tested wheel set.
+The ordinary `.[hf]` extra retains its independent 8B pin.
 
 ## What has actually been checked
 
@@ -177,7 +178,7 @@ physical memory transactions. They exclude linear-attention layers.
 The portable path gathers selected KV for correctness and runs Python loops;
 do not time it as the native attention kernel. There is no continuous batching
 or shared-prefix serving here. SCBench reuse orchestration, native model-scale
-benchmark/latency integration, a clean hybrid dependency recipe, and complete
+benchmark/latency integration and complete
 checkpoint ancestry remain separate unfinished requirements.
 
 A run writes `run.json`, `predictions.jsonl` and a hashed `DONE.json`. Failures
