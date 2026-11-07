@@ -54,7 +54,8 @@ class HFReference:
     Call begin_request() when starting a new KV cache; close() restores backends.
     """
     def __init__(self, model, encoders, *, mode="sparse", router="moments",
-                 selected_buckets=16, unique_cap=None, update_interval=4096):
+                 selected_buckets=16, unique_cap=None, update_interval=4096,
+                 detailed_records=False):
         if mode not in ("sparse", "all_read"):
             raise ValueError("mode must be sparse or all_read")
         if router not in ("moments", "q_activation") or selected_buckets <= 0:
@@ -67,6 +68,7 @@ class HFReference:
         self.mode, self.router = mode, router
         self.selected_buckets, self.unique_cap = selected_buckets, unique_cap
         self.update_interval, self.force_prefill = update_interval, False
+        self.detailed_records = detailed_records
         self.modules, self.original, self.configs = {}, {}, {}
         expected = set()
         for module in model.modules():
@@ -195,8 +197,20 @@ class HFReference:
                     sae=bundle.sae, query_scale=bundle.query_scale,
                     query_topk=self.selected_buckets, unique_cap=self.unique_cap)
             answer[0, 0, group*per_group:(group+1)*per_group] = attend(Q, K, V, ids, history)
-            self.records.append(dict(layer=layer, group=group, history=history,
-                unique=len(ids), raw=meta['raw'], buckets=len(meta['features']), tail=total-history))
+            record = dict(layer=layer, group=group, history=history,
+                unique=len(ids), raw=meta['raw'], buckets=len(meta['features']), tail=total-history)
+            if self.detailed_records:
+                initial_history = self.prefix_lengths[layer]
+                old_unique = int((ids < initial_history).sum())
+                if self.mode == "all_read":
+                    old_raw = len(ids)
+                else:
+                    old_raw = sum(int((index.lists[b] < initial_history).sum())
+                                  for b in meta['features'])
+                record.update(initial_history=initial_history, old_unique=old_unique,
+                              old_raw=old_raw, generated_indexed_unique=len(ids)-old_unique,
+                              generated_indexed_raw=meta['raw']-old_raw)
+            self.records.append(record)
         return answer, None
 
     def generate(self, *args, **kwargs):
