@@ -93,3 +93,9 @@ reranking against frozen first-step ranking with the same SAE index, indexed
 attention and full generated tail. Dynamic/frozen scores56.250/7.132; Full62.374.
 The8K HTML case loses quality. This is an offline teacher-count diagnostic, not
 KVzip, a causal decomposition of the historical benchmark gap, or latency.
+
+## Llama appendix scope and actual reads
+
+[Llama Table 6 scope and five-length RULER audit](llama_appendix_scope.md)
+reports the omitted 8K–32K scope, all archived length scores, common
+read denominators and archive provenance limitations.
