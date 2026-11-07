@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "submission_model_label": "Qwen3.8-27B",
+  "configuration_model_type": "qwen3_5",
+  "standard_attention_layers": 16,
+  "standard_KV_groups": 64,
+  "linear_layers_unmodified": 48,
+  "prompt": "What is 6 times 7? Answer with just the number.",
+  "max_new_tokens": 8,
+  "rows": [
+    {
+      "mode": "all_read",
+      "answer": "42",
+      "metrics": {
+        "group_steps": 128,
+        "selected_old_tokens": 3328,
+        "old_history_tokens": 3328,
+        "dense_tail_tokens": 192,
+        "note": "reference implementation; no latency claim"
+      },
+      "stdout_SHA": "5e4854887a42286f3525fff9a7ca6a423c528f86bdfdc99deba5efef0fb72a26",
+      "stderr_SHA": "5f50377f7896b5e4e9aa7968f50344ca6016f340a8b552016cee077916eca8ed",
+      "load_warning_lines": []
+    },
+    {
+      "mode": "sparse",
+      "answer": "42",
+      "metrics": {
+        "group_steps": 128,
+        "selected_old_tokens": 1051,
+        "old_history_tokens": 3328,
+        "dense_tail_tokens": 192,
+        "note": "reference implementation; no latency claim"
+      },
+      "stdout_SHA": "6c58b9cdd99407f20cd7849c971048e7ee3d13926d980dc32bb90f73b68eef00",
+      "stderr_SHA": "36f15fe7c47bccfab2081cca080e43aa57d523123f0555911271f66e13c298af",
+      "load_warning_lines": []
+    }
+  ],
+  "environment": {
+    "Torch": "2.4.0",
+    "transformers": "5.16.0.dev0",
+    "numpy": "1.26.4",
+    "reference_backend": "eager"
+  },
+  "ordinary_CPU_tests": 18,
+  "hybrid_tiny": {
+    "time": 1794014018.6520815,
+    "model_weights_loaded": false,
+    "CPU_only": true,
+    "reference_backend": "eager",
+    "Torch": "2.4.0",
+    "transformers": "5.16.0.dev0",
+    "passed": true,
+    "dense_decode_max_abs": [
+      4.470348358154297e-08,
+      1.1920928955078125e-07,
+      5.960464477539063e-08,
+      5.960464477539063e-08
+    ],
+    "generate_exact": true,
+    "all_standard_groups_sparse": true,
+    "incremental_update_checked": true,
+    "CUDA_initialized": false,
+    "layers": 4,
+    "linear_layers": 3,
+    "standard_layers": 1,
+    "groups": 2
+  },
+  "runtime_source_SHA": {
+    "models/qwen3_5/modeling_qwen3_5.py": "568725a137a81e7e7ea6fd416debc3bd9b1902acb2991307db879df522e6e77e",
+    "models/qwen3_5/configuration_qwen3_5.py": "3c01b3cdcff8d77cbafac9841bc48c41e5a5b38637231f1bde3d843cd198dbaf",
+    "modeling_utils.py": "a7392c26dd2f005383cc3c1f8562638a6039d393ca03fb1933513479a6d264e4",
+    "masking_utils.py": "e8c497af6979274fc6ae78980ad9893e7850bdb750e46d459f09178123992196",
+    "cache_utils.py": "b63732985b520a62aa4b06fc2af8ca6e506912679e0f0479b706534d041fb1bd",
+    "integrations/sdpa_attention.py": "53c7229daca9ade4c5df874194448938c1edc925abbc71809f9750dd66381e6f"
+  },
+  "model_fingerprints": {
+    "config.json": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab",
+    "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+    "model.safetensors.index.json": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df"
+  },
+  "encoder_tensor_hashes_verified": 64,
+  "source_files_SHA": {
+    "examples/check_native8b.py": "dfae53f10a864ed222a0493206723e65fa92536708f8aac9dc5b7d2cb52814b7",
+    "examples/generate_hf.py": "8ea7c3a8a063b21ac59d066c1f4aedce25f86c6e3ab9baeffca7f5d964e33b73",
+    "examples/replay.py": "e90973d358b5e2526f4f99f22d2287f5c548fcff27a3bd4ec9c4769e9787029f",
+    "src/prismkv/__init__.py": "edf422b258ff36093c7772bdfdb52adbabb5449a1db37e4a6aa94a0f00ad54da",
+    "src/prismkv/core.py": "bd2dd8896fcc1db422b7ca93e0fe4e11e5175584b7e8bdc68bbff7f2c3b4e678",
+    "src/prismkv/hf_reference.py": "7bd20d353994854843b0c358d88c5bcd2b5cfbfdf28d0774be1e40b34c55c7af",
+    "src/prismkv/native8b.py": "e276ab213d08357327e8c05d5cc0e1da15619c02df8d8a5b0d4b6b521c2f3994",
+    "src/prismkv/training.py": "11af4367a41cd9b60b4878fa6dee44672c6b1f42387242befb9f28a7d2d06399",
+    "src/prismkv/weights.py": "61ae3228b4df1085c9119bde9dbdb36711c23976aac19b8041d7c666348d32a8",
+    "tests/test_core.py": "1af9ca9d8fd6056f1fda734aee811fe370a62f7db4d331ae39c45f59af2be0f3",
+    "tests/test_hf_reference.py": "b061e4cac0634d80e7563309d2d7126344988d981f6b29f2ab97e4aa82741772",
+    "tests/test_weights.py": "9a3330138cd24106985881d2422c4787bf1a9fd466516ebd101b29dacdbb665d"
+  },
+  "scope": "One pretrained hybrid27B CLI execution witness with64releasedencoders and48linear layers untouched. Eager reference prefill onTorch2.4/Transformers5.16dev. Not historical benchmark/paper latency reproduction, not broad quality certification.",
+  "result_SHA": "6357932f4557efde34e2dd453cb876dd509479060b633e932b16d22c0a592f5f",
+  "runtime_install_recipe_not_verified": true,
+  "model_weight_shard_bytes_not_rehashed": true
+}

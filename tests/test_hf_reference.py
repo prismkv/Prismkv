@@ -1,5 +1,6 @@
 """Optional real-backbone integration tests with tiny random CPU Qwen3 weights."""
 import copy
+import gc
 import importlib.util
 import json
 from pathlib import Path
@@ -107,6 +108,25 @@ class BackboneContracts(unittest.TestCase):
             self.assertEqual(path.read_bytes(), original_bytes)
             torch.testing.assert_close(self.model(self.ids).logits,
                                        loaded(self.ids).logits, atol=2e-6, rtol=1e-5)
+            # Release safetensors mmap before removing a shared-filesystem tmpdir.
+            del loaded
+            gc.collect()
+
+    @torch.no_grad()
+    def test_eager_prefill_keeps_causality(self):
+        native = copy.deepcopy(self.model)
+        native.config._attn_implementation = 'eager'
+        routed = copy.deepcopy(native)
+        session = HFReference(routed, self.encoders(), mode='all_read')
+        a = native(self.ids, use_cache=True)
+        b = routed(self.ids, use_cache=True)
+        torch.testing.assert_close(a.logits, b.logits, atol=2e-6, rtol=1e-5)
+        token = a.logits[:,-1:].argmax(-1)
+        a = native(token, past_key_values=a.past_key_values, use_cache=True)
+        b = routed(token, past_key_values=b.past_key_values, use_cache=True)
+        torch.testing.assert_close(a.logits, b.logits, atol=2e-6, rtol=1e-5)
+        session.close()
+        self.assertEqual(routed.config._attn_implementation, 'eager')
 
 
 if __name__=='__main__':

@@ -12,6 +12,8 @@ def main():
     p.add_argument('--model',required=True)
     p.add_argument('--encoders',required=True)
     p.add_argument('--device',default='cuda')
+    p.add_argument('--attention-backend',choices=['sdpa','eager'],default='sdpa',
+        help='reference prefill backend; eager also supports older Torch hybrid runtimes')
     p.add_argument('--prompt',default='Explain why the sky looks blue in two sentences.')
     p.add_argument('--max-new-tokens',type=int,default=128)
     p.add_argument('--all-read',action='store_true',help='dense-equivalence control')
@@ -21,13 +23,14 @@ def main():
     dtype=torch.float32 if a.device=='cpu' else torch.bfloat16
     tok=AutoTokenizer.from_pretrained(a.model,local_files_only=a.local_files_only)
     model=load_reference_model(a.model,dtype=dtype,
-        local_files_only=a.local_files_only).to(a.device).eval().requires_grad_(False)
+        local_files_only=a.local_files_only,backend=a.attention_backend).to(a.device).eval().requires_grad_(False)
     encoders,manifest=load_encoders(a.encoders)
     label=manifest['metadata'].get('model_label')
     print(json.dumps(dict(encoder_model_label=label,note='caller must verify exact checkpoint/tokenizer identity')))
     session=HFReference(model,encoders,mode='all_read' if a.all_read else 'sparse')
     ids=tok.apply_chat_template([dict(role='user',content=a.prompt)],tokenize=True,
-        add_generation_prompt=True,return_tensors='pt',enable_thinking=a.enable_thinking).to(a.device)
+        add_generation_prompt=True,return_tensors='pt',return_dict=False,
+        enable_thinking=a.enable_thinking).to(a.device)
     try:
         with torch.inference_mode():
             result=session.generate(input_ids=ids,max_new_tokens=a.max_new_tokens,do_sample=False)

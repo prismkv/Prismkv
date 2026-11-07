@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "CPU_tests": 18,
+  "encoder_tensor_hashes_verified": 288,
+  "rows": [
+    {
+      "mode": "all_read",
+      "answer": "42",
+      "metrics": {
+        "group_steps": 576,
+        "selected_old_tokens": 14976,
+        "old_history_tokens": 14976,
+        "dense_tail_tokens": 864,
+        "note": "reference implementation; no latency claim"
+      },
+      "stdout_SHA": "19d0c7234d8d1a60a0b4d4f73fdd2fd69de1aa09c8d272d66a8395f4d5df9e31",
+      "stderr_SHA": "28df322c94c6dd25ae5f8a4ffe509c99789fd548ff5c693dbaa88306c9bc335a"
+    },
+    {
+      "mode": "sparse",
+      "answer": "42",
+      "metrics": {
+        "group_steps": 576,
+        "selected_old_tokens": 2824,
+        "old_history_tokens": 14976,
+        "dense_tail_tokens": 864,
+        "note": "reference implementation; no latency claim"
+      },
+      "stdout_SHA": "bf86667415b0118f549e684d3ded9bceee85f5c0d5c1852083d76feb2d9059c5",
+      "stderr_SHA": "a2226e90da2899df5598c4db77f3d1ca22a7205743e3bb1f5741708b6fc9bf1b"
+    }
+  ],
+  "environment": {
+    "transformers": "4.57.1",
+    "Torch": "2.4.0",
+    "numpy": "1.26.4"
+  },
+  "scope": "One short pretrained Qwen3-8B CLI execution witness, not benchmark accuracy, latency, or hybrid27B integration. Loader explicitly sets SDPA only in memory; old failed versions retained.",
+  "result_SHA": "fd47cc53e65701c4f054c4b4e98e0114310f0145a0462fd87ae471e1c297b792",
+  "model": "Qwen3-8B",
+  "prompt": "What is 6 times 7? Answer with just the number.",
+  "max_new_tokens": 8,
+  "source_files_SHA": {
+    "examples/check_native8b.py": "dfae53f10a864ed222a0493206723e65fa92536708f8aac9dc5b7d2cb52814b7",
+    "examples/generate_hf.py": "8ea7c3a8a063b21ac59d066c1f4aedce25f86c6e3ab9baeffca7f5d964e33b73",
+    "examples/replay.py": "e90973d358b5e2526f4f99f22d2287f5c548fcff27a3bd4ec9c4769e9787029f",
+    "src/prismkv/__init__.py": "edf422b258ff36093c7772bdfdb52adbabb5449a1db37e4a6aa94a0f00ad54da",
+    "src/prismkv/core.py": "bd2dd8896fcc1db422b7ca93e0fe4e11e5175584b7e8bdc68bbff7f2c3b4e678",
+    "src/prismkv/hf_reference.py": "7bd20d353994854843b0c358d88c5bcd2b5cfbfdf28d0774be1e40b34c55c7af",
+    "src/prismkv/native8b.py": "e276ab213d08357327e8c05d5cc0e1da15619c02df8d8a5b0d4b6b521c2f3994",
+    "src/prismkv/training.py": "11af4367a41cd9b60b4878fa6dee44672c6b1f42387242befb9f28a7d2d06399",
+    "src/prismkv/weights.py": "61ae3228b4df1085c9119bde9dbdb36711c23976aac19b8041d7c666348d32a8",
+    "tests/test_core.py": "1af9ca9d8fd6056f1fda734aee811fe370a62f7db4d331ae39c45f59af2be0f3",
+    "tests/test_hf_reference.py": "b061e4cac0634d80e7563309d2d7126344988d981f6b29f2ab97e4aa82741772",
+    "tests/test_weights.py": "9a3330138cd24106985881d2422c4787bf1a9fd466516ebd101b29dacdbb665d"
+  }
+}

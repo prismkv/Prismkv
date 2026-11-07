@@ -20,19 +20,22 @@ class Encoder:
     query_scale: float
 
 
-def load_reference_model(model_path, *, dtype=torch.float32, local_files_only=True):
-    """Load the documented SDPA reference even if a checkpoint saved FA2.
+def load_reference_model(model_path, *, dtype=torch.float32, local_files_only=True,
+                         backend="sdpa"):
+    """Load an explicit reference backend even if a checkpoint saved FA2.
 
     Some checkpoints serialize a private attention-backend flag. Under the
     pinned Transformers version it can survive a from_pretrained keyword.
     Change only the in-memory config; never rewrite the checkpoint or weights.
     This helper is a reference loader, not the native performance backend.
     """
+    if backend not in ("sdpa", "eager"):
+        raise ValueError("reference backend must be sdpa or eager")
     from transformers import AutoConfig, AutoModelForCausalLM
     config = AutoConfig.from_pretrained(model_path, local_files_only=local_files_only)
-    config._attn_implementation = "sdpa"
+    config._attn_implementation = backend
     return AutoModelForCausalLM.from_pretrained(model_path, config=config,
-        torch_dtype=dtype, attn_implementation="sdpa", local_files_only=local_files_only)
+        torch_dtype=dtype, attn_implementation=backend, local_files_only=local_files_only)
 
 
 def _dispatch(module, q, k, v, attention_mask, **kwargs):
@@ -90,13 +93,18 @@ class HFReference:
             raise ValueError(f"provide exactly all standard-attention KV encoders; missing={expected-set(encoders)}, extra={set(encoders)-expected}")
         # Register only after all non-mutating validation succeeds.
         from transformers import AttentionInterface, AttentionMaskInterface
-        from transformers.masking_utils import sdpa_mask
+        from transformers.masking_utils import sdpa_mask, eager_mask
         AttentionInterface.register("prismkv_reference", _dispatch)
         AttentionMaskInterface.register("prismkv_reference", sdpa_mask)
+        # Eager attention does not infer causality from a missing mask. Using
+        # SDPA's mask elision here would silently turn full prefill bidirectional.
+        AttentionInterface.register("prismkv_reference_eager", _dispatch)
+        AttentionMaskInterface.register("prismkv_reference_eager", eager_mask)
         for module in self.modules.values():
             module._prismkv_session = self
         for cfg, old in self.configs.values():
-            cfg._attn_implementation = "prismkv_reference"
+            cfg._attn_implementation = ("prismkv_reference_eager" if old == "eager"
+                                         else "prismkv_reference")
         self.begin_request()
 
     def begin_request(self):

@@ -28,18 +28,18 @@ Q/K matching supervision is necessary for downstream quality.
   prefill, actual generation, strict caps and incremental updates.
 - `src/prismkv/weights.py`: hashed, per-group, inference-only encoder format.
 
-The current suite has 17 passing CPU tests, including four tiny-backbone tests
-and a saved-backend configuration regression.
+The ordinary-reference suite has 18 passing CPU tests, including tiny-backbone
+integration, saved-backend loading and eager-causality regressions.
 The PPU8B kernel library compiles and its standalone GPU correctness witness
-passes six synthetic cases through64K history: exact selected features/IDs and
+passes six synthetic cases through 64K history: exact selected features/IDs and
 36 AV checks, maximum relativeL2 error0.001683. This does not reproduce the
 paper's latency, SAE index-construction performance or pretrained-model quality.
 Pretrained encoders for all 288 8B and 64 hybrid-27B dictionaries are included
 under `pretrained/`, with exact tensor/scales and source-hash packaging checks.
 The 8B training-context fingerprint manifest is included. The public pretrained
-Qwen3-8B CLI was exercised in both all-read and sparse modes with all288
+Qwen3-8B CLI was exercised in both all-read and sparse modes with all 288
 encoders: both answered42 on one short arithmetic prompt. See the
-[execution witness](reviewer_guide/pretrained_cli_validation.json). This is a
+[execution witness](reviewer_guide/pretrained_cli_validation_v4.json). This is a
 loader/execution check, not pretrained-scale quality validation. Full checkpoint
 lineage and benchmark launchers remain incomplete. Test results do not establish
 new downstream accuracy or speed improvements.
@@ -64,10 +64,11 @@ python examples/generate_hf.py --model /path/to/Qwen3-8B \
 The bundle must contain every standard-attention layer/KV group with saved Q/K
 scales; a different model's bundle is not interchangeable. See
 [the bundle notes](pretrained/README.md) for checkpoint histories and validation
-limits. The generation example targets the ordinary Qwen3 causal
-LM loader. The hybrid27B loader/runtime and its native timing path need separate
-integration and validation; matching an attention class name does not establish
-that full-model compatibility. Requests are batch-one, unpadded, causal and
+limits. The ordinary 8B generation example uses its pinned reference runtime. A separate
+[hybrid 27B reference witness](reviewer_guide/hybrid_reference.md) now runs both
+all-read and sparse modes with all 64encoders; its eager backend, separate
+framework-source hashes and unverified clean-install recipe are explicit. This
+is one short execution check, not full benchmark or native timing integration. Requests are batch-one, unpadded, causal and
 without sliding-window/soft-capped attention. This path is not optimized serving.
 
 PyTorch >=2.4 and Python >=3.10 are required. The portable reference uses Python
