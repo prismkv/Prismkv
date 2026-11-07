@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "summary_SHA": "d3d42d65261696211029398cff624804f893a359b60f3444d000844d4a65452d",
+  "source_hashes_verified": 38,
+  "actual_timed_router_SHA": "b4056fb140df58f520260839329d34f50b87d85894b9a55fa48e73897bd1c4c6",
+  "encoder_receipt_groups": 288,
+  "case_hashes_verified": 26,
+  "official_score_replays": 104,
+  "quest_page_and_budget_checks": 14976,
+  "sparse_AV_checks": 22464,
+  "scorer_hashes": {
+    "scripts/eval/synthetic/constants.py": "6740467c17b8dc06b6b30f4f97e54ce8de81db0dd879f1538d0b6b5727f4bd5f",
+    "scripts/eval/evaluate.py": "b9a5fcbded7209663d97670496c74dbcd6358ddbe3d9887a0c5f0c4f974bfe1c"
+  },
+  "max_AV_relative_L2": {
+    "prism": 0.0022997690830379725,
+    "quest_softmax": 0.0026470848824828863,
+    "quest_raw": 0.002658003242686391
+  },
+  "runtime": [
+    {
+      "torch": "2.4.0",
+      "transformers": "4.51.3",
+      "device": "PPU-ZW810",
+      "native_contract": {
+        "cache_write_reset": true,
+        "strided_sparse_AV_relative_L2": 0.0016351052327081561,
+        "full_sdpa_flash_relative_L2": 0.0
+      },
+      "GPU": "1"
+    },
+    {
+      "torch": "2.4.0",
+      "transformers": "4.51.3",
+      "device": "PPU-ZW810",
+      "native_contract": {
+        "cache_write_reset": true,
+        "strided_sparse_AV_relative_L2": 0.0016351052327081561,
+        "full_sdpa_flash_relative_L2": 0.0
+      },
+      "GPU": "2"
+    },
+    {
+      "torch": "2.4.0",
+      "transformers": "4.51.3",
+      "device": "PPU-ZW810",
+      "native_contract": {
+        "cache_write_reset": true,
+        "strided_sparse_AV_relative_L2": 0.0016351052327081561,
+        "full_sdpa_flash_relative_L2": 0.0
+      },
+      "GPU": "3"
+    },
+    {
+      "torch": "2.4.0",
+      "transformers": "4.51.3",
+      "device": "PPU-ZW810",
+      "native_contract": {
+        "cache_write_reset": true,
+        "strided_sparse_AV_relative_L2": 0.0016351052327081561,
+        "full_sdpa_flash_relative_L2": 0.0
+      },
+      "GPU": "4"
+    }
+  ],
+  "scope": "Same frozen timed selector, paired 26-case RULER subset, eager timing. No official-kernel or full-benchmark claim."
+}

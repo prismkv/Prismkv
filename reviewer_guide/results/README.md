@@ -105,3 +105,9 @@ read denominators and archive provenance limitations.
 [Paired 27B LongBench/RULER controls](direct_q_quality.md) compare weighted
 Q activations with dense moments under an 8% cap and sample/layer/group
 read-mean matching. The archive includes 13,998 verified paired records.
+
+## Quest GQA selection control
+
+[Paired 26-case RULER pilot](quest_gqa_control/README.md) uses the same timed
+Quest selector in quality and eager timing, with a shared indexed AV kernel.
+Both per-Q normalization and raw-mean aggregation are reported.
