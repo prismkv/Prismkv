@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "CPU_tests": 24,
+  "CPU_skips": 0,
+  "metric_fixtures": 29,
+  "verified_public_witness_scores": [
+    {
+      "model": "qwen8",
+      "mode": "full",
+      "score": 100.0,
+      "generation_reused": true
+    },
+    {
+      "model": "qwen8",
+      "mode": "all_read",
+      "score": 100.0,
+      "generation_reused": true
+    },
+    {
+      "model": "qwen8",
+      "mode": "sparse",
+      "score": 100.0,
+      "generation_reused": true
+    },
+    {
+      "model": "qwen27",
+      "mode": "full",
+      "score": 100.0,
+      "generation_reused": true
+    },
+    {
+      "model": "qwen27",
+      "mode": "all_read",
+      "score": 100.0,
+      "generation_reused": true
+    },
+    {
+      "model": "qwen27",
+      "mode": "sparse",
+      "score": 100.0,
+      "generation_reused": true
+    }
+  ],
+  "preprocessing_control": {
+    "raw_metric": 0.0,
+    "official_preprocessed_metric": 100.0
+  },
+  "official_longbench_files": {
+    "eval.py": "1a3acfc25d9b053e9bb75c479f7e385d0cb9989f0f7115346b7d632655967721",
+    "metrics.py": "e22e2a2662e0f7e683137fa3541f64edb6a801e9138d16d2f3459a6ab9941323"
+  },
+  "official_ruler_files": {
+    "scripts/eval/synthetic/constants.py": "6740467c17b8dc06b6b30f4f97e54ce8de81db0dd879f1538d0b6b5727f4bd5f",
+    "scripts/eval/evaluate.py": "b9a5fcbded7209663d97670496c74dbcd6358ddbe3d9887a0c5f0c4f974bfe1c"
+  },
+  "package_python_sources": {
+    "tests/test_hf_reference.py": "72ced343613fae1ca11ccf91b989cc5398a96b7c1922a515c879197bfaa942d4",
+    "tests/test_core.py": "1af9ca9d8fd6056f1fda734aee811fe370a62f7db4d331ae39c45f59af2be0f3",
+    "tests/test_evaluation.py": "27f3591db2a35add4f4084cedc8b5aef2ebe195900c2f1af86adf8fa3d85ac88",
+    "tests/test_weights.py": "9a3330138cd24106985881d2422c4787bf1a9fd466516ebd101b29dacdbb665d",
+    "examples/check_native8b.py": "dfae53f10a864ed222a0493206723e65fa92536708f8aac9dc5b7d2cb52814b7",
+    "examples/replay.py": "e90973d358b5e2526f4f99f22d2287f5c548fcff27a3bd4ec9c4769e9787029f",
+    "examples/generate_hf.py": "8ea7c3a8a063b21ac59d066c1f4aedce25f86c6e3ab9baeffca7f5d964e33b73",
+    "examples/evaluate_hf.py": "ab1563a31e5c614fff971c43822d321a910194edc0229b23fd51a8e5b34f2f02",
+    "examples/score_benchmark.py": "d7a1f798f55ce6cde34dd0fc6782b10924e87eeb42fa1f159549a57ee4503c55",
+    "examples/attach_full_reference.py": "b0cc8e40805e24eebfad0fc01080d4dd4e5e1cf4836da3e70f6df827545f29bb",
+    "examples/prepare_benchmark.py": "7ac082e388682c24d491bbdf9f2c9143def8e8f84567378948bfbaf03c9fe533",
+    "src/prismkv/training.py": "11af4367a41cd9b60b4878fa6dee44672c6b1f42387242befb9f28a7d2d06399",
+    "src/prismkv/hf_reference.py": "f424ef7c4107c9eeafea5f3177d06f767768deb1dabf980a08416ea54a94c20c",
+    "src/prismkv/__init__.py": "edf422b258ff36093c7772bdfdb52adbabb5449a1db37e4a6aa94a0f00ad54da",
+    "src/prismkv/core.py": "bd2dd8896fcc1db422b7ca93e0fe4e11e5175584b7e8bdc68bbff7f2c3b4e678",
+    "src/prismkv/benchmarks.py": "c7396be1bda71e5b02f0b804b412a3bd3c058e17d16ca430842a500cedf7b3c3",
+    "src/prismkv/weights.py": "61ae3228b4df1085c9119bde9dbdb36711c23976aac19b8041d7c666348d32a8",
+    "src/prismkv/evaluation.py": "cf2943c0b167b49ff9ef6d2661259c0e1d542cea5cb1424fcfe88203aa42bf8d",
+    "src/prismkv/native8b.py": "e276ab213d08357327e8c05d5cc0e1da15619c02df8d8a5b0d4b6b521c2f3994"
+  },
+  "scope": "CPU scorer-only change. Six hash-checked prior predictions rescored unchanged. No new generation, benchmark quality or latency claim"
+}

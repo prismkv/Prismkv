@@ -8,6 +8,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import re
 import statistics
 from .evaluation import sha_file
 
@@ -119,10 +120,20 @@ def load_official_longbench(path):
 
 
 def load_official_ruler(path):
-    file=Path(path)/'scripts/eval/synthetic/constants.py'
+    root=Path(path)
+    file=root/'scripts/eval/synthetic/constants.py'
+    evaluator=root/'scripts/eval/evaluate.py'
     spec=importlib.util.spec_from_file_location('prismkv_official_ruler_metrics',file)
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
-    return module,{'scripts/eval/synthetic/constants.py':sha_file(file)}
+    # Do not import the CLI: it parses argv, may download data, and merges shards.
+    tree=ast.parse(evaluator.read_text(encoding='utf8'))
+    nodes=[node for node in tree.body if isinstance(node,ast.FunctionDef) and node.name=='postprocess_pred']
+    if len(nodes)!=1:
+        raise ValueError('expected the official RULER prediction postprocessor')
+    namespace={'re':re}
+    exec(compile(ast.Module(body=nodes,type_ignores=[]),str(evaluator),'exec'),namespace)
+    module.postprocess_pred=namespace['postprocess_pred']
+    return module,{str(p.relative_to(root).as_posix()):sha_file(p) for p in (file,evaluator)}
 
 
 def score_records(inputs, predictions, *, official_root, benchmark):
@@ -154,7 +165,9 @@ def score_records(inputs, predictions, *, official_root, benchmark):
             base=ruler_base_task(task)
             if any(r.get('base_task',base)!=base for r,_ in pairs):
                 raise ValueError('RULER task mapping mismatch')
-            score=official.TASKS[base]['metric_fn']([p for _,p in pairs],[r['answers'] for r,_ in pairs])
+            task_config=official.TASKS[base]
+            score=task_config['metric_fn']([official.postprocess_pred(p,task_config) for _,p in pairs],
+                                          [r['answers'] for r,_ in pairs])
             cells.append(dict(task=task,context_length=band,cases=len(pairs),official_score=score))
     else:
         raise ValueError('supported benchmarks: longbench/ruler')

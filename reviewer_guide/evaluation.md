@@ -27,6 +27,12 @@ See [the hash-checked execution report](evaluation_validation_v1.json):
   initial-prompt opportunities. This is an execution witness, not a benchmark
   average, new quality improvement or exact historical-backend reproduction.
 
+The [scoring follow-up](scoring_validation_v1.json) verifies the current source
+hashes and RULER's official prediction cleanup, which the initial wrapper omitted.
+All six archived predictions retain their scores after the correction. A separate
+control with a tab inside a predicted span scores 0 before cleanup and 100 with
+the official cleanup. No new model generation was needed for this CPU check.
+
 Even with the same generated IDs, BF16 all-read and original-Full teacher NLLs
 are not identical. The report retains those differences. No blanket probability
 equivalence or downstream-quality guarantee is inferred from the witness.
@@ -45,7 +51,10 @@ The validated classic LongBench checkout is commit
 `2e00731f8d0bff23dc4325161044d0ed8af94c1e`. Its `LongBench/metrics.py`
 requires the dependencies listed by that official checkout, including `rouge`,
 `jieba` and `fuzzywuzzy`. Pin and record those dependencies in your scoring
-environment. RULER metrics are loaded from `scripts/eval/synthetic/constants.py`.
+environment. RULER metrics are loaded from `scripts/eval/synthetic/constants.py`
+and its `postprocess_pred` function is loaded from `scripts/eval/evaluate.py`
+without running the official CLI's argument parsing, downloads or shard merging.
+The scoring follow-up records the exact hashes of both scorer files.
 Do not substitute an ad-hoc substring or exact-match metric for official scoring.
 
 ## 1. Prepare one task with an explicit input protocol
