@@ -99,3 +99,9 @@ KVzip, a causal decomposition of the historical benchmark gap, or latency.
 [Llama Table 6 scope and five-length RULER audit](llama_appendix_scope.md)
 reports the omitted 8K–32K scope, all archived length scores, common
 read denominators and archive provenance limitations.
+
+## Direct Q routing at comparable reads
+
+[Paired 27B LongBench/RULER controls](direct_q_quality.md) compare weighted
+Q activations with dense moments under an 8% cap and sample/layer/group
+read-mean matching. The archive includes 13,998 verified paired records.
