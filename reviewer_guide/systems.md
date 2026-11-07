@@ -35,6 +35,15 @@ not measured peak device memory. Moments, IDs, build temporaries, graphs and
 allocator reservation must be reported separately. `Native8B.buffer_bytes()`
 lists live tensors owned by this binding; it excludes caller/model storage.
 
+A [32K/64K allocator-memory diagnostic](results/native_stage_profile/README.md)
+now measures the original timed implementation, which retains membership lists
+and moments as well as bitmaps. At64K, Torch allocated memory rises from24.268GiB
+for Full to34.576GiB after sparse setup, including encoders. Index-build peak
+allocated/reserved values are35.184/35.484GiB. These are allocator counters for
+one input with H+8cache capacity, not physical device peak or the minimum memory
+of every possible binding. KV-access acceleration here adds substantial index
+storage; it is not a KV-memory compression result.
+
 ## Timing
 
 Report prefill, first index build, graph capture/startup, score GEMM,
@@ -42,3 +51,11 @@ normalization/selection, union/compaction, selected attention, full-model decode
 and periodic update separately. Native kernel speedups are not automatically
 whole-model or serving speedups. The PPU result does not establish NVIDIA
 throughput, concurrent-request behavior or p95 latency.
+
+The [same diagnostic](results/native_stage_profile/README.md) includes isolated
+stage graphs and independently measured full module graphs across36layers.
+At64K, score GEMM, fused normalization/Top16, union/compaction and indexedAV
+are0.6351,1.1667,0.6191 and1.5009ms in stage-isolated graphs. Those timings
+are not additive shares of the complete3.9003ms sparse graph: cache/scheduling
+patterns differ. Instrumented eager timing is also retained separately and
+includes Python launch gaps. This does not replace the paper's end-to-end curve.

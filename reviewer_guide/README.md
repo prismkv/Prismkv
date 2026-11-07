@@ -21,6 +21,7 @@ This guide distinguishes the submitted method from supplementary variants.
 | Are count, mean and variance each necessary? | [Seven score-term controls](results/score_terms_pilot/README.md) |Same58cases and fixed SAE buckets, matched counts; mean-only is competitive here, so no necessity claim |
 | How does a closely related retrieval selector compare? | [Squeezed reference-port pilot](results/squeezed_pilot/README.md) |29cases; source-style per-Q budget differs, shared-budget adaptation has14infeasible cases; paired denominators and port limits explicit |
 | What are actual reads on the 8B benchmarks? | [8B counter audit](results/actual_reads_8b/README.md) |31,250 baseline records and 7,000 reference identities checked; 50 shared RULER prefill-first-token mismatches remain an explicit quality-comparison limitation |
+| Where are route phases and memory costs? | [Native8B phase/memory diagnostic](results/native_stage_profile/README.md) |32K/64K, same released kernels, all36layers; isolated stage graphs and complete chains kept separate; Torch allocator peak and retained-index storage disclosed, not physical device peak |
 
 The CPU tests verify math and state semantics. They do not establish downstream
 quality, GPU latency, mainstream GPU support, or production-serving performance.

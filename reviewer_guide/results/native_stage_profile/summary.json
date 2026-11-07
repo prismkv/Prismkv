@@ -1,0 +1,281 @@
+{
+  "complete": true,
+  "model": "Qwen3-8B",
+  "scope": "Two single-input native8B diagnostics on onePPU,32K/64K. Same released kernel sources. Instrumented eager phases and uninstrumented module graph chains are different measurements; percentages cannot use graph latency as denominator. Torch allocator memory is not physical device peak or production serving. No end-to-end generation, baseline quality or new-card claim.",
+  "raw_summary_SHA": "b7d52f8c15e7253927e2ce3b9258c62c0be310594ed03962e41614a69996acd5",
+  "kernel_sources_match_release": true,
+  "kernel_source_SHAs": {
+    "av_tuned.cu": "b6990ffc5c1d58b182ad164d2a1405a4ec7663575f46e40c2c6f478e80433bf3",
+    "pack.cu": "b28e57e8cafab78dc2bec0dce541edfe94f4d538e75e9f36880a0dec7ac11a79",
+    "route_parallel.cu": "645d6972011f22d5b38e7e3a3103e07a344e35fc77631f5d2f422a54375810dc",
+    "union.cu": "2ab07ce04f2c10887dd95b2eacba7790ee10bc854c5c1d3df22a62fb63f8937f"
+  },
+  "tables": [
+    {
+      "complete": true,
+      "model": "Qwen3-8B",
+      "H": 32768,
+      "tail": 8,
+      "layers": 36,
+      "groups": 288,
+      "features": 3000,
+      "mean_memberships": 8,
+      "selected_features": 16,
+      "input_SHA": "46a70e7ff6346555db364e5d48a6e04b5caeddfbad099161716fd8181e6365f1",
+      "source_authorization_SHA": "4ae87043c893e99629e25a990dc1ba5b43e2d001c6dbd620c0511bee65fc18c4",
+      "phase_ms_sum36_instrumented_eager": {
+        "indexed_AV": 1.41240000911057,
+        "normalize_aggregate_Top16": 1.5267400033771992,
+        "bitmap_union_compaction": 0.5718799973838031,
+        "Q_pack": 0.6221000000368804,
+        "summary_GEMM": 0.9280799999833107
+      },
+      "graph_chain_ms_sum36": {
+        "flash": 5.349139928817749,
+        "sparse": 3.3769800662994385,
+        "sparse_AV": 1.0,
+        "sdpa": 5.502579927444458
+      },
+      "isolated_stage_graph_ms_sum36": {
+        "Q_pack": 0.10818000137805939,
+        "summary_GEMM": 0.6377600133419037,
+        "normalize_aggregate_Top16": 1.1787599921226501,
+        "bitmap_union_compaction": 0.5843000113964081,
+        "indexed_AV": 1.0020399689674377
+      },
+      "isolated_stage_graph_checks": [
+        {
+          "stage": "Q_pack",
+          "restored_full_chain_counts_equal": true
+        },
+        {
+          "stage": "summary_GEMM",
+          "restored_full_chain_counts_equal": true
+        },
+        {
+          "stage": "normalize_aggregate_Top16",
+          "restored_full_chain_counts_equal": true
+        },
+        {
+          "stage": "bitmap_union_compaction",
+          "restored_full_chain_counts_equal": true
+        },
+        {
+          "stage": "indexed_AV",
+          "restored_full_chain_counts_equal": true
+        }
+      ],
+      "native_tensor_inventory": {
+        "unique_device_storage_bytes": 6067558656,
+        "storage_count": 1728,
+        "exclusive_category_bytes": {
+          "membership_bitmaps": 3538944000,
+          "membership_lists": 603979776,
+          "packed_summary_matrix": 884736000,
+          "key_moments_counts": 888192000,
+          "candidate_ID_capacity": 37748736,
+          "AV_workspace": 76972032,
+          "other_native_buffers": 36986112
+        },
+        "scope": "Unique storages reachable from Native objects, deduplicated by device/storage pointer. Categories use fixed priority for aliases; not all model/allocator/runtime allocations."
+      },
+      "graph_attention_speedup": 1.5840010375540778,
+      "graph_checks": [
+        {
+          "mode": "flash",
+          "relative_L2": 0.0
+        },
+        {
+          "mode": "sdpa",
+          "relative_L2": 0.0
+        },
+        {
+          "mode": "sparse",
+          "relative_L2": 0.0
+        },
+        {
+          "mode": "sparse_AV",
+          "relative_L2": 0.0
+        }
+      ],
+      "Torch_memory": {
+        "model_cache_capacity_allocated": {
+          "allocated_bytes": 21225386496,
+          "reserved_bytes": 21539848192,
+          "peak_allocated_bytes": 21225386496,
+          "peak_reserved_bytes": 21539848192
+        },
+        "Full_prefill_and8steps": {
+          "allocated_bytes": 21225681408,
+          "reserved_bytes": 21539848192,
+          "peak_allocated_bytes": 21595554304,
+          "peak_reserved_bytes": 22951231488
+        },
+        "plus_encoder_weights": {
+          "allocated_bytes": 21721440768,
+          "reserved_bytes": 21774729216,
+          "peak_allocated_bytes": 21721440768,
+          "peak_reserved_bytes": 21774729216
+        },
+        "plus_native_index_build_peak": {
+          "allocated_bytes": 27855589888,
+          "reserved_bytes": 28273803264,
+          "peak_allocated_bytes": 28178954752,
+          "peak_reserved_bytes": 28284289024
+        },
+        "after_graph_profile": {
+          "allocated_bytes": 28142161920,
+          "reserved_bytes": 28319940608,
+          "peak_allocated_bytes": 28178954752,
+          "peak_reserved_bytes": 28319940608
+        }
+      },
+      "index_build_seconds": 1.5853048879653215,
+      "old_unique_read_fraction": 0.07072724236382379,
+      "max_AV_relative_L2": 0.002181603806093335,
+      "torch": "2.4.0",
+      "scope": "Single archived input/length; one true Full decode snapshot after8forced continuation steps, no task-quality claim. Same original native8B selector/AV kernels. Eager instrumented phases include launch gaps; isolated stage graphs remove those Python gaps but have a different inter-stage cache/scheduling pattern. Neither set is an additive decomposition of steady-state whole-chain latency. Graph values are module replay, not full-model generation. Memory is Torch allocator allocated/reserved/peak, not physical device peak, KVcompression, or serving concurrency. Index build is a single setup observation, not a new speed curve.",
+      "closure_SHA": "f65aff735772c9d6886cd77fe77793d0b37f625bb5a0908386cdffcd299a8f6e",
+      "strict_route_group_checks": 288,
+      "bitmap_bytes_derived_total": 3538944000,
+      "Torch_persistent_allocated_increments": {
+        "encoders_minus_Full": 495759360,
+        "index_minus_encoders": 6134149120,
+        "total_sparse_setup_minus_Full": 6629908480
+      }
+    },
+    {
+      "complete": true,
+      "model": "Qwen3-8B",
+      "H": 65536,
+      "tail": 8,
+      "layers": 36,
+      "groups": 288,
+      "features": 3000,
+      "mean_memberships": 8,
+      "selected_features": 16,
+      "input_SHA": "e67a0ac0d2e653a0edc6eb1d3a44e13a95a288e17ff61bec1c3779fca90e5ad2",
+      "source_authorization_SHA": "4ae87043c893e99629e25a990dc1ba5b43e2d001c6dbd620c0511bee65fc18c4",
+      "phase_ms_sum36_instrumented_eager": {
+        "normalize_aggregate_Top16": 1.5117000006139278,
+        "Q_pack": 0.27822000021114945,
+        "indexed_AV": 1.8593999929726124,
+        "summary_GEMM": 0.9004000015556812,
+        "bitmap_union_compaction": 0.6123600001446903
+      },
+      "graph_chain_ms_sum36": {
+        "sparse_AV": 1.495360016822815,
+        "sparse": 3.900279998779297,
+        "sdpa": 10.311180114746094,
+        "flash": 10.025919914245605
+      },
+      "isolated_stage_graph_ms_sum36": {
+        "Q_pack": 0.0854400023818016,
+        "summary_GEMM": 0.6350599825382233,
+        "normalize_aggregate_Top16": 1.1666600108146667,
+        "bitmap_union_compaction": 0.6191000044345856,
+        "indexed_AV": 1.5008800029754639
+      },
+      "isolated_stage_graph_checks": [
+        {
+          "stage": "Q_pack",
+          "restored_full_chain_counts_equal": true
+        },
+        {
+          "stage": "summary_GEMM",
+          "restored_full_chain_counts_equal": true
+        },
+        {
+          "stage": "normalize_aggregate_Top16",
+          "restored_full_chain_counts_equal": true
+        },
+        {
+          "stage": "bitmap_union_compaction",
+          "restored_full_chain_counts_equal": true
+        },
+        {
+          "stage": "indexed_AV",
+          "restored_full_chain_counts_equal": true
+        }
+      ],
+      "native_tensor_inventory": {
+        "unique_device_storage_bytes": 10249420032,
+        "storage_count": 1728,
+        "exclusive_category_bytes": {
+          "membership_bitmaps": 7077888000,
+          "membership_lists": 1207959552,
+          "packed_summary_matrix": 884736000,
+          "key_moments_counts": 888192000,
+          "candidate_ID_capacity": 75497472,
+          "AV_workspace": 76972032,
+          "other_native_buffers": 38174976
+        },
+        "scope": "Unique storages reachable from Native objects, deduplicated by device/storage pointer. Categories use fixed priority for aliases; not all model/allocator/runtime allocations."
+      },
+      "graph_attention_speedup": 2.5705641434418816,
+      "graph_checks": [
+        {
+          "mode": "flash",
+          "relative_L2": 0.0
+        },
+        {
+          "mode": "sdpa",
+          "relative_L2": 0.0
+        },
+        {
+          "mode": "sparse",
+          "relative_L2": 0.0
+        },
+        {
+          "mode": "sparse_AV",
+          "relative_L2": 0.0
+        }
+      ],
+      "Torch_memory": {
+        "model_cache_capacity_allocated": {
+          "allocated_bytes": 26057486848,
+          "reserved_bytes": 26371686400,
+          "peak_allocated_bytes": 26057486848,
+          "peak_reserved_bytes": 26371686400
+        },
+        "Full_prefill_and8steps": {
+          "allocated_bytes": 26057781760,
+          "reserved_bytes": 26371686400,
+          "peak_allocated_bytes": 26561872384,
+          "peak_reserved_bytes": 31104958464
+        },
+        "plus_encoder_weights": {
+          "allocated_bytes": 26553541120,
+          "reserved_bytes": 26606567424,
+          "peak_allocated_bytes": 26553541120,
+          "peak_reserved_bytes": 26606567424
+        },
+        "plus_native_index_build_peak": {
+          "allocated_bytes": 37125859328,
+          "reserved_bytes": 37310431232,
+          "peak_allocated_bytes": 37778181632,
+          "peak_reserved_bytes": 38101057536
+        },
+        "after_graph_profile": {
+          "allocated_bytes": 37413519360,
+          "reserved_bytes": 37622906880,
+          "peak_allocated_bytes": 37778181632,
+          "peak_reserved_bytes": 38101057536
+        }
+      },
+      "index_build_seconds": 2.276131259277463,
+      "old_unique_read_fraction": 0.06915579901801215,
+      "max_AV_relative_L2": 0.002068704692646861,
+      "torch": "2.4.0",
+      "scope": "Single archived input/length; one true Full decode snapshot after8forced continuation steps, no task-quality claim. Same original native8B selector/AV kernels. Eager instrumented phases include launch gaps; isolated stage graphs remove those Python gaps but have a different inter-stage cache/scheduling pattern. Neither set is an additive decomposition of steady-state whole-chain latency. Graph values are module replay, not full-model generation. Memory is Torch allocator allocated/reserved/peak, not physical device peak, KVcompression, or serving concurrency. Index build is a single setup observation, not a new speed curve.",
+      "closure_SHA": "3ab46b98e71f7d1c79645041103e3cd6ebb11194cc1ccce3f6677aaee5542185",
+      "strict_route_group_checks": 288,
+      "bitmap_bytes_derived_total": 7077888000,
+      "Torch_persistent_allocated_increments": {
+        "encoders_minus_Full": 495759360,
+        "index_minus_encoders": 10572318208,
+        "total_sparse_setup_minus_Full": 11068077568
+      }
+    }
+  ]
+}

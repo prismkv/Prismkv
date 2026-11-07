@@ -70,3 +70,12 @@ causal SAE superiority claim, or a latency reproduction.
 counters with explicit zero-event denominators. It also discloses a newly found
 50-case shared prefill-first-token mismatch in the old RULER baseline cohort;
 counter verification is not certification of a strictly paired quality result.
+
+## Native phase latency and allocator memory
+
+[Same-kernel32K/64K diagnostic](native_stage_profile/README.md) reports five
+isolated stage graphs, complete module graphs, Torch allocator counters and
+a deduplicated native-tensor inventory. It verifies576group output checks and
+the original compile manifests. Isolated phases are not additive percentages
+of the full chain; allocator peaks are not physical device peaks. No new-card,
+serving or full-model-generation claim is made.
