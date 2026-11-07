@@ -1,0 +1,236 @@
+{
+  "passed": true,
+  "package_python_sources": {
+    "tests/test_hf_reference.py": "72ced343613fae1ca11ccf91b989cc5398a96b7c1922a515c879197bfaa942d4",
+    "tests/test_core.py": "1af9ca9d8fd6056f1fda734aee811fe370a62f7db4d331ae39c45f59af2be0f3",
+    "tests/test_evaluation.py": "27f3591db2a35add4f4084cedc8b5aef2ebe195900c2f1af86adf8fa3d85ac88",
+    "tests/test_weights.py": "9a3330138cd24106985881d2422c4787bf1a9fd466516ebd101b29dacdbb665d",
+    "examples/check_native8b.py": "dfae53f10a864ed222a0493206723e65fa92536708f8aac9dc5b7d2cb52814b7",
+    "examples/replay.py": "e90973d358b5e2526f4f99f22d2287f5c548fcff27a3bd4ec9c4769e9787029f",
+    "examples/generate_hf.py": "8ea7c3a8a063b21ac59d066c1f4aedce25f86c6e3ab9baeffca7f5d964e33b73",
+    "examples/evaluate_hf.py": "ab1563a31e5c614fff971c43822d321a910194edc0229b23fd51a8e5b34f2f02",
+    "examples/score_benchmark.py": "d7a1f798f55ce6cde34dd0fc6782b10924e87eeb42fa1f159549a57ee4503c55",
+    "examples/attach_full_reference.py": "b0cc8e40805e24eebfad0fc01080d4dd4e5e1cf4836da3e70f6df827545f29bb",
+    "examples/prepare_benchmark.py": "7ac082e388682c24d491bbdf9f2c9143def8e8f84567378948bfbaf03c9fe533",
+    "src/prismkv/training.py": "11af4367a41cd9b60b4878fa6dee44672c6b1f42387242befb9f28a7d2d06399",
+    "src/prismkv/hf_reference.py": "f424ef7c4107c9eeafea5f3177d06f767768deb1dabf980a08416ea54a94c20c",
+    "src/prismkv/__init__.py": "edf422b258ff36093c7772bdfdb52adbabb5449a1db37e4a6aa94a0f00ad54da",
+    "src/prismkv/core.py": "bd2dd8896fcc1db422b7ca93e0fe4e11e5175584b7e8bdc68bbff7f2c3b4e678",
+    "src/prismkv/benchmarks.py": "8bb93693b2b65a4d3945ce9738ee04637936ddcb573048b3c0ec2062a80d5611",
+    "src/prismkv/weights.py": "61ae3228b4df1085c9119bde9dbdb36711c23976aac19b8041d7c666348d32a8",
+    "src/prismkv/evaluation.py": "cf2943c0b167b49ff9ef6d2661259c0e1d542cea5cb1424fcfe88203aa42bf8d",
+    "src/prismkv/native8b.py": "e276ab213d08357327e8c05d5cc0e1da15619c02df8d8a5b0d4b6b521c2f3994"
+  },
+  "CPU_suite": {
+    "passed": true,
+    "tests": 24,
+    "skips": 0,
+    "raw_proof_SHA": "328535c7ba7b20c712fd0193a6bbad0da964694f037dcb8157042cb3d8b1ff88"
+  },
+  "input_format_parity": {
+    "passed": true,
+    "cases": 14000,
+    "jobs": 162,
+    "totals": {
+      "longbench:Qwen3.8-27B": 3750,
+      "longbench:Qwen3-8B": 3750,
+      "ruler:Qwen3.8-27B": 3250,
+      "ruler:Qwen3-8B": 3250
+    },
+    "audit_SHA": "f1610f958a555ced546a0d763a31fb9cce2ac7772d9703ba8076602b59630a3b",
+    "scope": "Token-ID, generation-cap and reference-label format checks only; no model forward or new benchmark scores"
+  },
+  "official_metric_contracts": {
+    "passed": true,
+    "tasks": 29,
+    "proof_SHA": "4adb3b76b26459e303909cf331b9dcc0960a7ab01d4322bf8d25c7e9057e759e",
+    "scope": "Synthetic prediction/label fixtures, 16 LongBench tasks and 13 RULER tasks, not new model scores"
+  },
+  "pretrained_pipeline": [
+    {
+      "model": "Qwen3-8B",
+      "case": "8192_niah_single_3_index0",
+      "rows": [
+        {
+          "mode": "full",
+          "tokens": 43,
+          "same_free_ids_as_Full": true,
+          "Full_target_mean_nll": 0.0011912224324835267,
+          "Full_target_ppl": 1.0011919322197356,
+          "official_single_case_score": 100.0,
+          "access": {
+            "source": "derived_full_policy",
+            "group_steps": 12096,
+            "old_history_opportunities": 88893504,
+            "selected_old_unique": 88893504,
+            "selected_old_raw": 88893504,
+            "old_unique_read_fraction": 1.0,
+            "indexed_prefix_opportunities": 88893504,
+            "selected_indexed_unique": 88893504,
+            "generated_indexed_unique": 0,
+            "generated_indexed_raw": 0,
+            "dense_generated_tail": 260064,
+            "warmup_group_steps": 0,
+            "routed_group_steps": 0,
+            "routed_old_unique_read_fraction": null,
+            "scope": "standard-attention KV groups only; Full counts are policy-derived"
+          },
+          "prediction_SHA": "68eeed23476ee6275d7ba3dda984e49599d7968bc96d83254c74e73d206a5c1f",
+          "teacher_NLL_max_difference_from_Full": 0.0
+        },
+        {
+          "mode": "all_read",
+          "tokens": 43,
+          "same_free_ids_as_Full": true,
+          "Full_target_mean_nll": 0.001135448640409613,
+          "Full_target_ppl": 1.0011360935062648,
+          "official_single_case_score": 100.0,
+          "access": {
+            "source": "instrumented_reference",
+            "group_steps": 12096,
+            "old_history_opportunities": 88893504,
+            "selected_old_unique": 88893504,
+            "selected_old_raw": 88893504,
+            "old_unique_read_fraction": 1.0,
+            "indexed_prefix_opportunities": 88893504,
+            "selected_indexed_unique": 88893504,
+            "generated_indexed_unique": 0,
+            "generated_indexed_raw": 0,
+            "dense_generated_tail": 260064,
+            "warmup_group_steps": 0,
+            "routed_group_steps": 0,
+            "routed_old_unique_read_fraction": null,
+            "scope": "standard-attention KV groups only; initial prompt separated from indexed generation"
+          },
+          "prediction_SHA": "1d1b3e10756a70bb9ae3c032231f2757273b1d8dffaa1112e544b46a6d85a3e6",
+          "teacher_NLL_max_difference_from_Full": 0.002433221787214279
+        },
+        {
+          "mode": "sparse",
+          "tokens": 43,
+          "same_free_ids_as_Full": true,
+          "Full_target_mean_nll": 0.0007491262386880014,
+          "Full_target_ppl": 1.000749406903829,
+          "official_single_case_score": 100.0,
+          "access": {
+            "source": "instrumented_reference",
+            "group_steps": 12096,
+            "old_history_opportunities": 88893504,
+            "selected_old_unique": 7344964,
+            "selected_old_raw": 10699683,
+            "old_unique_read_fraction": 0.08262655502926287,
+            "indexed_prefix_opportunities": 88893504,
+            "selected_indexed_unique": 7344964,
+            "generated_indexed_unique": 0,
+            "generated_indexed_raw": 0,
+            "dense_generated_tail": 260064,
+            "warmup_group_steps": 288,
+            "routed_group_steps": 11808,
+            "routed_old_unique_read_fraction": 0.06025159295680588,
+            "scope": "standard-attention KV groups only; initial prompt separated from indexed generation"
+          },
+          "prediction_SHA": "8889a3315d9e7576ce5e9a4e7b51d9e9dc9bf262dea223e8bb5704d94202d2c3",
+          "teacher_NLL_max_difference_from_Full": 0.013105353806167841
+        }
+      ],
+      "summary_SHA": "a0575662ce039763539b61cf8163f5b5d7f880d4caac25b7ea7fb8b92ef67966",
+      "scope": "One preselected archived case, real publicCLI execution/metric trace. Not a full benchmark, independent quality confirmation, native latency result, or exact historical-backend reproduction."
+    },
+    {
+      "model": "Qwen3.8-27B",
+      "case": "8192_niah_single_3_index0",
+      "rows": [
+        {
+          "mode": "full",
+          "tokens": 52,
+          "same_free_ids_as_Full": true,
+          "Full_target_mean_nll": 0.009747128239311974,
+          "Full_target_ppl": 1.0097947862107006,
+          "official_single_case_score": 100.0,
+          "access": {
+            "source": "derived_full_policy",
+            "group_steps": 3264,
+            "old_history_opportunities": 25890048,
+            "selected_old_unique": 25890048,
+            "selected_old_raw": 25890048,
+            "old_unique_read_fraction": 1.0,
+            "indexed_prefix_opportunities": 25890048,
+            "selected_indexed_unique": 25890048,
+            "generated_indexed_unique": 0,
+            "generated_indexed_raw": 0,
+            "dense_generated_tail": 84864,
+            "warmup_group_steps": 0,
+            "routed_group_steps": 0,
+            "routed_old_unique_read_fraction": null,
+            "scope": "standard-attention KV groups only; Full counts are policy-derived"
+          },
+          "prediction_SHA": "1f13a9b6cc136ef3fa6643bea72d3465f9e989ee4b91ab64127ce9b1b7c24d78",
+          "teacher_NLL_max_difference_from_Full": 0.0
+        },
+        {
+          "mode": "all_read",
+          "tokens": 52,
+          "same_free_ids_as_Full": true,
+          "Full_target_mean_nll": 0.008803752220638391,
+          "Full_target_ppl": 1.008842619221975,
+          "official_single_case_score": 100.0,
+          "access": {
+            "source": "instrumented_reference",
+            "group_steps": 3264,
+            "old_history_opportunities": 25890048,
+            "selected_old_unique": 25890048,
+            "selected_old_raw": 25890048,
+            "old_unique_read_fraction": 1.0,
+            "indexed_prefix_opportunities": 25890048,
+            "selected_indexed_unique": 25890048,
+            "generated_indexed_unique": 0,
+            "generated_indexed_raw": 0,
+            "dense_generated_tail": 84864,
+            "warmup_group_steps": 0,
+            "routed_group_steps": 0,
+            "routed_old_unique_read_fraction": null,
+            "scope": "standard-attention KV groups only; initial prompt separated from indexed generation"
+          },
+          "prediction_SHA": "638152389276c0df13e1eef31dc7603b31f70a5f3c817685f5abe84b3755493e",
+          "teacher_NLL_max_difference_from_Full": 0.03518843650817871
+        },
+        {
+          "mode": "sparse",
+          "tokens": 52,
+          "same_free_ids_as_Full": true,
+          "Full_target_mean_nll": 0.006538192991461309,
+          "Full_target_ppl": 1.0065596136339092,
+          "official_single_case_score": 100.0,
+          "access": {
+            "source": "instrumented_reference",
+            "group_steps": 3264,
+            "old_history_opportunities": 25890048,
+            "selected_old_unique": 1898493,
+            "selected_old_raw": 2686662,
+            "old_unique_read_fraction": 0.07332906451158376,
+            "indexed_prefix_opportunities": 25890048,
+            "selected_indexed_unique": 1898493,
+            "generated_indexed_unique": 0,
+            "generated_indexed_raw": 0,
+            "dense_generated_tail": 84864,
+            "warmup_group_steps": 64,
+            "routed_group_steps": 3200,
+            "routed_old_unique_read_fraction": 0.05479564580181543,
+            "scope": "standard-attention KV groups only; initial prompt separated from indexed generation"
+          },
+          "prediction_SHA": "47faf5a9539d2d316a9898c67bf4bca94189595fd57f4adc806686bd9bd1d98f",
+          "teacher_NLL_max_difference_from_Full": 0.18821819126605988
+        }
+      ],
+      "summary_SHA": "0b739e5f8490f526dcd9326998f01916cf7a6600f1a008af0bdfa21e2ff3e5d1",
+      "scope": "One preselected archived case, real publicCLI execution/metric trace. Not a full benchmark, independent quality confirmation, native latency result, or exact historical-backend reproduction."
+    }
+  ],
+  "limitations": [
+    "One preselected 8K RULER example per model; not a full downstream rerun",
+    "CPU suite uses Transformers4.57.1; hybrid pretrained execution uses separately fingerprinted development runtime",
+    "All-read generated IDs match Full on these cases, but BF16 teacher NLLs differ; no probability-equivalence guarantee",
+    "Slow quality/reference implementation; not native latency or production serving validation",
+    "Input-format parity does not resolve archived backend/prefill numeric discrepancies"
+  ]
+}

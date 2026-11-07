@@ -21,7 +21,7 @@ class Encoder:
 
 
 def load_reference_model(model_path, *, dtype=torch.float32, local_files_only=True,
-                         backend="sdpa"):
+                         backend="sdpa", config_overrides=None):
     """Load an explicit reference backend even if a checkpoint saved FA2.
 
     Some checkpoints serialize a private attention-backend flag. Under the
@@ -33,6 +33,11 @@ def load_reference_model(model_path, *, dtype=torch.float32, local_files_only=Tr
         raise ValueError("reference backend must be sdpa or eager")
     from transformers import AutoConfig, AutoModelForCausalLM
     config = AutoConfig.from_pretrained(model_path, local_files_only=local_files_only)
+    if config_overrides:
+        if config.model_type != "qwen3" or set(config_overrides)-{"rope_scaling","max_position_embeddings"}:
+            raise ValueError("only explicit Qwen3 RoPE/context overrides are supported")
+        for key,value in config_overrides.items():
+            setattr(config,key,value)
     config._attn_implementation = backend
     return AutoModelForCausalLM.from_pretrained(model_path, config=config,
         torch_dtype=dtype, attn_implementation=backend, local_files_only=local_files_only)
@@ -198,7 +203,8 @@ class HFReference:
                     query_topk=self.selected_buckets, unique_cap=self.unique_cap)
             answer[0, 0, group*per_group:(group+1)*per_group] = attend(Q, K, V, ids, history)
             record = dict(layer=layer, group=group, history=history,
-                unique=len(ids), raw=meta['raw'], buckets=len(meta['features']), tail=total-history)
+                unique=len(ids), raw=meta['raw'], buckets=len(meta['features']),
+                tail=total-history, routing_policy=self.mode)
             if self.detailed_records:
                 initial_history = self.prefix_lengths[layer]
                 old_unique = int((ids < initial_history).sum())

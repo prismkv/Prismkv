@@ -128,6 +128,20 @@ class BackboneContracts(unittest.TestCase):
         session.close()
         self.assertEqual(routed.config._attn_implementation, 'eager')
 
+    @torch.no_grad()
+    def test_explicit_rope_override_leaves_saved_config_unchanged(self):
+        with tempfile.TemporaryDirectory() as folder:
+            self.model.save_pretrained(folder)
+            path=Path(folder)/'config.json';before=path.read_bytes()
+            override=dict(max_position_embeddings=1024,
+                rope_scaling=dict(rope_type='yarn',factor=2.,original_max_position_embeddings=512))
+            loaded=load_reference_model(folder,config_overrides=override)
+            self.assertEqual(loaded.config.max_position_embeddings,1024)
+            self.assertEqual(loaded.config.rope_scaling['factor'],2.)
+            self.assertEqual(path.read_bytes(),before)
+            del loaded
+            gc.collect()
+
 
 if __name__=='__main__':
     unittest.main()

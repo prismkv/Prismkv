@@ -72,12 +72,15 @@ def access_summary(records, *, mode, groups, initial_history, output_tokens):
             indexed_prefix_opportunities=old, selected_indexed_unique=old,
             generated_indexed_unique=0, generated_indexed_raw=0,
             dense_generated_tail=groups*output_tokens*(output_tokens-1)//2,
+            warmup_group_steps=0,routed_group_steps=0,routed_old_unique_read_fraction=None,
             scope='standard-attention KV groups only; Full counts are policy-derived')
     expected=max(0, output_tokens-1)*groups
     if len(records)!=expected:
         raise RuntimeError(f'expected {expected} group events, observed {len(records)}')
     old=sum(r['old_unique'] for r in records)
     opportunities=sum(r['initial_history'] for r in records)
+    routed=[r for r in records if r['routing_policy']=='sparse']
+    routed_opportunities=sum(r['initial_history'] for r in routed)
     return dict(source='instrumented_reference',group_steps=len(records),
         old_history_opportunities=opportunities,selected_old_unique=old,
         selected_old_raw=sum(r['old_raw'] for r in records),
@@ -87,11 +90,15 @@ def access_summary(records, *, mode, groups, initial_history, output_tokens):
         generated_indexed_unique=sum(r['generated_indexed_unique'] for r in records),
         generated_indexed_raw=sum(r['generated_indexed_raw'] for r in records),
         dense_generated_tail=sum(r['tail'] for r in records),
+        warmup_group_steps=sum(r['routing_policy']=='warmup_dense' for r in records),
+        routed_group_steps=len(routed),
+        routed_old_unique_read_fraction=sum(r['old_unique'] for r in routed)/routed_opportunities if routed_opportunities else None,
         scope='standard-attention KV groups only; initial prompt separated from indexed generation')
 
 
 @torch.inference_mode()
-def _trajectory(model, ids, *, cap, stop, prefill_chunk_size, session=None, forced=None):
+def _trajectory(model, ids, *, cap, stop, prefill_chunk_size, session=None, forced=None,
+                dense_decode_steps=0, first_token_banned_ids=()):
     device = next(model.parameters()).device
     inputs = torch.tensor([ids], device=device, dtype=torch.long)
     cache = None
@@ -107,15 +114,34 @@ def _trajectory(model, ids, *, cap, stop, prefill_chunk_size, session=None, forc
     logits = result.logits[:, -1].float()
     generated, nll = [], []
     for step in range(cap):
-        token = int(logits.argmax(-1)) if forced is None else forced[step]
+        if not torch.isfinite(logits).all():
+            raise ValueError('non-finite model logits')
+        choices=logits
+        if forced is None and step==0 and first_token_banned_ids:
+            choices=logits.clone();choices[:,list(first_token_banned_ids)]=-torch.inf
+            if not torch.isfinite(choices).any():
+                raise ValueError('first-token policy bans every token')
+        token = int(choices.argmax(-1)) if forced is None else forced[step]
         generated.append(token)
         nll.append(float(-logits.log_softmax(-1)[0, token]))
         if forced is None and token in stop:
             break
         if step+1 < cap:
             positions = torch.tensor([[len(ids)+step]], device=device)
-            result = model(input_ids=torch.tensor([[token]], device=device), position_ids=positions,
-                           past_key_values=cache, use_cache=True, logits_to_keep=1)
+            warmup=session is not None and session.mode=='sparse' and step<dense_decode_steps
+            previous_mode=None if session is None else session.mode
+            previous_records=0 if session is None else len(session.records)
+            if warmup:
+                session.mode='all_read'
+            try:
+                result = model(input_ids=torch.tensor([[token]], device=device), position_ids=positions,
+                               past_key_values=cache, use_cache=True, logits_to_keep=1)
+            finally:
+                if session is not None:
+                    session.mode=previous_mode
+            if warmup:
+                for record in session.records[previous_records:]:
+                    record['routing_policy']='warmup_dense'
             cache, logits = result.past_key_values, result.logits[:, -1].float()
     return generated,nll,[] if session is None else list(session.records)
 
@@ -140,6 +166,19 @@ def run_request(model, row, *, mode='full', encoders=None, max_new_tokens=128,
     elif 'reference_kind' in row:
         raise ValueError('reference_kind requires reference_token_ids')
     stop=eos_ids(model,row);groups=standard_groups(model)
+    warmup=row.get('dense_decode_steps',0)
+    banned=row.get('first_token_banned_ids',[])
+    if type(warmup) is not int or warmup<0:
+        raise ValueError('dense_decode_steps must be nonnegative')
+    if not isinstance(banned,list) or any(type(x) is not int or not 0<=x<vocabulary_size(model) for x in banned):
+        raise ValueError('invalid first-token ban IDs')
+    required=row.get('required_model_overrides',{})
+    text_config=getattr(model.config,'text_config',model.config)
+    for key,value in required.items():
+        actual=getattr(text_config,key,None)
+        valid=all(isinstance(actual,dict) and actual.get(k)==v for k,v in value.items()) if isinstance(value,dict) else actual==value
+        if not valid:
+            raise ValueError(f'input protocol requires model setting {key}={value}')
     session=None
     try:
         if mode!='full':
@@ -147,11 +186,14 @@ def run_request(model, row, *, mode='full', encoders=None, max_new_tokens=128,
                 selected_buckets=selected_buckets,unique_cap=unique_cap,
                 update_interval=update_interval,detailed_records=True)
         generated,nll,records=_trajectory(model,ids,cap=cap,stop=stop,
-            prefill_chunk_size=prefill_chunk_size,session=session)
+            prefill_chunk_size=prefill_chunk_size,session=session,
+            dense_decode_steps=warmup,first_token_banned_ids=banned)
         values=_ppl(nll)
         result=dict(id=row['id'],mode=mode,input_tokens=len(ids),max_new_tokens=cap,
             input_ids_SHA=hashlib.sha256(json.dumps(ids,separators=(',',':')).encode()).hexdigest(),
             eos_token_ids=stop,generated_token_ids=generated,generated_tokens=len(generated),
+            dense_decode_steps=warmup,first_token_banned_ids=banned,
+            required_model_overrides=required,
             termination='eos' if generated[-1] in stop else 'cap',
             self_generated_token_nll=nll,self_generated_mean_nll=values['mean_nll'],
             self_generated_ppl=values['ppl'],
@@ -160,7 +202,8 @@ def run_request(model, row, *, mode='full', encoders=None, max_new_tokens=128,
             access_events=records,note='quality/reference replay; no latency or official task score')
         if reference is not None:
             _,teacher_nll,teacher_records=_trajectory(model,ids,cap=len(reference),stop=stop,
-                prefill_chunk_size=prefill_chunk_size,session=session,forced=reference)
+                prefill_chunk_size=prefill_chunk_size,session=session,forced=reference,
+                dense_decode_steps=warmup)
             result['reference']=dict(kind=row['reference_kind'],token_ids=reference,
                 token_nll=teacher_nll,termination='reference_length',**_ppl(teacher_nll),
                 access=access_summary(teacher_records,mode=mode,groups=groups,

@@ -2,7 +2,7 @@
 
 Current results:
 
-- 18 ordinary-reference CPU tests passed without skips, using Torch2.4.0 and Transformers4.57.1.
+- 24 ordinary-reference CPU tests passed without skips, using Torch2.4.0 and Transformers4.57.1.
 - The eager regression requires explicit causal masking during prefill, checked
   against the backbone before and after decode, with backend restoration.
 - The new regression round-trips a tiny saved checkpoint containing a FlashAttention2
@@ -44,9 +44,17 @@ pretrained prompt with all 64encoders in all-read/sparse modes, plus tiny hybrid
 CPU contracts. Its separate development-framework runtime is fingerprinted but
 has no verified clean-install recipe.
 
-Still pending: broad pretrained-scale quality validation, hybrid native integration, original
-training/benchmark manifests, model-scale native comparisons, full-model peak memory
-and full downstream benchmark launchers. No test is substituted for those.
+The [evaluation pipeline](evaluation.md) additionally passed 14,000 archived
+input-format checks and 29 official-metric fixtures. A preselected 8K RULER
+example per model ran all public commands, with actual Full/all-read/sparse
+generation and official scoring. Exact generated IDs matched on these two
+cases; BF16 teacher NLL differences remain reported. This is not a new full
+benchmark or pretrained-wide probability-equivalence result.
+
+Still pending: broad pretrained-scale quality validation, hybrid native integration,
+complete training ancestry, model-scale native comparisons, full-model physical
+peak memory, clean hybrid installation and SCBench reuse orchestration.
+No narrow test is substituted for those.
 
 The synthetic witness records582,458,880peak PyTorch-allocated bytes and
 876,609,536reserved bytes for one8-KV-group layer with its fixture/index/build

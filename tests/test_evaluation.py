@@ -111,6 +111,22 @@ class FullEvaluation(unittest.TestCase):
                 evaluate_jsonl(self.model,source,root/'run')
             self.assertEqual((root/'run/predictions.jsonl').read_bytes(),preserved)
 
+    def test_explicit_warmup_and_first_token_policy(self):
+        row=dict(id='policy',input_ids=self.ids[0].tolist(),max_new_tokens=4,eos_token_ids=[])
+        baseline=run_request(self.model,row)
+        banned=baseline['generated_token_ids'][0]
+        constrained=dict(row,dense_decode_steps=1,first_token_banned_ids=[banned],
+                         reference_token_ids=baseline['generated_token_ids'],reference_kind='full_generated')
+        result=run_request(self.model,constrained,mode='sparse',encoders=self.encoders(),
+                           selected_buckets=4,unique_cap=.25)
+        self.assertNotEqual(result['generated_token_ids'][0],banned)
+        self.assertEqual(result['access']['warmup_group_steps'],4)
+        self.assertEqual(result['access']['routed_group_steps'],8)
+        self.assertTrue(all(r['old_unique']==13 for r in result['access_events'][:4]))
+        self.assertAlmostEqual(result['reference']['token_nll'][0],baseline['self_generated_token_nll'][0],places=6)
+        with self.assertRaisesRegex(ValueError,'requires model setting'):
+            run_request(self.model,dict(row,required_model_overrides={'max_position_embeddings':999}))
+
 
 if __name__ == '__main__':
     unittest.main()

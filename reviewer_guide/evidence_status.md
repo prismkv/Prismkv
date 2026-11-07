@@ -6,8 +6,11 @@ are explicitly separate. No compact candidate was promoted.
 
 ## Executed and audited
 
-- Ordinary reference:18CPU tests, tiny-backbone dense/sparse/cache/generation,
-  saved-backend configuration and explicit eager causality.
+- Ordinary reference:24CPU tests, tiny-backbone dense/sparse/cache/generation,
+  saved-backend configuration, explicit eager causality, reference NLL and access conservation.
+- [Public evaluation pipeline](evaluation.md): all 14,000 archived input-format
+  checks,29 official-metric fixtures, and one actual preselected8K RULER case per
+  model through Full/all-read/sparse generation and scoring. Not full quality reruns.
 - All 288 8B and 64 hybrid 27B encoders packaged, with source/tensor/scales checks.
 - Short pretrained 8B and hybrid 27B public-CLI execution witnesses; the latter
   uses all 64 standard KV groups and leaves48 linear layers untouched. See
@@ -23,8 +26,8 @@ are explicitly separate. No compact candidate was promoted.
 
 ## Incomplete
 
-- Full benchmark preprocessing/scoring launchers and broader pretrained-scale
-  equivalence; hybrid clean dependency lock/upstream framework commit mapping.
+- Broader pretrained-scale quality/equivalence; native full-benchmark integration,
+  SCBench reuse orchestration and hybrid clean dependency lock/upstream framework commit mapping.
 - Complete checkpoint/training ancestry, near-duplicates and capture wall time.
 - Independent all-group quality/read/latency Pareto, same-selector Quest curves,
   update-interval sensitivity, additional requested faithful baselines.

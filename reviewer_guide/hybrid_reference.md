@@ -52,14 +52,20 @@ The reference loader selects
 the backend only in memory, without rewriting checkpoint files. Eager is
 explicit because this older Torch lacks the newer SDPA `enable_gqa` argument.
 Eager prefill has its own explicit causal-mask registry; reusing SDPA mask
-elision would make that path incorrectly bidirectional. The 18 ordinary CPU tests
+elision would make that path incorrectly bidirectional. The 24 ordinary CPU tests
 include a regression for this issue and a saved-FA2 checkpoint-loader regression.
 
 ## Not established
 
-This one short CLI witness is not a LongBench/RULER score, a new accuracy claim,
+The newer [evaluation pipeline](evaluation.md) also exercised one preselected
+8K RULER request with the complete public preparation, generation and official
+scoring commands. Full/all-read/sparse output IDs matched on that request,
+but teacher NLLs differed. Input-format parity was checked for all 7,000 archived
+27B inputs without generating them again.
+
+The short CLI witnesses are not complete LongBench/RULER scores, new accuracy claims,
 a native-kernel latency result, a serving implementation or proof that the
 historical optimized backend and this reference are token-identical. Full
-benchmark preprocessing/scoring launchers, a clean hybrid dependency lock and
+native benchmark integration, a clean hybrid dependency lock and
 broader pretrained-scale comparisons remain incomplete. The historical paper
 results must not be replaced by these execution checks.

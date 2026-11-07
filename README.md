@@ -22,14 +22,15 @@ Q/K matching supervision is necessary for downstream quality.
   kernel sources and a standalone binding. F=3000, 8 KV groups, 4 Q heads per
   group, d=128, 16 selected buckets. They require the PPU SDK.
 - `tests/`: CPU mathematical and state-update checks.
-- `examples/`: deterministic synthetic replay; not a downstream score.
+- `examples/`: synthetic replay plus explicit tokenized quality evaluation,
+  benchmark preparation, Full-target attachment and caller-owned official scoring.
 - `src/prismkv/hf_reference.py`: an all-group Hugging Face quality/reference
   adapter. Tiny random Qwen3 backbone tests cover dense equivalence, cached
   prefill, actual generation, strict caps and incremental updates.
 - `src/prismkv/weights.py`: hashed, per-group, inference-only encoder format.
 
-The ordinary-reference suite has 18 passing CPU tests, including tiny-backbone
-integration, saved-backend loading and eager-causality regressions.
+The ordinary-reference suite has 24 passing CPU tests, including tiny-backbone
+integration, saved-backend loading, eager causality, reference NLL and read accounting.
 The PPU8B kernel library compiles and its standalone GPU correctness witness
 passes six synthetic cases through 64K history: exact selected features/IDs and
 36 AV checks, maximum relativeL2 error0.001683. This does not reproduce the
@@ -40,9 +41,13 @@ The 8B training-context fingerprint manifest is included. The public pretrained
 Qwen3-8B CLI was exercised in both all-read and sparse modes with all 288
 encoders: both answered42 on one short arithmetic prompt. See the
 [execution witness](reviewer_guide/pretrained_cli_validation_v4.json). This is a
-loader/execution check, not pretrained-scale quality validation. Full checkpoint
-lineage and benchmark launchers remain incomplete. Test results do not establish
-new downstream accuracy or speed improvements.
+loader/execution check, not pretrained-scale quality validation. The newer
+[quality-evaluation guide](reviewer_guide/evaluation.md) provides explicit
+LongBench/RULER preparation and scoring commands. All 14,000 archived input
+formats were checked, and the complete public pipeline ran one preselected 8K
+RULER example per model. These are format/execution checks, not full quality
+reruns. Full checkpoint lineage, clean hybrid installation and native benchmark
+integration remain incomplete. No new speed improvement is established.
 
 ## Run the portable reference
 
