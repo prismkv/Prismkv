@@ -36,7 +36,14 @@ sparse routing on both standard-attention groups and incremental updates.
 The public loader now retains the checkpoint's rotary base when explicitly
 enabling or disabling YaRN on the newer config API.
 
-See [the CPU and lock validation record](hybrid_runtime/validation.json) and
-[the hybrid model CLI](hybrid_reference.md). The patch is specific to the
-tested Torch 2.4/Transformers 5.8.0 combination. These checks do not measure
-native latency, serving behavior or full LongBench/RULER quality.
+The locked runtime also completed the public pipeline on the same preselected
+27B 8K RULER case as the staged runtime, using the actual model checkpoint
+and all 64 released encoders. Full, all-read and sparse produced the same
+52 generated IDs and each scored 100. The IDs also matched the staged run.
+Sparse read 7.36% of old-token opportunities including the dense warmup, or
+5.51% on routed steps. NLL and sparse read counts differ across runtimes.
+
+See [the CPU and lock record](hybrid_runtime/validation.json),
+[the pretrained execution audit](hybrid_runtime/pretrained_witness.json) and
+[the hybrid model CLI](hybrid_reference.md). This one-case check does not
+measure native latency, serving behavior or benchmark-wide quality.

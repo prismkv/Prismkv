@@ -55,7 +55,9 @@ requires the dependencies listed by that official checkout, including `rouge`,
 environment. RULER metrics are loaded from `scripts/eval/synthetic/constants.py`
 and its `postprocess_pred` function is loaded from `scripts/eval/evaluate.py`
 without running the official CLI's argument parsing, downloads or shard merging.
-The scoring follow-up records the exact hashes of both scorer files.
+The scoring follow-up records the exact hashes of both scorer files. The
+[locked runtime witness](hybrid_runtime/pretrained_witness.json) reran the
+same 27B case and preserved generated IDs and grades.
 Do not substitute an ad-hoc substring or exact-match metric for official scoring.
 
 ## 1. Prepare one task with an explicit input protocol

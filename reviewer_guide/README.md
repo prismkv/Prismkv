@@ -31,4 +31,5 @@ quality, GPU latency, mainstream GPU support, or production-serving performance.
 
 [Hybrid 27B reference](hybrid_reference.md) records the original execution
 witness and its framework fingerprints. The [locked hybrid dependency recipe](hybrid_install.md)
-records a fresh install, the Torch 2.4 schema patch and CPU contracts.
+records a fresh install, the Torch 2.4 schema patch, CPU contracts and a
+pretrained 27B 8K RULER execution with all 64 encoders.
