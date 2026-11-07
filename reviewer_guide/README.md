@@ -29,6 +29,8 @@ quality, GPU latency, mainstream GPU support, or production-serving performance.
 
 [LongProc rerouting control](results/longproc_rerouting_pilot/README.md): complete16-case fixed-index pilot, same generated-tail policy, dynamic/frozen comparison with explicit Full/HTML loss and offline-budget limits.
 
+The SeerAttention-R evaluation uses the released learned gate on two Qwen3-8B RULER cohorts and reports reads under both source-style and full-tail selection. [Paired Seer quality control](results/seer_gqa_control/README.md)
+
 [Hybrid 27B reference](hybrid_reference.md) records the original execution
 witness and its framework fingerprints. The [locked hybrid dependency recipe](hybrid_install.md)
 records a fresh install, the Torch 2.4 schema patch, CPU contracts and a

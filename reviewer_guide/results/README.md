@@ -119,3 +119,7 @@ Both per-Q normalization and raw-mean aggregation are reported.
 ## Expanded budget follow-up
 
 [195 nonpilot RULER cases](bucket_budget_followup/README.md) extend the same budget test to five samples per task at8K/16K/32K. Top8 loses4.453points toTop16; the small-pilot trend does not support a new default. Actual reads and complete-module Graph/eager-model timings are separate.
+
+## SeerAttention-R quality control
+
+The paired Qwen3-8B study compares the released Seer gate with PrismKV on 26 pilot and 195 follow-up RULER prompts. The source-style and full-tail policies share the indexed AV backend. The report gives realized old-history and generated-tail reads by arm and length. [Results and protocol](seer_gqa_control/README.md)
