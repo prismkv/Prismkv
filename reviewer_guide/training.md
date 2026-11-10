@@ -59,6 +59,9 @@ complete collection cost. SAE optimizer time must also be reported separately.
 
 ## 27B recorded offline phases
 
+These measurements use the original PPU-ZW810 training hardware. The
+[supplementary system results](results/h200/README.md) use H200 for online inference.
+
 The [phase audit](training_cost_27b.json) follows the released 64-dictionary
 pack through 43 inherited and 21 freshly initialized dictionaries. It checks
 226 optimization-stage records and the receipts for 324 capture jobs. It

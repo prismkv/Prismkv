@@ -1,5 +1,9 @@
 # Verified quality/read tables
 
+[H200 system evaluation](h200/README.md) reports paired single-request and
+continuous-batching results, index storage, candidate merging and KV layout
+controls. It links the separate PPU-ZW810 offline phase audit.
+
 [Expanded 27B shared-feature analysis](shared_features_27b_expanded/README.md)
 reports coverage with and without Q–K matching across 116 contexts and all
 16 standard attention layers, with vector heatmaps and detailed measurements.

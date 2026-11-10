@@ -1,5 +1,9 @@
 # Native path, memory and timing scope
 
+The [H200 supplement](results/h200/README.md) reports a separate NVIDIA SM90
+implementation for the 27B hybrid model, including CUDA Graph serving and
+physical peak memory. The sections below describe the earlier PPU path.
+
 ## Layout and operations
 
 The extracted 8B specialization uses original BF16 K/V shaped `[8,T,128]` and

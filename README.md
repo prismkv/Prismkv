@@ -21,6 +21,8 @@ Q/K matching supervision is necessary for downstream quality.
 - `kernels/ppu_8b/` and `src/prismkv/native8b.py`: PPU-specific measured-path
   kernel sources and a standalone binding. F=3000, 8 KV groups, 4 Q heads per
   group, d=128, 16 selected buckets. They require the PPU SDK.
+- [NVIDIA SM90 kernels and CUDA Graph runner](kernels/cuda_sm90/README.md)
+  accompany the [H200 system results and PPU offline cost ledger](reviewer_guide/results/h200/README.md).
 - `tests/`: CPU mathematical and state-update checks.
 - `examples/`: synthetic replay plus explicit tokenized quality evaluation,
   benchmark preparation, Full-target attachment and caller-owned official scoring.

@@ -1,0 +1,1233 @@
+{
+  "cases": [
+    {
+      "arms": {
+        "full": {
+          "requests": 4,
+          "tokens": 9600,
+          "request_per_s": 0.028758975924414412,
+          "output_tokens_per_s": 69.02154221859459,
+          "decode_tokens_per_s": 78.53673739061082,
+          "service_wall_s": 139.08701097399899,
+          "service_phase_s": {
+            "prefill": 16.849089514005755,
+            "index": 0.0,
+            "decode": 122.18485665215849
+          },
+          "ttft_p95_s": 81.83231065019913,
+          "itl_p95_ms": 22.26298125242465,
+          "e2e_p95_s": 134.34375049055387,
+          "actual_mean_batch": 1.7444101072532268,
+          "actual_max_batch": 2,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 62352392192,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_graph_warmup": 62237048832,
+            "serve_graph_capture": 62350295040,
+            "serve_prefill": 62352392192,
+            "serve_decode": 62352392192
+          },
+          "torch_allocated_peak_bytes": 60330983936,
+          "post_eos_tokens": 9534,
+          "kv_bytes": 4831838208,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch2_ms": 22.221714774390737,
+          "decode_ms_per_emitted_token": 12.732894607352907,
+          "graph_capture_s_by_extent": {
+            "1": 0.16861680000147317,
+            "2": 0.13324566800292814
+          }
+        },
+        "sparse": {
+          "requests": 4,
+          "tokens": 9600,
+          "request_per_s": 0.02877244492072152,
+          "output_tokens_per_s": 69.05386780973164,
+          "decode_tokens_per_s": 79.11475936154083,
+          "service_wall_s": 139.02190137200523,
+          "service_phase_s": {
+            "prefill": 16.81389083299291,
+            "index": 0.8615511199968751,
+            "decode": 121.29215935737011
+          },
+          "ttft_p95_s": 82.18030211945383,
+          "itl_p95_ms": 22.137142996143666,
+          "e2e_p95_s": 134.32229754499974,
+          "actual_mean_batch": 1.7444101072532268,
+          "actual_max_batch": 2,
+          "index_s_per_request": 0.21538777999921876,
+          "nvml_peak_bytes": 65108049920,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 62021042176,
+            "serve_graph_warmup": 64122388480,
+            "serve_graph_capture": 64185303040,
+            "serve_prefill": 65108049920,
+            "serve_index": 65108049920,
+            "serve_decode": 65108049920
+          },
+          "torch_allocated_peak_bytes": 62998308864,
+          "post_eos_tokens": 9530,
+          "kv_bytes": 4831838208,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 2362368000,
+          "route_workspace_bytes": 8698944,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch2_ms": 22.074815055538224,
+          "decode_ms_per_emitted_token": 12.639866544119437,
+          "graph_capture_s_by_extent": {
+            "1": 0.16784086999541614,
+            "2": 0.132571406000352
+          }
+        }
+      },
+      "prompt_tokens": 32768,
+      "max_batch": 2,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240
+      ],
+      "decode_speedup": 1.0073598928365861,
+      "decode_plus_index_speedup": 1.0002549752657515,
+      "end_to_end_speedup": 1.0004683406092938,
+      "decode_saved_s": 0.8926972947883769,
+      "decode_plus_index_saved_s": 0.031146174791501835
+    },
+    {
+      "arms": {
+        "full": {
+          "requests": 6,
+          "tokens": 17216,
+          "request_per_s": 0.036259282218853384,
+          "output_tokens_per_s": 104.03996711329664,
+          "decode_tokens_per_s": 122.73514435506591,
+          "service_wall_s": 165.47486968399608,
+          "service_phase_s": {
+            "prefill": 25.183436010011064,
+            "index": 0.0,
+            "decode": 140.22063599169633
+          },
+          "ttft_p95_s": 68.23147450324795,
+          "itl_p95_ms": 24.031368993746582,
+          "e2e_p95_s": 158.96808153974672,
+          "actual_mean_batch": 2.8616561356834054,
+          "actual_max_batch": 4,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 67037429760,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_graph_warmup": 66783674368,
+            "serve_graph_capture": 67037429760,
+            "serve_prefill": 67037429760,
+            "serve_decode": 67037429760
+          },
+          "torch_allocated_peak_bytes": 65387219456,
+          "post_eos_tokens": 17140,
+          "kv_bytes": 9663676416,
+          "recurrent_bytes": 317718528,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch4_ms": 23.992214921353952,
+          "decode_ms_per_emitted_token": 8.147625566048596,
+          "graph_capture_s_by_extent": {
+            "1": 0.1696461419996922,
+            "2": 0.1380973439954687,
+            "3": 0.13332093099597842,
+            "4": 0.14776313699985621
+          }
+        },
+        "sparse": {
+          "requests": 6,
+          "tokens": 17216,
+          "request_per_s": 0.03642502897862035,
+          "output_tokens_per_s": 104.515549815988,
+          "decode_tokens_per_s": 124.56760881046846,
+          "service_wall_s": 164.72190052399674,
+          "service_phase_s": {
+            "prefill": 25.206016449003073,
+            "index": 1.285614854990854,
+            "decode": 138.15790609086253
+          },
+          "ttft_p95_s": 68.21544876924854,
+          "itl_p95_ms": 23.374280994175933,
+          "e2e_p95_s": 158.1296417337515,
+          "actual_mean_batch": 2.8616561356834054,
+          "actual_max_batch": 4,
+          "index_s_per_request": 0.21426914249847565,
+          "nvml_peak_bytes": 72689254400,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 62018945024,
+            "serve_graph_warmup": 71579860992,
+            "serve_graph_capture": 71831519232,
+            "serve_prefill": 72689254400,
+            "serve_index": 72689254400,
+            "serve_decode": 72689254400
+          },
+          "torch_allocated_peak_bytes": 70433589760,
+          "post_eos_tokens": 17138,
+          "kv_bytes": 9663676416,
+          "recurrent_bytes": 317718528,
+          "index_bytes": 4724736000,
+          "route_workspace_bytes": 17397888,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch4_ms": 23.305902597117203,
+          "decode_ms_per_emitted_token": 8.027769093019321,
+          "graph_capture_s_by_extent": {
+            "1": 0.16325903999677394,
+            "2": 0.13840686900221044,
+            "3": 0.13648425500286976,
+            "4": 0.1327971749997232
+          }
+        }
+      },
+      "prompt_tokens": 32768,
+      "max_batch": 4,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240,
+        3648,
+        3968
+      ],
+      "decode_speedup": 1.014930234245713,
+      "decode_plus_index_speedup": 1.0055729734918606,
+      "end_to_end_speedup": 1.0045711539121638,
+      "decode_saved_s": 2.0627299008338014,
+      "decode_plus_index_saved_s": 0.7771150458429474
+    },
+    {
+      "arms": {
+        "full": {
+          "requests": 10,
+          "tokens": 26880,
+          "request_per_s": 0.06454545862316168,
+          "output_tokens_per_s": 173.4981927790586,
+          "decode_tokens_per_s": 238.14681910269533,
+          "service_wall_s": 154.92956767699798,
+          "service_phase_s": {
+            "prefill": 42.02000299200881,
+            "index": 0.0,
+            "decode": 112.829556578763
+          },
+          "ttft_p95_s": 71.72434348774796,
+          "itl_p95_ms": 27.350805552850943,
+          "e2e_p95_s": 154.1870928409507,
+          "actual_mean_batch": 6.462241462241463,
+          "actual_max_batch": 8,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 77414137856,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 62018945024,
+            "serve_graph_warmup": 76883558400,
+            "serve_graph_capture": 77414137856,
+            "serve_prefill": 77414137856,
+            "serve_decode": 77414137856
+          },
+          "torch_allocated_peak_bytes": 75499166208,
+          "post_eos_tokens": 26727,
+          "kv_bytes": 19327352832,
+          "recurrent_bytes": 635437056,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch8_ms": 27.312049910946484,
+          "decode_ms_per_emitted_token": 4.199090308104317,
+          "graph_capture_s_by_extent": {
+            "1": 0.16671595500520198,
+            "2": 0.1421812629996566,
+            "3": 0.13743362500099465,
+            "4": 0.13578928000060841,
+            "5": 0.13045394099754049,
+            "6": 0.1335219709944795,
+            "7": 0.12890324700128986,
+            "8": 0.1336867829959374
+          }
+        },
+        "sparse": {
+          "requests": 10,
+          "tokens": 26880,
+          "request_per_s": 0.06708097089845579,
+          "output_tokens_per_s": 180.31364977504916,
+          "decode_tokens_per_s": 256.3840783741758,
+          "service_wall_s": 149.0735728189975,
+          "service_phase_s": {
+            "prefill": 42.05712388302345,
+            "index": 2.1350856339995516,
+            "decode": 104.80369986464211
+          },
+          "ttft_p95_s": 71.32973435774757,
+          "itl_p95_ms": 25.345474998175632,
+          "e2e_p95_s": 148.34130647854886,
+          "actual_mean_batch": 6.462241462241463,
+          "actual_max_batch": 8,
+          "index_s_per_request": 0.21350856339995516,
+          "nvml_peak_bytes": 87937646592,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 62018945024,
+            "serve_graph_warmup": 86639509504,
+            "serve_graph_capture": 87172186112,
+            "serve_prefill": 87937646592,
+            "serve_index": 87937646592,
+            "serve_decode": 87937646592
+          },
+          "torch_allocated_peak_bytes": 85303118336,
+          "post_eos_tokens": 26770,
+          "kv_bytes": 19327352832,
+          "recurrent_bytes": 635437056,
+          "index_bytes": 9449472000,
+          "route_workspace_bytes": 34795776,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch8_ms": 25.226081219756377,
+          "decode_ms_per_emitted_token": 3.9003982085836295,
+          "graph_capture_s_by_extent": {
+            "1": 0.16557904399815015,
+            "2": 0.134285471001931,
+            "3": 0.12707696500001475,
+            "4": 0.12800437900295947,
+            "5": 0.13947006200032774,
+            "6": 0.15254895699763438,
+            "7": 0.1407121609954629,
+            "8": 0.13116106500092428
+          }
+        }
+      },
+      "prompt_tokens": 32768,
+      "max_batch": 8,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240,
+        3648,
+        3968,
+        4096,
+        1088,
+        3072,
+        1408
+      ],
+      "decode_speedup": 1.0765798986532593,
+      "decode_plus_index_speedup": 1.0550854496116955,
+      "end_to_end_speedup": 1.0392825820651037,
+      "decode_saved_s": 8.025856714120891,
+      "decode_plus_index_saved_s": 5.89077108012134
+    },
+    {
+      "arms": {
+        "full": {
+          "requests": 18,
+          "tokens": 41344,
+          "request_per_s": 0.08183713747795152,
+          "output_tokens_per_s": 187.97081177157932,
+          "decode_tokens_per_s": 286.9857520695728,
+          "service_wall_s": 219.94904214299459,
+          "service_phase_s": {
+            "prefill": 75.8286248989898,
+            "index": 0.0,
+            "decode": 144.00018015522073
+          },
+          "ttft_p95_s": 106.44954489094422,
+          "itl_p95_ms": 33.18071600369876,
+          "e2e_p95_s": 203.4920609234997,
+          "actual_mean_batch": 8.499794323323735,
+          "actual_max_batch": 16,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 98951888896,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_graph_warmup": 97479688192,
+            "serve_graph_capture": 98727493632,
+            "serve_prefill": 98951888896,
+            "serve_decode": 98951888896
+          },
+          "torch_allocated_peak_bytes": 95741409792,
+          "post_eos_tokens": 41154,
+          "kv_bytes": 38654705664,
+          "recurrent_bytes": 1270874112,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch16_ms": 33.10953514405416,
+          "decode_ms_per_emitted_token": 3.4844935429323125,
+          "graph_capture_s_by_extent": {
+            "1": 0.17612343799555674,
+            "2": 0.14544331099750707,
+            "3": 0.13651143899915041,
+            "4": 0.13956473500002176,
+            "5": 0.15136684299795888,
+            "6": 0.15774539700214518,
+            "7": 0.15501824699458666,
+            "8": 0.14578706100292038,
+            "9": 0.13932899999781512,
+            "10": 0.14891795999574242,
+            "11": 0.14021800399495987,
+            "12": 0.13702994600316742,
+            "13": 0.13389094900048804,
+            "14": 0.1339844379981514,
+            "15": 0.13041004499973496,
+            "16": 0.13128504199994495
+          }
+        },
+        "sparse": {
+          "requests": 18,
+          "tokens": 41344,
+          "request_per_s": 0.08532520453685755,
+          "output_tokens_per_s": 195.9825142428799,
+          "decode_tokens_per_s": 314.71561456354624,
+          "service_wall_s": 210.95759568000358,
+          "service_phase_s": {
+            "prefill": 75.69790060799278,
+            "index": 3.8288124620085,
+            "decode": 131.3122008811406
+          },
+          "ttft_p95_s": 105.99464547030155,
+          "itl_p95_ms": 29.397665995929856,
+          "e2e_p95_s": 194.7252678444996,
+          "actual_mean_batch": 8.499794323323735,
+          "actual_max_batch": 16,
+          "index_s_per_request": 0.21271180344491666,
+          "nvml_peak_bytes": 118585425920,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 93427990528,
+            "serve_graph_warmup": 116739932160,
+            "serve_graph_capture": 117970960384,
+            "serve_prefill": 118585425920,
+            "serve_index": 118585425920,
+            "serve_decode": 118585425920
+          },
+          "torch_allocated_peak_bytes": 115016827392,
+          "post_eos_tokens": 41198,
+          "kv_bytes": 38654705664,
+          "recurrent_bytes": 1270874112,
+          "index_bytes": 18898944000,
+          "route_workspace_bytes": 69591552,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch16_ms": 29.272628797543017,
+          "decode_ms_per_emitted_token": 3.177471830836292,
+          "graph_capture_s_by_extent": {
+            "1": 0.17858033099764725,
+            "2": 0.14456426299875602,
+            "3": 0.1524663989985129,
+            "4": 0.1500377709962777,
+            "5": 0.14672796599916182,
+            "6": 0.15582255899789743,
+            "7": 0.15297091599495616,
+            "8": 0.1889090509939706,
+            "9": 0.19349406599940266,
+            "10": 0.18591795899556018,
+            "11": 0.19513289199676365,
+            "12": 0.18347706500208005,
+            "13": 0.1515136310044909,
+            "14": 0.1857196639975882,
+            "15": 0.20096371100225952,
+            "16": 0.2043663899967214
+          }
+        }
+      },
+      "prompt_tokens": 32768,
+      "max_batch": 16,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240,
+        3648,
+        3968,
+        4096,
+        1088,
+        3072,
+        1408,
+        1024,
+        1792,
+        1472,
+        2624,
+        1280,
+        1472,
+        1024,
+        3776
+      ],
+      "decode_speedup": 1.0966245268066512,
+      "decode_plus_index_speedup": 1.065554982850221,
+      "end_to_end_speedup": 1.0426220560298285,
+      "decode_saved_s": 12.687979274080135,
+      "decode_plus_index_saved_s": 8.859166812071635
+    },
+    {
+      "arms": {
+        "full": {
+          "requests": 4,
+          "tokens": 9600,
+          "request_per_s": 0.0239704527199645,
+          "output_tokens_per_s": 57.5290865279148,
+          "decode_tokens_per_s": 75.08898955547625,
+          "service_wall_s": 166.8721090389954,
+          "service_phase_s": {
+            "prefill": 39.01087489800557,
+            "index": 0.0,
+            "decode": 127.79503435600782
+          },
+          "ttft_p95_s": 106.27087236674501,
+          "itl_p95_ms": 23.319375999562908,
+          "e2e_p95_s": 161.92977081759642,
+          "actual_mean_batch": 1.7444101072532268,
+          "actual_max_batch": 2,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 66230026240,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_graph_warmup": 66230026240,
+            "serve_graph_capture": 66230026240,
+            "serve_prefill": 66185986048,
+            "serve_decode": 66185986048
+          },
+          "torch_allocated_peak_bytes": 64628843008,
+          "post_eos_tokens": 9491,
+          "kv_bytes": 9126805504,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch2_ms": 23.267692586082838,
+          "decode_ms_per_emitted_token": 13.317531716966219,
+          "graph_capture_s_by_extent": {
+            "1": 0.16452045599726262,
+            "2": 0.1346263449959224
+          }
+        },
+        "sparse": {
+          "requests": 4,
+          "tokens": 9600,
+          "request_per_s": 0.02469550049169456,
+          "output_tokens_per_s": 59.269201180066936,
+          "decode_tokens_per_s": 78.99485311498681,
+          "service_wall_s": 161.97282583299966,
+          "service_phase_s": {
+            "prefill": 38.984171848002006,
+            "index": 1.4452467270020861,
+            "decode": 121.47626866312203
+          },
+          "ttft_p95_s": 104.24231927145058,
+          "itl_p95_ms": 22.18697974785755,
+          "e2e_p95_s": 157.274294584401,
+          "actual_mean_batch": 1.7444101072532268,
+          "actual_max_batch": 2,
+          "index_s_per_request": 0.36131168175052153,
+          "nvml_peak_bytes": 71510654976,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 62306254848,
+            "serve_graph_warmup": 69998608384,
+            "serve_graph_capture": 70061522944,
+            "serve_prefill": 71510654976,
+            "serve_index": 71510654976,
+            "serve_decode": 71510654976
+          },
+          "torch_allocated_peak_bytes": 69348454912,
+          "post_eos_tokens": 9507,
+          "kv_bytes": 9126805504,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 3935232000,
+          "route_workspace_bytes": 9780800,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch2_ms": 22.12156485033957,
+          "decode_ms_per_emitted_token": 12.659052590988123,
+          "graph_capture_s_by_extent": {
+            "1": 0.16789318500377703,
+            "2": 0.1339377339972998
+          }
+        }
+      },
+      "prompt_tokens": 65536,
+      "max_batch": 2,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240
+      ],
+      "decode_speedup": 1.0520164618359245,
+      "decode_plus_index_speedup": 1.0396474038773138,
+      "end_to_end_speedup": 1.0302475627056547,
+      "decode_saved_s": 6.3187656928857905,
+      "decode_plus_index_saved_s": 4.873518965883704
+    },
+    {
+      "arms": {
+        "full": {
+          "requests": 6,
+          "tokens": 17216,
+          "request_per_s": 0.028916219862535904,
+          "output_tokens_per_s": 82.9702735255697,
+          "decode_tokens_per_s": 115.59723019888814,
+          "service_wall_s": 207.49600150100014,
+          "service_phase_s": {
+            "prefill": 58.52924063899991,
+            "index": 0.0,
+            "decode": 148.87899969912542
+          },
+          "ttft_p95_s": 103.63478250875305,
+          "itl_p95_ms": 25.895763996231835,
+          "e2e_p95_s": 200.77662995225438,
+          "actual_mean_batch": 2.8616561356834054,
+          "actual_max_batch": 4,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 76197789696,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_graph_warmup": 75944034304,
+            "serve_graph_capture": 76197789696,
+            "serve_prefill": 76197789696,
+            "serve_decode": 76197789696
+          },
+          "torch_allocated_peak_bytes": 73973746176,
+          "post_eos_tokens": 17098,
+          "kv_bytes": 18253611008,
+          "recurrent_bytes": 317718528,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch4_ms": 25.86055440956851,
+          "decode_ms_per_emitted_token": 8.650726304423324,
+          "graph_capture_s_by_extent": {
+            "1": 0.1705884379989584,
+            "2": 0.14281223400030285,
+            "3": 0.12931368499994278,
+            "4": 0.13133579100394854
+          }
+        },
+        "sparse": {
+          "requests": 6,
+          "tokens": 17216,
+          "request_per_s": 0.030037885816057392,
+          "output_tokens_per_s": 86.18870703487401,
+          "decode_tokens_per_s": 123.81666809296613,
+          "service_wall_s": 199.74774645399884,
+          "service_phase_s": {
+            "prefill": 58.50699516200257,
+            "index": 2.1536211729981005,
+            "decode": 138.9958255626625
+          },
+          "ttft_p95_s": 101.4724116207497,
+          "itl_p95_ms": 23.63492699805647,
+          "e2e_p95_s": 193.15286525924859,
+          "actual_mean_batch": 2.8616561356834054,
+          "actual_max_batch": 4,
+          "index_s_per_request": 0.35893686216635007,
+          "nvml_peak_bytes": 84871610368,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 75711250432,
+            "serve_graph_warmup": 83332300800,
+            "serve_graph_capture": 83583959040,
+            "serve_prefill": 84871610368,
+            "serve_index": 84871610368,
+            "serve_decode": 84871610368
+          },
+          "torch_allocated_peak_bytes": 82656406016,
+          "post_eos_tokens": 17114,
+          "kv_bytes": 18253611008,
+          "recurrent_bytes": 317718528,
+          "index_bytes": 7870464000,
+          "route_workspace_bytes": 19561600,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch4_ms": 23.572011625284595,
+          "decode_ms_per_emitted_token": 8.076457034437102,
+          "graph_capture_s_by_extent": {
+            "1": 0.1763351209956454,
+            "2": 0.15060401200025808,
+            "3": 0.13833060499746352,
+            "4": 0.14131888699921547
+          }
+        }
+      },
+      "prompt_tokens": 65536,
+      "max_batch": 4,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240,
+        3648,
+        3968
+      ],
+      "decode_speedup": 1.0711041075978742,
+      "decode_plus_index_speedup": 1.0547614825436789,
+      "end_to_end_speedup": 1.038790200062586,
+      "decode_saved_s": 9.883174136462912,
+      "decode_plus_index_saved_s": 7.729552963464812
+    },
+    {
+      "arms": {
+        "full": {
+          "requests": 10,
+          "tokens": 26880,
+          "request_per_s": 0.04487584361847448,
+          "output_tokens_per_s": 120.6262676464594,
+          "decode_tokens_per_s": 214.5540802881449,
+          "service_wall_s": 222.8370364470029,
+          "service_phase_s": {
+            "prefill": 97.4929255220195,
+            "index": 0.0,
+            "decode": 125.23649032408866
+          },
+          "ttft_p95_s": 128.52987369310276,
+          "itl_p95_ms": 30.71293564789812,
+          "e2e_p95_s": 222.05080223120072,
+          "actual_mean_batch": 6.462241462241463,
+          "actual_max_batch": 8,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 94761779200,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_graph_warmup": 94231199744,
+            "serve_graph_capture": 94761779200,
+            "serve_prefill": 94761779200,
+            "serve_decode": 94761779200
+          },
+          "torch_allocated_peak_bytes": 92681918976,
+          "post_eos_tokens": 26552,
+          "kv_bytes": 36507222016,
+          "recurrent_bytes": 635437056,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch8_ms": 30.625563399130822,
+          "decode_ms_per_emitted_token": 4.660829561745019,
+          "graph_capture_s_by_extent": {
+            "1": 0.1778633939975407,
+            "2": 0.13796394599921769,
+            "3": 0.13645302999793785,
+            "4": 0.14285776500037173,
+            "5": 0.13084101599815767,
+            "6": 0.13239307099865982,
+            "7": 0.14533745500375517,
+            "8": 0.14711949600314256
+          }
+        },
+        "sparse": {
+          "requests": 10,
+          "tokens": 26880,
+          "request_per_s": 0.04818199039719074,
+          "output_tokens_per_s": 129.51319018764872,
+          "decode_tokens_per_s": 252.37187756116134,
+          "service_wall_s": 207.54642798200075,
+          "service_phase_s": {
+            "prefill": 97.38763985301921,
+            "index": 3.5801308170121047,
+            "decode": 106.46986605505663
+          },
+          "ttft_p95_s": 126.17396018975442,
+          "itl_p95_ms": 25.839807000011206,
+          "e2e_p95_s": 206.81082335940386,
+          "actual_mean_batch": 6.462241462241463,
+          "actual_max_batch": 8,
+          "index_s_per_request": 0.3580130817012105,
+          "nvml_peak_bytes": 111947939840,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 93964861440,
+            "serve_graph_warmup": 110102446080,
+            "serve_graph_capture": 110635122688,
+            "serve_prefill": 111947939840,
+            "serve_index": 111947939840,
+            "serve_decode": 111947939840
+          },
+          "torch_allocated_peak_bytes": 109239298560,
+          "post_eos_tokens": 26590,
+          "kv_bytes": 36507222016,
+          "recurrent_bytes": 635437056,
+          "index_bytes": 15740928000,
+          "route_workspace_bytes": 39123200,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch8_ms": 25.718894447444686,
+          "decode_ms_per_emitted_token": 3.962406626537277,
+          "graph_capture_s_by_extent": {
+            "1": 0.1658300560011412,
+            "2": 0.1437051379980403,
+            "3": 0.13168948099337285,
+            "4": 0.1275035040016519,
+            "5": 0.12629445400671102,
+            "6": 0.13147074900189182,
+            "7": 0.15450483599852305,
+            "8": 0.14548863099480513
+          }
+        }
+      },
+      "prompt_tokens": 65536,
+      "max_batch": 8,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240,
+        3648,
+        3968,
+        4096,
+        1088,
+        3072,
+        1408
+      ],
+      "decode_speedup": 1.1762623074901553,
+      "decode_plus_index_speedup": 1.1379963097107033,
+      "end_to_end_speedup": 1.0736731950227938,
+      "decode_saved_s": 18.766624269032036,
+      "decode_plus_index_saved_s": 15.186493452019931
+    },
+    {
+      "arms": {
+        "full": {
+          "requests": 4,
+          "tokens": 9600,
+          "request_per_s": 0.016852575348433204,
+          "output_tokens_per_s": 40.44618083623969,
+          "decode_tokens_per_s": 69.53056900144674,
+          "service_wall_s": 237.35244716599846,
+          "service_phase_s": {
+            "prefill": 99.25241879499663,
+            "index": 0.0,
+            "decode": 138.01123934136558
+          },
+          "ttft_p95_s": 169.84638494950318,
+          "itl_p95_ms": 25.198806999469525,
+          "e2e_p95_s": 232.03570961019875,
+          "actual_mean_batch": 1.7444101072532268,
+          "actual_max_batch": 2,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 74970955776,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 62018945024,
+            "serve_graph_warmup": 74970955776,
+            "serve_graph_capture": 74970955776,
+            "serve_prefill": 74889166848,
+            "serve_decode": 74889166848
+          },
+          "torch_allocated_peak_bytes": 73214050816,
+          "post_eos_tokens": 9337,
+          "kv_bytes": 17716740096,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch2_ms": 25.152871505370403,
+          "decode_ms_per_emitted_token": 14.382163332780907,
+          "graph_capture_s_by_extent": {
+            "1": 0.17075260500132572,
+            "2": 0.13291701600246597
+          }
+        },
+        "sparse": {
+          "requests": 4,
+          "tokens": 9600,
+          "request_per_s": 0.01778618100254673,
+          "output_tokens_per_s": 42.68683440611215,
+          "decode_tokens_per_s": 78.0014434090776,
+          "service_wall_s": 224.8936969339993,
+          "service_phase_s": {
+            "prefill": 99.21145685399824,
+            "index": 2.5700177070029895,
+            "decode": 123.0233644481923
+          },
+          "ttft_p95_s": 164.22434194450267,
+          "itl_p95_ms": 22.53434849990299,
+          "e2e_p95_s": 220.15748310525203,
+          "actual_mean_batch": 1.7444101072532268,
+          "actual_max_batch": 2,
+          "index_s_per_request": 0.6425044267507474,
+          "nvml_peak_bytes": 84353613824,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 74754949120,
+            "serve_graph_warmup": 81707008000,
+            "serve_graph_capture": 81820254208,
+            "serve_prefill": 84353613824,
+            "serve_index": 84353613824,
+            "serve_decode": 84353613824
+          },
+          "torch_allocated_peak_bytes": 82055316992,
+          "post_eos_tokens": 9380,
+          "kv_bytes": 17716740096,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 7080960000,
+          "route_workspace_bytes": 11944512,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch2_ms": 22.438015426395797,
+          "decode_ms_per_emitted_token": 12.820275578177604,
+          "graph_capture_s_by_extent": {
+            "1": 0.16875461999734398,
+            "2": 0.13597641199885402
+          }
+        }
+      },
+      "prompt_tokens": 131072,
+      "max_batch": 2,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240
+      ],
+      "decode_speedup": 1.1218294993020208,
+      "decode_plus_index_speedup": 1.098873499328377,
+      "end_to_end_speedup": 1.0553983966729645,
+      "decode_saved_s": 14.987874893173284,
+      "decode_plus_index_saved_s": 12.417857186170295
+    },
+    {
+      "arms": {
+        "full": {
+          "requests": 6,
+          "tokens": 17216,
+          "request_per_s": 0.018986356927106634,
+          "output_tokens_per_s": 54.47818680951131,
+          "decode_tokens_per_s": 103.10828484394429,
+          "service_wall_s": 316.0163912979988,
+          "service_phase_s": {
+            "prefill": 148.98046748399065,
+            "index": 0.0,
+            "decode": 166.9119026278786
+          },
+          "ttft_p95_s": 197.2952271377515,
+          "itl_p95_ms": 29.70241999719292,
+          "e2e_p95_s": 308.82523982799904,
+          "actual_mean_batch": 2.8616561356834054,
+          "actual_max_batch": 4,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 93511876608,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_graph_warmup": 93258121216,
+            "serve_graph_capture": 93511876608,
+            "serve_prefill": 93511876608,
+            "serve_decode": 93511876608
+          },
+          "torch_allocated_peak_bytes": 91154139648,
+          "post_eos_tokens": 16943,
+          "kv_bytes": 35433480192,
+          "recurrent_bytes": 317718528,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch4_ms": 29.63831284100233,
+          "decode_ms_per_emitted_token": 9.69854169830788,
+          "graph_capture_s_by_extent": {
+            "1": 0.17193215199949918,
+            "2": 0.14416447500116192,
+            "3": 0.13245015300344676,
+            "4": 0.13602629600063665
+          }
+        },
+        "sparse": {
+          "requests": 6,
+          "tokens": 17216,
+          "request_per_s": 0.02039949499809844,
+          "output_tokens_per_s": 58.53295098121046,
+          "decode_tokens_per_s": 121.9399169157954,
+          "service_wall_s": 294.1249281199998,
+          "service_phase_s": {
+            "prefill": 149.00918498398823,
+            "index": 3.8515947030100506,
+            "decode": 141.13508058139996
+          },
+          "ttft_p95_s": 190.71649710650019,
+          "itl_p95_ms": 24.125789997924585,
+          "e2e_p95_s": 287.4874076920012,
+          "actual_mean_batch": 2.8616561356834054,
+          "actual_max_batch": 4,
+          "index_s_per_request": 0.6419324505016751,
+          "nvml_peak_bytes": 109418774528,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 73094004736,
+            "serve_graph_warmup": 106793140224,
+            "serve_graph_capture": 107046895616,
+            "serve_prefill": 109418774528,
+            "serve_index": 109418774528,
+            "serve_decode": 109418774528
+          },
+          "torch_allocated_peak_bytes": 107072397312,
+          "post_eos_tokens": 16987,
+          "kv_bytes": 35433480192,
+          "recurrent_bytes": 317718528,
+          "index_bytes": 14161920000,
+          "route_workspace_bytes": 23889024,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch4_ms": 24.03397142834003,
+          "decode_ms_per_emitted_token": 8.200760057024983,
+          "graph_capture_s_by_extent": {
+            "1": 0.16935840099904453,
+            "2": 0.14291242400213378,
+            "3": 0.13821086900134105,
+            "4": 0.1371871379960794
+          }
+        }
+      },
+      "prompt_tokens": 131072,
+      "max_batch": 4,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240,
+        3648,
+        3968
+      ],
+      "decode_speedup": 1.18263936889604,
+      "decode_plus_index_speedup": 1.1512223609546148,
+      "end_to_end_speedup": 1.0744291322667743,
+      "decode_saved_s": 25.776822046478628,
+      "decode_plus_index_saved_s": 21.925227343468578
+    }
+  ],
+  "window_256k": {
+    "short": {
+      "arms": {
+        "full": {
+          "requests": 4,
+          "tokens": 150,
+          "request_per_s": 0.013989120484065153,
+          "output_tokens_per_s": 0.5245920181524433,
+          "decode_tokens_per_s": 60.96276612556938,
+          "service_wall_s": 285.9364893279999,
+          "service_phase_s": {
+            "prefill": 283.4444683820002,
+            "index": 0.0,
+            "decode": 2.39490445199408
+          },
+          "ttft_p95_s": 274.1099444908508,
+          "itl_p95_ms": 29.134487249393715,
+          "e2e_p95_s": 285.78776883350173,
+          "actual_mean_batch": 1.7590361445783131,
+          "actual_max_batch": 2,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 92301819904,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 65240170496,
+            "serve_graph_warmup": 92301819904,
+            "serve_graph_capture": 92301819904,
+            "serve_prefill": 91850932224,
+            "serve_decode": 91850932224
+          },
+          "torch_allocated_peak_bytes": 89857048576,
+          "post_eos_tokens": 29,
+          "kv_bytes": 34359738368,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch2_ms": 29.0255509997743,
+          "decode_ms_per_emitted_token": 16.403455150644383,
+          "graph_capture_s_by_extent": {
+            "1": 0.19173559499904513,
+            "2": 0.16235453500121366
+          }
+        },
+        "sparse": {
+          "requests": 4,
+          "tokens": 150,
+          "request_per_s": 0.013783766636317049,
+          "output_tokens_per_s": 0.5168912488618893,
+          "decode_tokens_per_s": 77.40448178144284,
+          "service_wall_s": 290.1964394450006,
+          "service_phase_s": {
+            "prefill": 283.3809379109989,
+            "index": 4.820827487001225,
+            "decode": 1.8861956909968285
+          },
+          "ttft_p95_s": 278.4357062992503,
+          "itl_p95_ms": 22.950237998884404,
+          "e2e_p95_s": 290.06565186110134,
+          "actual_mean_batch": 1.7590361445783131,
+          "actual_max_batch": 2,
+          "index_s_per_request": 1.2052068717503062,
+          "nvml_peak_bytes": 109286653952,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 84569620480,
+            "serve_graph_warmup": 104700182528,
+            "serve_graph_capture": 104712765440,
+            "serve_prefill": 109286653952,
+            "serve_index": 109286653952,
+            "serve_decode": 109286653952
+          },
+          "torch_allocated_peak_bytes": 106890205184,
+          "post_eos_tokens": 28,
+          "kv_bytes": 34359738368,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 13369344000,
+          "route_workspace_bytes": 16269824,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch2_ms": 22.848351460226464,
+          "decode_ms_per_emitted_token": 12.919148568471428,
+          "graph_capture_s_by_extent": {
+            "1": 0.17616613299833261,
+            "2": 0.14394556499973987
+          }
+        }
+      },
+      "prompt_tokens": 262080,
+      "output_caps": [
+        64,
+        19,
+        32,
+        35
+      ],
+      "decode_speedup": 1.269700945360768,
+      "decode_plus_index_speedup": 0.3570741278858862,
+      "end_to_end_speedup": 0.9853204604262277,
+      "decode_saved_s": 0.5087087609972514,
+      "decode_plus_index_saved_s": -4.312118726003973,
+      "vs_eager": {
+        "full": {
+          "decode_throughput_ratio": 1.9928443471059896,
+          "exact_requests": 4
+        },
+        "sparse": {
+          "decode_throughput_ratio": 2.5969457094998427,
+          "exact_requests": 4
+        }
+      }
+    },
+    "long": {
+      "arms": {
+        "full": {
+          "requests": 4,
+          "tokens": 9600,
+          "request_per_s": 0.009199765600224811,
+          "output_tokens_per_s": 22.07943744053955,
+          "decode_tokens_per_s": 60.62586391441447,
+          "service_wall_s": 434.7936864719959,
+          "service_phase_s": {
+            "prefill": 276.3782754099957,
+            "index": 0.0,
+            "decode": 158.28228053866042
+          },
+          "ttft_p95_s": 351.46844501319913,
+          "itl_p95_ms": 28.96583800247754,
+          "e2e_p95_s": 428.746118385299,
+          "actual_mean_batch": 1.7444101072532268,
+          "actual_max_batch": 2,
+          "index_s_per_request": 0.0,
+          "nvml_peak_bytes": 92301819904,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 62018945024,
+            "serve_graph_warmup": 92301819904,
+            "serve_graph_capture": 92301819904,
+            "serve_prefill": 91850932224,
+            "serve_decode": 91850932224
+          },
+          "torch_allocated_peak_bytes": 89857016320,
+          "post_eos_tokens": 9481,
+          "kv_bytes": 34359738368,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 0,
+          "route_workspace_bytes": 0,
+          "sae_weights_bytes": 0,
+          "index_build_workspace_bytes": 0,
+          "decode_batch2_ms": 28.913433759904173,
+          "decode_ms_per_emitted_token": 16.494610310406465,
+          "graph_capture_s_by_extent": {
+            "1": 0.17415695000090636,
+            "2": 0.14499200599675532
+          }
+        },
+        "sparse": {
+          "requests": 4,
+          "tokens": 9600,
+          "request_per_s": 0.009841950393814044,
+          "output_tokens_per_s": 23.62068094515371,
+          "decode_tokens_per_s": 76.75553467087197,
+          "service_wall_s": 406.4235075309989,
+          "service_phase_s": {
+            "prefill": 276.5031142910011,
+            "index": 4.760095274992636,
+            "decode": 125.02030037505028
+          },
+          "ttft_p95_s": 338.2781027964521,
+          "itl_p95_ms": 22.959361995162908,
+          "e2e_p95_s": 401.64275946279963,
+          "actual_mean_batch": 1.7444101072532268,
+          "actual_max_batch": 2,
+          "index_s_per_request": 1.190023818748159,
+          "nvml_peak_bytes": 109085327360,
+          "nvml_phase_peak_bytes": {
+            "model_load": 62018945024,
+            "serve_allocate": 92085813248,
+            "serve_graph_warmup": 104484175872,
+            "serve_graph_capture": 104547090432,
+            "serve_prefill": 109085327360,
+            "serve_index": 109085327360,
+            "serve_decode": 109085327360
+          },
+          "torch_allocated_peak_bytes": 106634809856,
+          "post_eos_tokens": 9456,
+          "kv_bytes": 34359738368,
+          "recurrent_bytes": 158859264,
+          "index_bytes": 13175808000,
+          "route_workspace_bytes": 16136704,
+          "sae_weights_bytes": 197376000,
+          "index_build_workspace_bytes": 49248000,
+          "decode_batch2_ms": 22.853258595350514,
+          "decode_ms_per_emitted_token": 13.028376445920205,
+          "graph_capture_s_by_extent": {
+            "1": 0.17572487300640205,
+            "2": 0.15002625900524436
+          }
+        }
+      },
+      "prompt_tokens": 258048,
+      "output_caps": [
+        4096,
+        1216,
+        2048,
+        2240
+      ],
+      "decode_speedup": 1.2660526335629254,
+      "decode_plus_index_speedup": 1.2196162582634882,
+      "end_to_end_speedup": 1.06980447345023,
+      "decode_saved_s": 33.26198016361013,
+      "decode_plus_index_saved_s": 28.501884888617496
+    },
+    "batch2_attention": {
+      "full_attention": 8.989204819997152,
+      "score": 0.718346360601746,
+      "union": 0.1861701598719976,
+      "route": 0.9081332113228592,
+      "indexed_attention": 1.1046647433671208,
+      "combined_attention": 2.0215600895881654
+    }
+  }
+}

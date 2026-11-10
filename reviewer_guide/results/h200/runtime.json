@@ -1,0 +1,18 @@
+{
+  "device": "NVIDIA H200",
+  "torch": "2.8.0+cu128",
+  "cuda": "12.8",
+  "transformers": "5.8.0",
+  "flash_attn": "2.8.3",
+  "flash-linear-attention": "0.4.2",
+  "causal-conv1d": "1.7.0",
+  "python": "3.11.10",
+  "driver": [
+    "580.178.04"
+  ],
+  "library_sha": "65b0ce94ca760753822191f4ac3a4caac4ddc6149c395e3e766512e48af3db6e",
+  "route_library_sha": "ef9318a5725a0e6807c5b5b07da06c85c377fff4cf74f9a9f5583ade272af80b",
+  "model_config_sha": "191e0af232104ed8b65258cf3fb2b842e288008baca7633c11b82a1ac7203aab",
+  "model_index_sha": "77042094076611b69791a610065f28b7013b8c621795fa86ddccc8bac7d1b9df",
+  "triton": "3.4.0"
+}
