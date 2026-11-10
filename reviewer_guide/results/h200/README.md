@@ -99,3 +99,6 @@ accelerator-hours are summed across jobs on PPU-ZW810. The
 [training phase audit](../../training.md#27b-recorded-offline-phases) and its
 [machine-readable ledger](../../training_cost_27b.json) document the accounting
 boundary. [Runtime fingerprints](runtime.json) describe the H200 experiments.
+
+The [expanded worker-window audit](../../training.md#27b-offline-cost-including-capture-worker-windows)
+accounts for 10.972 device-hours, including the broader Q/K capture scope.

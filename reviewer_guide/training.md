@@ -85,3 +85,22 @@ loading, serialization, work outside the timers and the separate early Q/K
 captures for six dictionaries. The mining subtotal omits untimed preparation
 and scaling. The audit checks metadata hashes and matching checkpoint/trace
 receipts, with large trace and weight payloads accounted for by receipt only.
+
+## 27B offline cost including capture worker windows
+
+The expanded audit accounts for 332 distinct Q/K capture jobs, including the
+eight separate early capture jobs omitted from the narrower phase audit above.
+The recorded capture window starts at the saved environment timestamp and ends
+at the completion timestamp. It includes model loading and trace serialization
+that occurred inside that window. The prefill and decode timers total 6.797
+device-hours and are already included in the capture window.
+
+| Recorded work | Summed device-hours on PPU-ZW810 |
+|---|---:|
+| Q/K capture worker windows | 8.853 |
+| Training sample mining | 0.455 |
+| SAE optimization | 1.664 |
+| **Total accounted** | **10.972** |
+
+The total sums per-device job durations. Queueing and preparation outside the
+recorded windows remain outside this accounting.
