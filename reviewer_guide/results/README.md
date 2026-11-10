@@ -1,5 +1,9 @@
 # Verified quality/read tables
 
+[Expanded 27B shared-feature analysis](shared_features_27b_expanded/README.md)
+reports coverage with and without Q–K matching across 116 contexts and all
+16 standard attention layers, with vector heatmaps and detailed measurements.
+
 The RULER and LongProc tables below re-audit existing submitted-model records. They are not new
 benchmark runs, new SAE configurations, official-method latency reproductions
 or evidence of a causal SAE advantage. The label27B follows the submission;
