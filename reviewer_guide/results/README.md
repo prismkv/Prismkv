@@ -4,6 +4,10 @@
 category and task scores for dictionary width, fixed Key memberships, bucket
 cutoff and score terms, with 3,750 examples per configuration.
 
+[27B quality and latency by bucket count](bucket_count_pareto_27b/README.md)
+pairs the LongBench macro scores with 128K Graph request timings for
+Top1, Top2, Top4, Top8, Top16, and Full Flash.
+
 [H200 system evaluation](h200/README.md) reports paired single-request and
 continuous-batching results, index storage, candidate merging and KV layout
 controls. It links the separate PPU-ZW810 offline phase audit.
