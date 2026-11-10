@@ -8,6 +8,10 @@ cutoff and score terms, with 3,750 examples per configuration.
 pairs the LongBench macro scores with 128K Graph request timings for
 Top1, Top2, Top4, Top8, Top16, and Full Flash.
 
+[Hyperparameter sensitivity](hyperparameter_sensitivity/README.md) adds 128K
+decode timings for dictionary width and key memberships and 32K/64K index
+update interval controls.
+
 [H200 system evaluation](h200/README.md) reports paired single-request and
 continuous-batching results, index storage, candidate merging and KV layout
 controls. It links the separate PPU-ZW810 offline phase audit.
