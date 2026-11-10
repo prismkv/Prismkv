@@ -19,6 +19,8 @@ the model's standard/linear-layer mix is described in the model manifest.
 
 ## RULER:13tasks x5lengths x50examples
 
+- [Score tables by context length](ruler27b_by_length.md) compare all seven
+  methods, including KVzip, across the 13 tasks at 8K, 16K, 32K, 64K, and 128K.
 - [Task-length scores and read counts](ruler27b_task_length.csv):390rows, one
   per method/task/length for Full, Prism, H2O, Quest, SnapKV and PyramidKV.
 - [Summary/protocol](ruler27b_summary.json): official scoring-function hash,
