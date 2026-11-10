@@ -16,6 +16,10 @@ update interval controls.
 continuous-batching results, index storage, candidate merging and KV layout
 controls. It links the separate PPU-ZW810 offline phase audit.
 
+[27B shared-feature replication on 200 long contexts](shared_features_27b_replication/README.md)
+expands the original 14-context suite at matched 32K and 64K lengths and links
+the task-by-layer heatmaps, coverage tables, and case-level results.
+
 [Expanded 27B shared-feature analysis](shared_features_27b_expanded/README.md)
 reports coverage with and without Q–K matching across 116 contexts and all
 16 standard attention layers, with vector heatmaps and detailed measurements.
