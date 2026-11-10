@@ -34,18 +34,18 @@ paired long-output stress trace per configuration. The 256K window uses a
 sample, in GiB. Total output throughput includes queueing, prefill, index
 construction and decode.
 
-| Prompt or window | Max active batch | Decode speedup | Decode + index speedup | Total service speedup | Full → PrismKV peak GiB |
-|---|---:|---:|---:|---:|---:|
-| 32K | 2 | 1.007× | 1.000× | 1.000× | 58.07 → 60.64 |
-| 32K | 4 | 1.015× | 1.006× | 1.005× | 62.43 → 67.70 |
-| 32K | 8 | 1.077× | 1.055× | 1.039× | 72.10 → 81.90 |
-| 32K | 16 | 1.097× | 1.066× | 1.043× | 92.16 → 110.44 |
-| 64K | 2 | 1.052× | 1.040× | 1.030× | 61.68 → 66.60 |
-| 64K | 4 | 1.071× | 1.055× | 1.039× | 70.96 → 79.04 |
-| 64K | 8 | 1.176× | 1.138× | 1.074× | 88.25 → 104.26 |
-| 128K | 2 | 1.122× | 1.099× | 1.055× | 69.82 → 78.56 |
-| 128K | 4 | 1.183× | 1.151× | 1.074× | 87.09 → 101.90 |
-| 256K window | 2 | 1.266× | 1.220× | 1.070× | 85.96 → 101.59 |
+| Prompt or window | Max active batch | Decode speedup | Decode + index speedup | Full → PrismKV peak GiB |
+|---|---:|---:|---:|---:|
+| 32K | 2 | 1.007× | 1.000× | 58.07 → 60.64 |
+| 32K | 4 | 1.015× | 1.006× | 62.43 → 67.70 |
+| 32K | 8 | 1.077× | 1.055× | 72.10 → 81.90 |
+| 32K | 16 | 1.097× | 1.066× | 92.16 → 110.44 |
+| 64K | 2 | 1.052× | 1.040× | 61.68 → 66.60 |
+| 64K | 4 | 1.071× | 1.055× | 70.96 → 79.04 |
+| 64K | 8 | 1.176× | 1.138× | 88.25 → 104.26 |
+| 128K | 2 | 1.122× | 1.099× | 69.82 → 78.56 |
+| 128K | 4 | 1.183× | 1.151× | 87.09 → 101.90 |
+| 256K window | 2 | 1.266× | 1.220× | 85.96 → 101.59 |
 
 The 32K, batch-16 index uses 17.60 GiB, or 1.10 GiB per reserved slot.
 The original KV remains resident. At 128K, batch 4, decode throughput is
@@ -53,8 +53,10 @@ The original KV remains resident. At 128K, batch 4, decode throughput is
 token/s. [Graph serving CSV](graph_serving.csv) and [detailed JSON](graph_serving.json)
 include timings, throughput, p95 latency, graph capture and memory allocations.
 
-The 256K short-output Graph control reaches 1.270× decode throughput and
-0.985× total service throughput. The [eager service results](eager_serving.json)
+At a 256K window and maximum batch 2, total service throughput is 1.070×
+Full for the long-output stress trace and 0.985× for the short-output Graph
+control. The short control reaches 1.270× decode throughput. The
+[eager service results](eager_serving.json)
 also retain short-output regressions at 8K–256K. In the long-output Graph
 traces, about 97%–99.7% of outputs follow first EOS because generation
 continues to a fixed cap. These results measure sustained decoding and
