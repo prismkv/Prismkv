@@ -21,6 +21,9 @@ are explicitly separate. No compact candidate was promoted.
 - 58-case stronger organizers and seven score-term variants,29-case Squeezed
   reference port,16-case fixed-index dynamic/frozen LongProc control. These are
   bounded pilots with mixed outcomes, not universal SAE advantages.
+- [Full 27B LongBench ablations](results/longbench27b_ablations/README.md) report
+  all 3,750 examples per arm for width, fixed Key memberships, bucket cutoff
+  and single-term scoring, with realized reads and explicit budget controls.
 - Original 8B native32K/64K phase graphs and Torch allocator/index inventory;
   isolated phases are not additive, allocator memory is not physical-device peak.
 

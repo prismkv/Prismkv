@@ -1,5 +1,9 @@
 # Verified quality/read tables
 
+[Full 27B LongBench ablations](longbench27b_ablations/README.md) report overall,
+category and task scores for dictionary width, fixed Key memberships, bucket
+cutoff and score terms, with 3,750 examples per configuration.
+
 [H200 system evaluation](h200/README.md) reports paired single-request and
 continuous-batching results, index storage, candidate merging and KV layout
 controls. It links the separate PPU-ZW810 offline phase audit.

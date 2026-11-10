@@ -10,7 +10,7 @@ This guide distinguishes the submitted method from supplementary variants.
 | Does attention gather KV first? | `kernels/ppu_8b/av_tuned.cu` | Native path loads original KV through IDs; portable reference gathers for correctness |
 | How are 4 Q heads shared? | `route_parallel.cu`, `av_tuned.cu` | Per-Q normalization then aggregation, shared IDs, separate per-Q attention weights |
 | Are budgets exactly identical? | [budget protocol](budget_protocol.md) | Archived calibration is not a per-step/per-group equality guarantee |
-| Where are hyperparameter results? | [evidence status](evidence_status.md) | New experiments in progress; no incomplete grid presented as final |
+| Where are hyperparameter results? | [Full 27B LongBench ablations](results/longbench27b_ablations/README.md), [evidence status](evidence_status.md) | Dictionary width, fixed Key memberships, bucket cutoff and score terms across all 16 tasks, with category scores and read policies. |
 | How can I run quality evaluation? | [Evaluation guide](evaluation.md), `examples/evaluate_hf.py`, `prepare_benchmark.py`, `score_benchmark.py` | 24 CPU tests; 14,000 input-format checks; one actual 8K public-pipeline witness per model. Not a full quality rerun |
 | Does the model integration preserve dense behavior? | `tests/test_hf_reference.py`; [validation](validation.md) | Tiny-backbone causality controls and short 8B/hybrid 27B CLI witnesses passed. See the separate hybrid dependency checks below. |
 | Where are the trained encoders? | [`pretrained/`](../pretrained/README.md) | All 288/64 dictionaries, source-DONE/hash checked, exact tensor/scales export; not new downstream validation |

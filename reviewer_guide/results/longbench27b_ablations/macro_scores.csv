@@ -1,0 +1,21 @@
+experiment,arm,configuration,old_read_policy,tasks,examples,score_macro,routed_examples,routed_old_history_pct,mean_memberships_per_key,nonpositive_memberships_pct
+full_reference,full,Full,Dense,16,3750,54.03424723350155,0,,,
+dictionary_width,m1000,"Width 1,000",Matched 8%,16,3750,53.850935198693,3548,7.991094926087705,,
+dictionary_width,m2000,"Width 2,000",Matched 8%,16,3750,53.813705501910896,3548,7.991094926087705,,
+dictionary_width,m3000,"Width 3,000",Matched 8%,16,3750,53.925493406108906,3548,7.991094926087705,,
+dictionary_width,m4000,"Width 4,000",Matched 8%,16,3750,53.95278769385442,3548,7.991094926087705,,
+key_memberships,paper_batchtop8,Key BatchTop8,Natural,16,3750,53.99587805710064,3548,8.735883985741136,8.0,0.0
+key_memberships,key_k1,Key fixed 1,Natural,16,3750,54.00437163490668,3548,3.3526146452466463,1.0,0.0
+key_memberships,key_k2,Key fixed 2,Natural,16,3750,53.977315884224936,3548,4.703936261506502,2.0,0.0
+key_memberships,key_k4,Key fixed 4,Natural,16,3750,54.07336835144783,3548,6.568420508205902,4.0,0.0
+key_memberships,key_k8,Key fixed 8,Natural,16,3750,54.140942541321465,3548,9.149597265294423,8.0,0.0
+key_memberships,key_k16,Key fixed 16,Natural,16,3750,54.12252655170204,3548,13.021756394900036,16.0,0.0
+bucket_cutoff,top1,Top1 buckets,Natural,16,3750,49.6332685587277,3548,0.8139854983414946,,
+bucket_cutoff,top2,Top2 buckets,Natural,16,3750,51.780544300316684,3548,1.461222251985713,,
+bucket_cutoff,top4,Top4 buckets,Natural,16,3750,52.95928659909763,3548,2.6073652006813965,,
+bucket_cutoff,top8,Top8 buckets,Natural,16,3750,53.52721730516614,3548,4.760413816670298,,
+bucket_cutoff,top16,Top16 buckets,Natural,16,3750,53.99587805710064,3548,8.735883985741136,,
+score_terms,count_only,Count,Matched 8%,16,3750,40.7184694765577,3548,7.991094926087705,,
+score_terms,mean_only,Mean,Matched 8%,16,3750,53.98662027371918,3548,7.991094926087705,,
+score_terms,variance_only,Variance,Matched 8%,16,3750,47.778451085736656,3548,7.991094926087705,,
+score_terms,all_terms,All terms,Matched 8%,16,3750,54.05568557893669,3548,7.991094926087705,,

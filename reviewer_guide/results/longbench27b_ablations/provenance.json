@@ -1,0 +1,43 @@
+{
+  "model": "Qwen3.8-27B",
+  "hardware": "PPU-ZW810",
+  "examples_per_arm": 3750,
+  "tasks_per_arm": 16,
+  "task_categories": {
+    "Single-doc QA": [
+      "narrativeqa",
+      "qasper",
+      "multifieldqa_en"
+    ],
+    "Multi-doc QA": [
+      "hotpotqa",
+      "2wikimqa",
+      "musique"
+    ],
+    "Summarization": [
+      "gov_report",
+      "qmsum",
+      "multi_news"
+    ],
+    "Few-shot": [
+      "trec",
+      "triviaqa",
+      "samsum"
+    ],
+    "Synthetic": [
+      "passage_count",
+      "passage_retrieval_en"
+    ],
+    "Code": [
+      "lcc",
+      "repobench-p"
+    ]
+  },
+  "arms": 20,
+  "task_rows": 320,
+  "category_rows": 120,
+  "source_aggregate_sha256": {
+    "width_cutoff_score_terms": "0884347bcaf362b7cbcaca24765463d790ea0a9441d2f69cf9f72c739b767d6b",
+    "fixed_key_memberships": "c56c00799c8d252142a8687deaaf0f3ea5fc0b516f0584cad5030ec341dffe2e"
+  }
+}
