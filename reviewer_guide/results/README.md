@@ -20,10 +20,6 @@ controls. It links the separate PPU-ZW810 offline phase audit.
 expands the original 14-context suite at matched 32K and 64K lengths and links
 the task-by-layer heatmaps, coverage tables, and case-level results.
 
-[Expanded 27B shared-feature analysis](shared_features_27b_expanded/README.md)
-reports coverage with and without Q–K matching across 116 contexts and all
-16 standard attention layers, with vector heatmaps and detailed measurements.
-
 The RULER and LongProc tables below re-audit existing submitted-model records. They are not new
 benchmark runs, new SAE configurations, official-method latency reproductions
 or evidence of a causal SAE advantage. The label27B follows the submission;
@@ -71,31 +67,13 @@ latency validation remain separate work.
 
 ## Supplementary organizer pilot
 
-[Organizer pilot](organizer_pilot/README.md) reports a separate fresh58-case
-common-attention comparison, including complete per-task CSV and aggregate JSON.
-Its results are mixed: simpler organization scores higher on the small
-LongBench cohort; SAE scores higher on the RULER cohort. The common indexed Full
-and separate Flash Full, exact-count diagnostic, different training histories,
-output caps and limited scope are explicit. This is not a complete benchmark,
-causal SAE superiority claim, or a latency reproduction.
+[Organizer pilot](organizer_pilot/README.md) compares SAE, multi-assignment
+K-means and random projection on 26 RULER inputs at 16K and 64K. The
+shared-query probes match per-step unique-read counts. Free generation
+uses each method's own trajectory. Training histories differ, and the
+pilot covers one example per task and length.
 
-## Fixed-bucket scoring terms and a related selector
-
-- [Seven score-term combinations](score_terms_pilot/README.md): same58-case
-  pilot, fixed SAE memberships and matched unique counts. Includes every
-  count/mean/variance subset, rather than only favorable combinations. It does
-  not establish that all three terms are indispensable.
-- [Squeezed Attention reference port](squeezed_pilot/README.md):29cases with
-  source-style per-Q threshold and an explicitly separate GQA shared-budget
-  adaptation. Original-style group union reads are larger. Fourteen adapted
-  cases are infeasible, left unscored; paired comparisons use identical cases.
-  Torch/backend/context-split differences and lack of runtime claims are explicit.
-# Additional actual-read audit
-
-[Qwen3-8B historical-token reads](actual_reads_8b/README.md) provides task/length
-counters with explicit zero-event denominators. It also discloses a newly found
-50-case shared prefill-first-token mismatch in the old RULER baseline cohort;
-counter verification is not certification of a strictly paired quality result.
+## Additional actual-read audit
 
 [SCBench and remaining KVzip read tables](remaining_reads.md) provide the 27B
 SCBench mode and task counters plus the 8B and 27B KVzip LongBench and 27B RULER
@@ -120,12 +98,6 @@ attention and full generated tail. Dynamic/frozen scores56.250/7.132; Full62.374
 The8K HTML case loses quality. This is an offline teacher-count diagnostic, not
 KVzip, a causal decomposition of the historical benchmark gap, or latency.
 
-## Llama appendix scope and actual reads
-
-[Llama Table 6 scope and five-length RULER audit](llama_appendix_scope.md)
-reports the omitted 8K–32K scope, all archived length scores, common
-read denominators and archive provenance limitations.
-
 ## Direct Q routing at comparable reads
 
 [Paired 27B LongBench/RULER controls](direct_q_quality.md) compare weighted
@@ -137,15 +109,3 @@ read-mean matching. The archive includes 13,998 verified paired records.
 [Paired 26-case RULER pilot](quest_gqa_control/README.md) uses the same timed
 Quest selector in quality and eager timing, with a shared indexed AV kernel.
 Both per-Q normalization and raw-mean aggregation are reported.
-
-## Bucket-budget quality and module latency
-
-[Paired Top4/8/16 pilot](bucket_budget/README.md) reports official scores, actual reads, complete-module Graph latency and separate eager model timing on the same 26 RULER development inputs. Short-context slowdowns and unchanged Top16-compute overhead are retained.
-
-## Expanded budget follow-up
-
-[195 nonpilot RULER cases](bucket_budget_followup/README.md) extend the same budget test to five samples per task at8K/16K/32K. Top8 loses4.453points toTop16; the small-pilot trend does not support a new default. Actual reads and complete-module Graph/eager-model timings are separate.
-
-## SeerAttention-R quality control
-
-The paired Qwen3-8B study compares the released Seer gate with PrismKV on 26 pilot and 195 follow-up RULER prompts. The source-style and full-tail policies share the indexed AV backend. The report gives realized old-history and generated-tail reads by arm and length. [Results and protocol](seer_gqa_control/README.md)

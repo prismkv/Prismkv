@@ -18,11 +18,8 @@ This guide distinguishes the submitted method from supplementary variants.
 | Where are task/length results and actual baseline reads? | [Verified result tables](results/README.md) |27B RULER65cells and LongProc16subsets; own-trajectory mean-budget and adapter limits explicit |
 | What inputs trained the27B index? | [Input inventory](training_contexts_27b.json), [training limits](training.md) |308input fingerprints across28/112/168pools;43inherited/21fresh split explicit; not full ancestry or near-duplicate certification |
 | What were the offline costs? | [Training phase accounting](training.md#27b-recorded-offline-phases) | 324 timed captures and 226 optimization-stage records. Includes capture, mining and optimization subtotals with explicit omissions. |
-| What changes on a mainstream NVIDIA GPU? | [H200 system results](results/h200/README.md), [SM90 kernels](../kernels/cuda_sm90/README.md) | Paired single requests and continuous batching, peak memory, stage profiling and separate short- and long-output protocols. |
-| How does simpler key organization compare? | [Supplementary organizer pilot](results/organizer_pilot/README.md) |58case common-operator diagnostic, exact matched counts, mixed task outcomes; training histories differ and no full-benchmark/latency claim |
-| Are count, mean and variance each necessary? | [Seven score-term controls](results/score_terms_pilot/README.md) |Same58cases and fixed SAE buckets, matched counts; mean-only is competitive here, so no necessity claim |
-| How does a closely related retrieval selector compare? | [Squeezed reference-port pilot](results/squeezed_pilot/README.md) |29cases; source-style per-Q budget differs, shared-budget adaptation has14infeasible cases; paired denominators and port limits explicit |
-| What are actual reads on the 8B benchmarks? | [8B counter audit](results/actual_reads_8b/README.md) |31,250 baseline records and 7,000 reference identities checked; 50 shared RULER prefill-first-token mismatches remain an explicit quality-comparison limitation |
+| What changes on a mainstream NVIDIA GPU? | [H200 system results](results/h200/README.md), [SM90 kernels](../kernels/cuda_sm90/README.md) | Paired single requests, fixed-cap continuous batching, peak memory and stage profiling. |
+| How does simpler key organization compare? | [Supplementary organizer pilot](results/organizer_pilot/README.md) |26-case RULER comparison, matched Full-trace counts and different training histories |
 | Where are route phases and memory costs? | [Native8B phase/memory diagnostic](results/native_stage_profile/README.md) |32K/64K, same released kernels, all36layers; isolated stage graphs and complete chains kept separate; Torch allocator peak and retained-index storage disclosed, not physical device peak |
 
 The CPU tests verify math and state semantics. They do not establish downstream
@@ -30,17 +27,7 @@ quality, GPU latency, mainstream GPU support, or production-serving performance.
 
 [LongProc rerouting control](results/longproc_rerouting_pilot/README.md): complete16-case fixed-index pilot, same generated-tail policy, dynamic/frozen comparison with explicit Full/HTML loss and offline-budget limits.
 
-The SeerAttention-R evaluation uses the released learned gate on two Qwen3-8B RULER cohorts and reports reads under both source-style and full-tail selection. [Paired Seer quality control](results/seer_gqa_control/README.md)
-
 [Hybrid 27B reference](hybrid_reference.md) records the original execution
 witness and its framework fingerprints. The [locked hybrid dependency recipe](hybrid_install.md)
 records a fresh install, the Torch 2.4 schema patch, CPU contracts and a
 pretrained 27B 8K RULER execution with all 64 encoders.
-
-## Bucket-budget quality and module latency
-
-[Paired Top4/8/16 pilot](results/bucket_budget/README.md) reports official scores, actual reads, complete-module Graph latency and separate eager model timing on the same 26 RULER development inputs. Short-context slowdowns and unchanged Top16-compute overhead are retained.
-
-## Expanded budget follow-up
-
-[195 nonpilot RULER cases](results/bucket_budget_followup/README.md) extend the same budget test to five samples per task at8K/16K/32K. Top8 loses4.453points toTop16; the small-pilot trend does not support a new default. Actual reads and complete-module Graph/eager-model timings are separate.

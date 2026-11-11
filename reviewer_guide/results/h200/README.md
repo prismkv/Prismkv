@@ -54,14 +54,11 @@ token/s. [Graph serving CSV](graph_serving.csv) and [detailed JSON](graph_servin
 include timings, throughput, p95 latency, graph capture and memory allocations.
 
 At a 256K window and maximum batch 2, total service throughput is 1.070×
-Full for the long-output stress trace and 0.985× for the short-output Graph
-control. The short control reaches 1.270× decode throughput. The
-[eager service results](eager_serving.json)
-also retain short-output regressions at 8K–256K. In the long-output Graph
-traces, about 97%–99.7% of outputs follow first EOS because generation
-continues to a fixed cap. These results measure sustained decoding and
-index amortization. Natural stopping and a production scheduler could
-give different service-level results.
+Full in the fixed-cap trace. Across the continuous-batching traces, about
+97%–99.7% of outputs follow first EOS because generation continues to the
+configured cap. These results measure sustained decoding and index
+amortization. Natural stopping and a production scheduler could give
+different service-level results.
 
 ## Routing, attention and irregular reads
 
@@ -71,7 +68,7 @@ and the previous router, and 1.178 ms with the combined optimizations. The
 same combined path takes 1.733 ms in eager execution versus 1.652 ms with
 only the Tensor Core change.
 
-For 256K, batch 2, each batch step takes 0.718 ms for scores and Top16,
+In a separate 256K, batch-2 decode snapshot, each batch step takes 0.718 ms for scores and Top16,
 0.186 ms for candidate merge and deduplication, 0.908 ms for the full router
 and 1.105 ms for indexed attention. The combined path was timed separately
 at 2.022 ms, versus 8.989 ms for Full. In the fixed-candidate layout control
