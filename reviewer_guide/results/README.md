@@ -12,6 +12,9 @@ Top1, Top2, Top4, Top8, Top16, and Full Flash.
 decode timings for dictionary width and key memberships and 32K/64K index
 update interval controls.
 
+[27B additional LongBench baselines and PPU latency](ppu_baseline_latency.md)
+reports the five added baselines and their 128K same-run controls.
+
 [H200 system evaluation](h200/README.md) reports paired single-request and
 continuous-batching results, index storage, candidate merging and KV layout
 controls. It links the separate PPU-ZW810 offline phase audit.

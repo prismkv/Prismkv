@@ -68,34 +68,46 @@ and the previous router, and 1.178 ms with the combined optimizations. The
 same combined path takes 1.733 ms in eager execution versus 1.652 ms with
 only the Tensor Core change.
 
-In a separate 256K, batch-2 decode snapshot, each batch step takes 0.718 ms for scores and Top16,
-0.186 ms for candidate merge and deduplication, 0.908 ms for the full router
-and 1.105 ms for indexed attention. The combined path was timed separately
-at 2.022 ms, versus 8.989 ms for Full. In the fixed-candidate layout control
-at 252K on layer 31, indexed attention takes 44.2 µs and prepacked attention
-takes 43.7 µs. Explicitly gathering into a contiguous buffer and then running
-attention takes 106.0 µs. [Stage and layout records](stage_profiles.json)
-include the 32K and 128K layout controls and isolated timing definitions.
+The near-256K batch-2 decode snapshot uses 262,080 input tokens per request.
+Timings sum the 16 standard attention layers.
+
+| Stage | ms per batch step |
+|---|---:|
+| Bucket scoring and Top16 selection | 0.718 |
+| Candidate merge and deduplication | 0.186 |
+| Complete router | 0.908 |
+| Indexed attention | 1.105 |
+| Complete PrismKV attention path | 2.022 |
+| Full attention path | 8.989 |
+
+Complete paths are timed independently. In a separate 252K, batch-1
+layout control, layer 31 uses the same candidate IDs in all cases.
+
+| KV access path | µs |
+|---|---:|
+| Direct indexed attention | 44.2 |
+| Attention on prepacked contiguous KV | 43.7 |
+| Online explicit gather only | 61.3 |
+| Online explicit gather followed by attention | 106.0 |
+
+[Stage and layout records](stage_profiles.json) include the 32K and 128K
+layout controls and the isolated timing definitions.
 
 ## Offline costs on PPU-ZW810
 
-The offline phase audit for the evaluated 64 dictionaries covers 324 capture
-jobs and 226 optimization-stage records. Shared captures are counted once.
+The offline audit covers the 64 evaluated dictionaries. It counts shared
+captures once and includes 332 distinct Q/K capture jobs. Capture worker
+windows include backbone prefill and decode, as well as loading and
+serialization within the recorded windows.
 
-| Timed phase | Summed accelerator-hours |
+| Timed phase | Summed PPU-ZW810 device-hours |
 |---|---:|
-| Frozen backbone prefill for Q/K capture | 3.459 |
-| Frozen backbone decode for Q/K capture | 3.103 |
+| Q/K capture worker windows | 8.853 |
 | Training sample mining | 0.455 |
 | SAE optimization across the checkpoint lineage | 1.664 |
-| **Accounted subtotal** | **8.681** |
+| **Total accounted offline cost** | **10.972** |
 
-The subtotal excludes untimed model loading, serialization and preparation,
-including the separate early Q/K sources for six dictionaries. These
-accelerator-hours are summed across jobs on PPU-ZW810. The
-[training phase audit](../../training.md#27b-recorded-offline-phases) and its
-[machine-readable ledger](../../training_cost_27b.json) document the accounting
-boundary. [Runtime fingerprints](runtime.json) describe the H200 experiments.
-
-The [expanded worker-window audit](../../training.md#27b-offline-cost-including-capture-worker-windows)
-accounts for 10.972 device-hours, including the broader Q/K capture scope.
+See the [worker-window audit](../../training.md#27b-offline-cost-including-capture-worker-windows)
+for the accounting boundary and raw records. The [earlier phase-only audit](../../training.md#27b-recorded-offline-phases)
+uses a narrower capture scope and excludes untimed loading and serialization.
+[Runtime fingerprints](runtime.json) describe the H200 experiments.
