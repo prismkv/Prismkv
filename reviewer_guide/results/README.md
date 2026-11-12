@@ -13,7 +13,7 @@ decode timings for dictionary width and key memberships and 32K/64K index
 update interval controls.
 
 [27B additional LongBench baselines and PPU latency](ppu_baseline_latency.md)
-reports the five added baselines and their 128K same-run controls.
+reports the five added baselines, their 128K timings, and a shared PrismKV decode reference.
 
 [H200 system evaluation](h200/README.md) reports paired single-request and
 continuous-batching results, index storage, candidate merging and KV layout
