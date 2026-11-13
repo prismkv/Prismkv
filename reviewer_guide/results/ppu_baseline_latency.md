@@ -20,18 +20,18 @@ Full and PrismKV were timed together and PrismKV saves 2.53 ms/token
 
 ## Additional eager timing details
 
-The following controls were measured alongside each baseline. Old-history reads count distinct positions per KV group on five shared Full-trajectory
-probes. Attention covers all 16 standard attention layers and includes
+Old-history reads count distinct positions per KV group on five shared
+Full-trajectory probes. Attention covers all 16 standard attention layers and includes
 routing, plus CPU work and transfers where applicable. Index build is timed
 after prefill.
 
-| Baseline | Paired Full eager (ms/token) | Paired PrismKV eager (ms/token) | Baseline old reads | Baseline attention (ms/token) | Baseline index build (s) |
-|---|---:|---:|---:|---:|---:|
-| Twilight | 51.71 | 52.56 | 9.22% | 29.65 | 0.25 |
-| RetrievalAttention | 52.14 | 51.62 | 8.71% | 1,377.68 | 1,192.42 |
-| Squeezed Attention | 51.43 | 51.66 | 9.22% | 37.45 | 268.56 |
-| BLASST | 53.71 | 52.11 | 9.22% | 32.30 | 0.15 |
-| SeerAttention-R | 51.13 | 51.05 | 9.22% | 13.46 | 0.20 |
+| Baseline | Baseline old reads | Baseline attention (ms/token) | Baseline index build (s) |
+| --- | ---: | ---: | ---: |
+| Twilight | 9.22% | 29.65 | 0.25 |
+| RetrievalAttention | 8.71% | 1,377.68 | 1,192.42 |
+| Squeezed Attention | 9.22% | 37.45 | 268.56 |
+| BLASST | 9.22% | 32.30 | 0.15 |
+| SeerAttention-R | 9.22% | 13.46 | 0.20 |
 
 The timed Twilight adaptation includes Quest page selection, packed-INT4
 candidate scoring and binary-search Top-p. The RetrievalAttention adaptation
