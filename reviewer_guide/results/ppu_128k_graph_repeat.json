@@ -63,6 +63,6 @@
   },
   "summary_table_protocol": {
     "full_and_prismkv": "Reusable single-step CUDA Graph replay with an on-device position counter. Capture is timed separately.",
-    "five_additional_baselines": "Separate 128K eager baseline runs. Use the within-run controls on the timing page for paired comparisons."
+    "five_additional_baselines": "Separate 128K eager baseline runs."
   }
 }

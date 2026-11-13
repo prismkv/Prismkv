@@ -18,6 +18,12 @@ Full and PrismKV were timed together and PrismKV saves 2.53 ms/token
 (1.053× speedup). The five other rows come from separate baseline runs.
 [Per-repeat measurements and execution settings](ppu_128k_graph_repeat.json)
 
+The timed Twilight adaptation includes Quest page selection, packed-INT4
+candidate scoring and binary-search Top-p. The RetrievalAttention adaptation
+performs graph search and attention over retrieved keys on the CPU, then
+merges those results with device attention. These timings characterize the
+tested PPU adaptations on this prompt.
+
 ## Additional eager timing details
 
 Old-history reads count distinct positions per KV group on five shared
@@ -27,14 +33,6 @@ after prefill.
 
 | Baseline | Baseline old reads | Baseline attention (ms/token) | Baseline index build (s) |
 | --- | ---: | ---: | ---: |
-| Twilight | 9.22% | 29.65 | 0.25 |
-| RetrievalAttention | 8.71% | 1,377.68 | 1,192.42 |
 | Squeezed Attention | 9.22% | 37.45 | 268.56 |
 | BLASST | 9.22% | 32.30 | 0.15 |
 | SeerAttention-R | 9.22% | 13.46 | 0.20 |
-
-The timed Twilight adaptation includes Quest page selection, packed-INT4
-candidate scoring and binary-search Top-p. The RetrievalAttention adaptation
-performs graph search and attention over retrieved keys on the CPU, then
-merges those results with device attention. These timings characterize the
-tested PPU adaptations on this prompt.
