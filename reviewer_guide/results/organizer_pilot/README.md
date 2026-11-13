@@ -1,5 +1,7 @@
 # Supplementary RULER organizer pilot
 
+The [full 27B RULER comparison](../organizer_full_ruler/README.md) covers 3,250 examples across 8K–128K.
+
 The pilot covers 26 RULER inputs, with one example per task at each of 16K and
 64K. The sparse methods route all 64 KV groups in the standard attention layers
 of the 27B backbone.

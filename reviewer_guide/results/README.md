@@ -68,13 +68,13 @@ two selectors identical. See [budget protocol](../budget_protocol.md) and
 [systems](../systems.md). New controlled comparisons and native model-scale
 latency validation remain separate work.
 
-## Supplementary organizer pilot
+## Full 27B RULER bucket construction and routing controls
 
-[Organizer pilot](organizer_pilot/README.md) compares SAE, multi-assignment
-K-means and random projection on 26 RULER inputs at 16K and 64K. The
-shared-query probes match per-step unique-read counts. Free generation
-uses each method's own trajectory. Training histories differ, and the
-pilot covers one example per task and length.
+[Full 27B RULER organizer controls](organizer_full_ruler/README.md) compare
+SAE, multi-assignment K-means, sparse random projection, and three LSH routing
+variants on 3,250 inputs across 8K–128K. The sparse methods share the indexed
+Full trajectory's read schedule, calibrated with native PrismKV Top16.
+The [earlier 26-example pilot](organizer_pilot/README.md) remains available.
 
 ## Additional actual-read audit
 

@@ -19,7 +19,7 @@ This guide distinguishes the submitted method from supplementary variants.
 | What inputs trained the27B index? | [Input inventory](training_contexts_27b.json), [training limits](training.md) |308input fingerprints across28/112/168pools;43inherited/21fresh split explicit; not full ancestry or near-duplicate certification |
 | What were the offline costs? | [Training phase accounting](training.md#27b-recorded-offline-phases) | 324 timed captures and 226 optimization-stage records. Includes capture, mining and optimization subtotals with explicit omissions. |
 | What changes on a mainstream NVIDIA GPU? | [H200 system results](results/h200/README.md), [SM90 kernels](../kernels/cuda_sm90/README.md) | Paired single requests, fixed-cap continuous batching, peak memory and stage profiling. |
-| How does simpler key organization compare? | [Supplementary organizer pilot](results/organizer_pilot/README.md) |26-case RULER comparison, matched Full-trace counts and different training histories |
+| How does simpler key organization compare? | [Full 27B RULER organizer controls](results/organizer_full_ruler/README.md) | 3,250 cases with a shared per-step, per-layer, per-KV-group old-history read schedule |
 | Where are route phases and memory costs? | [Native8B phase/memory diagnostic](results/native_stage_profile/README.md) |32K/64K, same released kernels, all36layers; isolated stage graphs and complete chains kept separate; Torch allocator peak and retained-index storage disclosed, not physical device peak |
 
 The CPU tests verify math and state semantics. They do not establish downstream
