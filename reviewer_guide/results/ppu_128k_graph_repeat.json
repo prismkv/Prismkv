@@ -1,0 +1,68 @@
+{
+  "device": "PPU-ZW810",
+  "torch": "2.4.0",
+  "transformers": "5.16.0.dev0",
+  "cuda": "12.3",
+  "history": 131072,
+  "steps": 128,
+  "repeats": 3,
+  "batch": 1,
+  "dtype": "BF16",
+  "prefill_s": 64.71010244823992,
+  "prism_index_s": 0.8888310771435499,
+  "prompt_sha": "b7fbd28a64b9ef6b41caf21cad4ea7872103816f4d81abdef8b49a54e96e8926",
+  "sae_sha": "8420f99119b8166f8917dc060503280b94f0faca07dc82dbf591e27bc356d8a8",
+  "graph_kernel_sha": "d4b26cbca0408f64a86c02c224b045be3ba85e789f8bedb8caa01b9f8ac4dc5d",
+  "arms": {
+    "Full Attention": {
+      "original_eager": {
+        "ms_per_token": [
+          51.83330281579401,
+          52.29492865328211,
+          52.13174359232653
+        ],
+        "median_ms_per_token": 52.13174359232653
+      },
+      "graph": {
+        "ms_per_token": [
+          50.382852903567255,
+          50.379119435092434,
+          50.37493306735996
+        ],
+        "median_ms_per_token": 50.379119435092434
+      },
+      "graph_capture_s": 1.3361396193504333,
+      "first_graph_replay_ms_per_token": 50.38187278842088,
+      "graph_matches_cursor_eager": true,
+      "graph_matches_original_eager": true,
+      "first_original_eager_difference": null
+    },
+    "PrismKV": {
+      "original_eager": {
+        "ms_per_token": [
+          49.889293892192654,
+          50.83805386675522,
+          50.29874273168389
+        ],
+        "median_ms_per_token": 50.29874273168389
+      },
+      "graph": {
+        "ms_per_token": [
+          47.85006544261705,
+          47.845419467194006,
+          47.859725324087776
+        ],
+        "median_ms_per_token": 47.85006544261705
+      },
+      "graph_capture_s": 0.613769143819809,
+      "first_graph_replay_ms_per_token": 47.8496209543664,
+      "graph_matches_cursor_eager": true,
+      "graph_matches_original_eager": true,
+      "first_original_eager_difference": null
+    }
+  },
+  "summary_table_protocol": {
+    "full_and_prismkv": "Reusable single-step CUDA Graph replay with an on-device position counter. Capture is timed separately.",
+    "five_additional_baselines": "Separate 128K eager baseline runs. Use the within-run controls on the timing page for paired comparisons."
+  }
+}

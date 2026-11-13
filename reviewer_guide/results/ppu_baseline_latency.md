@@ -1,35 +1,37 @@
 # 27B additional LongBench baselines and PPU latency
 
-Quality is the macro average of 16 LongBench tasks over all 3,750 examples.
-Latency is from a separate 128K, batch-1, eager test with Qwen3.8-27B BF16
-on PPU-ZW810. Each latency is the median of three 128-step runs. The table
-uses the Full and PrismKV controls from the BLASST run as shared references.
+Quality is the macro average of 16 LongBench tasks over 3,750 examples.
+The latency measurements use the same 131,072-token prompt, Qwen3.8-27B BF16,
+batch size 1, and PPU-ZW810. We report the median of three 128-step runs.
 
-| Method | LongBench macro | Whole-model decode (ms/token) |
+| Method | LongBench average | 128K whole-model decode (ms/token) |
 |---|---:|---:|
-| Full Attention | 54.031 | 53.71 |
-| PrismKV | 53.963 | 52.11 |
+| Full Attention | 54.031 | 50.38 |
+| PrismKV | 53.963 | 47.85 |
 | Twilight | 54.054 | 74.25 |
 | RetrievalAttention | 54.004 | 1,404.02 |
 | Squeezed Attention | 53.901 | 91.81 |
 | BLASST | 53.845 | 76.73 |
 | SeerAttention-R | 53.239 | 61.25 |
 
-## Additional timing details
+Full and PrismKV were timed together and PrismKV saves 2.53 ms/token
+(1.053× speedup). The five other rows come from separate baseline runs.
+[Per-repeat measurements and execution settings](ppu_128k_graph_repeat.json)
 
-All comparisons use the PrismKV decode reference of 52.11 ms/token shown above. The Full decode column below is measured alongside each baseline. Old-history
-reads count distinct positions per KV group on five shared Full-trajectory
+## Additional eager timing details
+
+The following controls were measured alongside each baseline. Old-history reads count distinct positions per KV group on five shared Full-trajectory
 probes. Attention covers all 16 standard attention layers and includes
 routing, plus CPU work and transfers where applicable. Index build is timed
 after prefill.
 
-| Baseline | Paired Full decode (ms/token) | Baseline old reads | Baseline attention (ms/token) | Baseline index build (s) |
-|---|---:|---:|---:|---:|
-| Twilight | 51.71 | 9.22% | 29.65 | 0.25 |
-| RetrievalAttention | 52.14 | 8.71% | 1,377.68 | 1,192.42 |
-| Squeezed Attention | 51.43 | 9.22% | 37.45 | 268.56 |
-| BLASST | 53.71 | 9.22% | 32.30 | 0.15 |
-| SeerAttention-R | 51.13 | 9.22% | 13.46 | 0.20 |
+| Baseline | Paired Full eager (ms/token) | Paired PrismKV eager (ms/token) | Baseline old reads | Baseline attention (ms/token) | Baseline index build (s) |
+|---|---:|---:|---:|---:|---:|
+| Twilight | 51.71 | 52.56 | 9.22% | 29.65 | 0.25 |
+| RetrievalAttention | 52.14 | 51.62 | 8.71% | 1,377.68 | 1,192.42 |
+| Squeezed Attention | 51.43 | 51.66 | 9.22% | 37.45 | 268.56 |
+| BLASST | 53.71 | 52.11 | 9.22% | 32.30 | 0.15 |
+| SeerAttention-R | 51.13 | 51.05 | 9.22% | 13.46 | 0.20 |
 
 The timed Twilight adaptation includes Quest page selection, packed-INT4
 candidate scoring and binary-search Top-p. The RetrievalAttention adaptation
